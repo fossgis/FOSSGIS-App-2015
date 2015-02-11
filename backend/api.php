@@ -14,10 +14,14 @@
 
   function getSpeeches($connection,$room, $date) {
 
-    $sql = "SELECT title, start , subtitle, description, duration
-      FROM Speech
+    $sql = "SELECT title, start , subtitle, description, duration, GROUP_CONCAT(name) FROM Speech
+      LEFT OUTER JOIN SpeakerSpeech
+      ON Speech.id = SpeakerSpeech.speech_id
+      LEFT OUTER JOIN Speaker
+      On SpeakerSpeech.speaker_id = Speaker.id
       WHERE room_id = '".$room."'
       AND DATE =  '".$date."'
+      GROUP BY start
       Order by start";
 
     $result = mysqli_query($connection, $sql);
@@ -33,6 +37,7 @@
       $test->description = (string)$row[3];
       $test->number = $number++;
       $test->duration = (string)$row[4];
+      $test->name = (string)$row[5];
 
       array_push($array, $test);
     }
