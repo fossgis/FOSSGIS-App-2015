@@ -168,7 +168,7 @@
 
     	<script>
     		function aktuellesClick () {
-    			document.getElementById('#newsTab').click();
+    			document.getElementById('newsTab').click();
     		}
     	</script
 
