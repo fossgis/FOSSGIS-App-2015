@@ -40,7 +40,7 @@
 	<div class="row">
 		<div class="large-12 columns">
 			<label style="font-weight: bold">Mail (Optional, <b> &ouml;ffentlich</b>): </br>
-				<input type="text" id="author_mail" name="author_mail" placeholder="Ihre Mailadresse" required/>
+				<input type="text" id="author_mail" name="author_mail" placeholder="Ihre Mailadresse"/>
 			</label>
 		</div>
 	</div>
