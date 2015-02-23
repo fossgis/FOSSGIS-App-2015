@@ -27,11 +27,15 @@
 	//$result = mysqli_query($connection, $sql);
 	
 	
-	
-	$cookie = (string)$_COOKIE['title'];
-	$list = $cookie.','.$title;
-    $_COOKIE['title'] = $list;
-	setcookie('title', $list, strtotime("+1 month"));
+	if((string)$_COOKIE['title'] == ""){
+		$_COOKIE['title'] = $title;
+		setcookie('title', $title, strtotime("+1 month"));
+	}else{
+		$cookie = (string)$_COOKIE['title'];
+		$list = $cookie.','.$title;
+		$_COOKIE['title'] = $list;
+		setcookie('title', $list, strtotime("+1 month"));
+	}
 	
 	header("Location: ../frontend/index.html");
 	exit();
