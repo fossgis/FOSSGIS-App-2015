@@ -10,8 +10,7 @@
         // Bind to the submit event of our form
         $("#answerform").submit(function(event){
             $.post('../backend/NoticeBoard/nb_ret_insertcomment.php', $(this).serialize(),function(data) {
-            		$("#commentInsert").html("<div class='row'><div id='actionlink' align='center' class='large-12 columns'><a href='#' class='button expand' onclick='ShowAnswerForm(0)' style='font-weight: bold'>Notiz erstellen</a></div></div>");
-                $("#commentInsert").html("<div class='row'><div class='large-12 columns'><p>Die Notiz wurde erfolgreich hinzugef&uuml;gt.</p></div></div>");
+                $("#commentInsert").html("<div class='row'><div class='large-12 columns'><p>Die Notiz wurde erfolgreich hinzugef&uuml;gt.</p></div></div><br/><div class='row'><div id='actionlink' align='center' class='large-12 columns'><a href='#' class='button expand' onclick='ShowAnswerForm(0)' style='font-weight: bold'>Notiz erstellen</a></div></div>");
 				DisplayComments();
             });
             

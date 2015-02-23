@@ -97,13 +97,13 @@ function DisplayComments() {
 					
 					
 			// Add answer link
-			$html.="<div class='answer'><a href='#' onclick='ShowAnswerForm($id);'>Antworten</a></div><br/>";
+			$html.="<div class='answer'><a href='#' onclick='ShowAnswerForm($id);'>Antworten</a></div>";
 
 
 			// Search for answers
 			for($d=0; $d<count($stack); $d++) {
 				if($stack[$d]['answer_to']=="$id") {
-					$html.= "<div class='reply'>";
+					$html.= "<p style='line-height: 10px'></p><div class='reply'>";
 					$html.= GenerateHtmlComment($stack[$d]['author_name'], $stack[$d]['author_mail'], $stack[$d]['message'], $stack[$d]['createdtime']);
 					$html.= "</div>";
 				}
