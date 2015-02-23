@@ -54,7 +54,7 @@
 	
 		<div id="comments" align="center"> </div>   
 
-		<h5><div class="row" id="answerform_title" name="answerform_title"> </div>	</h5>
+		<p><div class="row" id="answerform_title" name="answerform_title"> </div>	</p>
 		<div id="form" align="left"> </div>
 		
 		<div id="actionlink" align="center" > <a href="#" class="tiny button expand" onclick="ShowAnswerForm(0)"> Eintrag erstellen </a> </div>
