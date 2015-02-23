@@ -11,7 +11,7 @@ body {
 
 @media only screen and (min-width: 64.063em) {
 	.comment {
-    width: 75%;
+    width: 70%;
     padding: 30px 10px 10px;
     margin-bottom: 1px;
     background: url("sticky_note.gif") no-repeat scroll 0% 0% #FFF8BE;
@@ -20,7 +20,18 @@ body {
 	}
 }
 
-@media only screen and (max-width: 64em) {
+@media only screen and (min-width: 40.063em) {
+	.comment {
+    width: 85%;
+    padding: 30px 10px 10px;
+    margin-bottom: 1px;
+    background: url("sticky_note.gif") no-repeat scroll 0% 0% #FFF8BE;
+   
+    /*transform: rotate(-1deg); */
+	}
+}
+
+@media only screen and (max-width: 40em) {
 	.comment {
     width: 100%;
     padding: 30px 10px 10px;
