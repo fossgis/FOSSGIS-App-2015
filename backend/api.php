@@ -6,9 +6,7 @@
 
   if (isset($_GET["func"])) {
     if ($_GET["func"] == "getSpeeches") {
-      $room = $_GET["room"];
-      $date = $_GET["date"];
-      echo getSpeeches($connection,$room,$date);
+      echo getSpeeches($connection);
     }
 	if ($_GET["func"] == "getTitles") {
 		echo getTitles($connection);
@@ -18,16 +16,16 @@
 	  echo getSearch($connection,$search);
 	}
   }
-  
+
   function getTitles($connection) {
 	$ititles = $_COOKIE['title'];
 	$ititles =  utf8_decode($ititles);
-   
-    $titles = explode(",", $ititles);	
+
+    $titles = explode(",", $ititles);
     $maxi = count($titles);
-	
+
 	$help = $maxi - 1;
-	
+
 	$sql = "(Select title, date, start, room_id, duration
 		From Speech
 		Where ";
@@ -39,17 +37,17 @@
 		}else{
 			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%' OR ";
 		}
-		
+
     }
 	$sqlfor = $sqlarray[0];
 	$sqlend = $sqlfor." Order BY date)
 		Order by start;";
-		
+
 	$result = mysqli_query($connection, $sqlend);
-	   
-          
+
+
     $number = 0;
-    $array = [];	
+    $array = [];
     while($row = mysqli_fetch_array($result)){
       $test = new stdClass();
       $test->title = (string)$row[0];
@@ -69,17 +67,15 @@
     return json_encode($array);
   }
 
-  function getSpeeches($connection,$room, $date) {
+  function getSpeeches($connection) {
 
-    $sql = "SELECT title, start , subtitle, description, duration, GROUP_CONCAT(name) FROM Speech
+    $sql = "SELECT title, start , subtitle, description, duration, room_id, date, GROUP_CONCAT(name) FROM Speech
       LEFT OUTER JOIN SpeakerSpeech
       ON Speech.id = SpeakerSpeech.speech_id
       LEFT OUTER JOIN Speaker
       On SpeakerSpeech.speaker_id = Speaker.id
-      WHERE room_id = '".$room."'
-      AND DATE =  '".$date."'
-      GROUP BY start
-      Order by start";
+      GROUP BY title
+      ORDER BY date, start";
 
     $result = mysqli_query($connection, $sql);
 
@@ -95,6 +91,8 @@
       $test->number = $number++;
       $test->duration = (string)$row[4];
       $test->name = (string)$row[5];
+      $test->date = (string)$row[6];
+      $test->speaker = (string)$row[7];
 
       array_push($array, $test);
     }
@@ -104,7 +102,7 @@
 
     return json_encode($array);
   }
-  
+
   function getSearch($connection,$search) {
 
     $sql = "SELECT title, start , subtitle, description, duration, GROUP_CONCAT(name) FROM Speech

@@ -1,94 +1,60 @@
 (function () {
-  var ajaxLoading = false;
-  var date = "2015-03-11";
-  var cal = false;
 
-  $("dd[class='accordion-navigation']").click(function(evt){
-    switch(evt.target.innerHTML){
-      case "Mittwoch":
-        date = "2015-03-11";
-        break;
-      case "Donnerstag":
-        date = "2015-03-12";
-        break;
-      case "Freitag":
-        date = "2015-03-13";
-        break;
-	case "Mein Kalender":
-		cal = true;
-		break;
-      default:
-        break;
-    }
-  });
-
-  $("dd > a").click(function (evt) {
-    evt.preventDefault();
-    room = evt.target.innerHTML;
-    target = evt.target.hash;
-	if (cal) {
-	ajaxLoading = true;
-	$.ajax({
-			url:'/fossgis/backend/api.php',
-			data: {
-				func: 'getTitles'
-			}
-	}).done(function(data){
-	
-		$(target+" > .content").empty();
-        if(target.indexOf("-") > -1) {
-          $(target).empty();
-        }
-        obj = JSON.parse(data);
-        console.log(obj);
-        obj.forEach( function(speech) {
-          $(target).append("<div class='row'><small-12 medium-6 large-8 columns'><p>" +speech.datum+" "+speech.start+" : "+speech.title+"</p></div><div class='small-12 medium-6 large-4 columns'><a href='#' class='button openmodal' style='width: 64%; padding: 0.001rem 0rem' data-reveal-id='infos"+speech.number+"-"+target.slice(1,target.length)+"'> weitere Informationen</a></div></div>");
-          $(target).append("<div id='infos"+speech.number+"-"+target.slice(1,target.length)+"' class='reveal-modal' data-reveal><h2>"+speech.title+"</h2><p class='lead'>"+speech.room+"</p><p>Dauer: "+speech.duration+"</p><p>"+speech.description+"</p><a class='close-reveal-modal'>&#215;</a></div>");
-		  $('a.openmodal').on("click", function (evt) {
-            evt.preventDefault();
-            modal = evt.target.attributes[2].value;
-            $("#"+modal).foundation('reveal', 'open');
-          });
-        });
-		
-	})
-	.fail(function(err){
-	})
-	.always(function(){
-		ajaxLoading=false;
-	});
-	} else {
+  $(document).ready(function () {
+    var ajaxLoading = false;
     if (!ajaxLoading) {
       ajaxLoading = true;
       $.ajax({
         url: '/fossgis/backend/api.php',
         data: {
-          func: 'getSpeeches',
-          room: room,
-          date: date
+          func: 'getSpeeches'
         }
       }).done(function (data) {
-        $(target+" > .tabs-content > .content").empty();
-        if(target.indexOf("-") > -1) {
-          $(target).empty();
-        }
         obj = JSON.parse(data);
-        console.log(obj);
-        obj.forEach( function(speech) {
-          $(target).append("<div class='row'><div class='small-12 medium-6 large-8 columns'><p>"+speech.start+" : "+speech.title+"</p></div><div class='small-12 medium-6 large-4 columns'><form action='../backend/teilnehmen.php' method='get'><input type=hidden id=title name=title value="+speech.title+"><a href='#' class='button openmodal' style='width: 64%; padding: 0.001rem 0rem' data-reveal-id='infos"+speech.number+"-"+target.slice(1,target.length)+"'> weitere Informationen</a> <input type='submit' id='filter' class='button' style='width: 34%; padding: 0.001rem 0rem' value='Vormerken'></form></div></div>");
-          $(target).append("<div id='infos"+speech.number+"-"+target.slice(1,target.length)+"' class='reveal-modal' data-reveal><h2>"+speech.title+"</h2><p class='lead'>"+speech.subtitle+"</p><p>Dauer: "+speech.duration+"</p><p>Referent: "+speech.name+"</p><p>"+speech.description+"</p><a class='close-reveal-modal'>&#215;</a></div>");
-		  $('a.openmodal').on("click", function (evt) {
-            evt.preventDefault();
-            modal = evt.target.attributes[2].value;
-            $("#"+modal).foundation('reveal', 'open');
-          });
+        obj.forEach(function (speech) {
+          if (speech.date === "2015-03-11") {
+            target = "#panel1";
+          } else if (speech.date === "2015-03-12") {
+            target = "#panel2";
+          } else if (speech.date === "2015-03-13") {
+            target = "#panel3";
+          }
+          appendToRoom(target,speech);
         });
-      }).fail(function (error) {
-        console.log(error);
+      }).fail(function (err) {
+        console.log(err);
       }).always(function () {
         ajaxLoading = false;
       });
     }
-	}
   });
+
+  function appendToRoom (target,speech) {
+    var tab = "";
+    switch(speech.name) {
+      case "Aula":
+        tab = target+"-1"
+        break;
+      case "S10":
+        tab = target+"-2";
+        break;
+      case "S1":
+        tab = target+"-3"
+        break;
+      case "S2":
+        tab = target+"-4"
+        break;
+      case "StudLab 1":
+        tab = target+"-5"
+        break;
+      case "StudLab 2":
+        tab = target+"-6"
+        break;
+      case "StudLab 3":
+        tab = target+"-7"
+        break;
+    }
+    $(target+" > .tabs-content > "+tab).append("<div class='row'><div class='small-12 medium-6 large-8 columns'><p>"+speech.start+" : "+speech.title+"</p></div><div class='small-12 medium-6 large-4 columns'><form action='../backend/teilnehmen.php' method='get'><input type=hidden id=title name=title value="+speech.title+"><a href='#' class='button openmodal' style='width: 64%; padding: 0.001rem 0rem' data-reveal-id='infos"+speech.number+"-"+target.slice(1,target.length)+"'> weitere Informationen</a> <input type='submit' id='filter' class='button' style='width: 34%; padding: 0.001rem 0rem' value='Vormerken'></form></div></div>");
+    $(target+" > .tabs-content > "+tab).append("<div id='infos"+speech.number+"-"+target.slice(1,target.length)+"' class='reveal-modal' data-reveal><h2>"+speech.title+"</h2><p class='lead'>"+speech.subtitle+"</p><p>Dauer: "+speech.duration+"</p><p>Referent: "+speech.speaker+"</p><p>"+speech.description+"</p><a class='close-reveal-modal'>&#215;</a></div>");
+  }
 }());
