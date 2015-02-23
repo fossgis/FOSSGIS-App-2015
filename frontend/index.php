@@ -1171,12 +1171,12 @@
           var popup = L.popup();
          	
           $('#navigation').on('toggled', function (event, tab) {
-    				alert ('toggled geht');
+    				map.invalidateSize(true);
   				});
 
-					//function showNavigation () {
-						//map.invalidateSize(true);
-					//}
+					function navigation () {
+						map.invalidateSize(true);
+					}
 
           $(window).on("resize", function() {
           	$("#map").height(($(window).height()*0.9));
