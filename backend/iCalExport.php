@@ -29,12 +29,12 @@
 		From Speech
 		Where ";
     for ($i=0; $i < $maxi; $i++)
-    {
+    {	
 		if ($i == $help){
-			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%'";
+			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%' AND LENGTH(title) >= 1";
 			$sqlarray[] = $sql;
 		}else{
-			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%' OR ";
+			$sql = $sql."LENGTH(title) >= 1 AND title LIKE '".utf8_encode($titles[$i])."%' OR ";
 		}
 		
     }
