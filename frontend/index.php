@@ -1189,19 +1189,7 @@
 				</script>
 				
 				<div class="content" id="schwarzesBrett">
-					<!--
 					<div class="row" style="margin-top: 10px">
-						<div class="large-12 columns">
-							<div id="comments" class="comment" align="center">
-								<div class='time'>Erstellt: 23.02.2015</div>
-								<br/>
-								<div class='author'>Admin</div>
-								<div class='text' align='left'>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
-								<div class='answer'><a href='#' onclick='ShowAnswerForm($id);'>Antworten</a></div>
-							</div>
-						</div>
-					</div>-->
-					<div class="row collapse">
 						<div class="large-12 columns">
 							<?php
 								include ('../backend/NoticeBoard/NoticeBoard.php');
