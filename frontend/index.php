@@ -63,7 +63,7 @@
 
 </head>
 
-<body onLoad="checkDate()">
+<body onLoad="checkDate(); aktuellesClick()">
 
 	<!-- header -->
 
@@ -152,7 +152,7 @@
 		<div class="large-12 columns">
   		<br/>
 			<dl class="tabs" align="center" data-tab data-options="scroll_to_content: false">
-        <dd class="active">
+        <dd class="active" id"newsTab">
         	<a href="#news">Aktuelles</a>
         </dd>
        	<dd>
@@ -165,6 +165,12 @@
 					<a href="#schwarzesBrett">Schwarzes Brett</a>
 				</dd>
     	</dl>
+
+    	<script>
+    		function aktuellesClick () {
+    			document.getElementById('#newsTab').click();
+    		}
+    	</script
 
       <div class="tabs-content">
         <div class="content active" id="news">
