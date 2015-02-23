@@ -54,9 +54,10 @@
 	</div>
 			
 			
-		
-	<div class="row">
-		<input id="submit" type="submit" class="button expand" value="Abschicken"/>
+	<div class="large-12 columns">	
+		<div class="row">
+			<input id="submit" type="submit" class="button expand" value="Abschicken"/>
+		</div>
 	</div>
 	
 	</form>
