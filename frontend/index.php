@@ -1170,9 +1170,9 @@
 
           var popup = L.popup();
          	
-          $('#navigation').on('toggled', function (event, tab) {
-    				map.invalidateSize(true);
-  				});
+          //$('#navigation').on('toggled', function (event, tab) {
+    				//map.invalidateSize(true);
+  				//});
 
   				//$('#navigationTabA').click(function() {
   					//map.invalidateSize(true);
