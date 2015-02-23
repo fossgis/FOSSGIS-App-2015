@@ -24,22 +24,23 @@
 
 	$help = $maxi - 1;
 
-	$sql = "Select title, date, start, room_id, duration
+	$sql = "(Select title, date, start, room_id, duration
 		From Speech
-		Where title ";
+		Where ";
     for ($i=0; $i < $maxi; $i++)
     {
 		if ($i == $help){
-			$sql = $sql."LIKE '%".$titles[$i]."%'";
+			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%'";
 			$sqlarray[] = $sql;
 		}else{
-			$sql = $sql."LIKE '%".$titles[$i]."%' OR ";
+			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%' OR ";
 		}
 		
     }
 	$sqlfor = $sqlarray[0];
-	$sqlend = $sqlfor." GROUP BY date
+	$sqlend = $sqlfor." order by date)
 		Order by start;";
+		
 
 	
 		
