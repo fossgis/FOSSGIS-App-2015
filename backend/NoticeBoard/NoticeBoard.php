@@ -57,7 +57,7 @@
 		<h5><div id="answerform_title" name="answerform_title"> </div>	</h5>
 		<div id="form"> </div>
 		
-		<div id="actionlink" align="center" > <a href="#" onclick="ShowAnswerForm(0)"> Eintrag erstellen </a> </div>
+		<div id="actionlink" align="center" > <a href="#" class="tiny button expand" onclick="ShowAnswerForm(0)"> Eintrag erstellen </a> </div>
     </div>
 	
 	</body>
