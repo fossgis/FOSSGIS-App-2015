@@ -44,26 +44,6 @@ function GetComments() {
  * 
  * Get html formatted text, containing all comments
  */
-/*function DisplayComments() {
-    $html="";
-    
-    $res = GetComments();
-    echo count($res);
-    for($i=0; $i<count($res); $i++) {
-        $html.= "	
-	<div> 
-		<br> Author Name: " . $res[i]["author_name"] . "
-		<br> Author E-Mail: " . $res[i]["author_mail"] . "
-		<br> Message: " . $res[i]["message"] . "
-	</div>
-        <br><br><br>
-        ";
-    }
-    
-    echo $html;
-
-    
-} */
 
 function DisplayComments() {
     $html ="";
@@ -122,7 +102,6 @@ function DisplayComments() {
 
 
 /* GenerateHtmlComment
-
 * Generate the html content from a comment
 */
 function GenerateHtmlComment($author_name, $author_mail, $message, $createdtime ) {
