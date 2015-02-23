@@ -63,7 +63,7 @@
 
 </head>
 
-<body onLoad="checkDate(); aktuellesClick()">
+<body onLoad="checkDate()">
 
 	<!-- header -->
 
@@ -153,24 +153,18 @@
   		<br/>
 			<dl class="tabs" align="center" data-tab data-options="scroll_to_content: false">
         <dd class="active">
-        	<a href="#news" id"newsTab">Aktuelles</a>
+        	<a href="#news">Aktuelles</a>
         </dd>
        	<dd>
         	<a href="#veranstaltungen">Veranstaltungen</a>
         </dd>
-        <dd id="navigationTab" onclick="showNavigation()">
+        <dd id="navigationTab" onclick="navigation()">
         	<a href="#navigation">Navigation</a>
        	</dd>
 				<dd id="boardTab">
 					<a href="#schwarzesBrett">Schwarzes Brett</a>
 				</dd>
     	</dl>
-
-    	<script>
-    		function aktuellesClick () {
-    			document.getElementById('newsTab').click();
-    		}
-    	</script>
 
       <div class="tabs-content">
         <div class="content active" id="news">
@@ -1176,13 +1170,13 @@
 
           var popup = L.popup();
          	
-          //$('#navigation').on('toggled', function (event, tab) {
-    				//map.invalidateSize(true);
-  				//});
+          $('#navigation').on('toggled', function (event, tab) {
+    				alert ('toggled geht');
+  				});
 
-					function showNavigation () {
-						map.invalidateSize(true);
-					}
+					//function showNavigation () {
+						//map.invalidateSize(true);
+					//}
 
           $(window).on("resize", function() {
           	$("#map").height(($(window).height()*0.9));
