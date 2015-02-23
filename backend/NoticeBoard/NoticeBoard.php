@@ -52,13 +52,13 @@
 
    
 	
-		<div id="comments" align="center" style="margin-top: 10px"> </div>   
+		<div id="comments" align="center" style="margin-top: 10px"></div>   
 
-		<p><div class="row"><div id="answerform_title" name="answerform_title" class="large-12 columns"> </div></div>	</p>
-		<div id="form" align="left"> </div>
+		<p><div class="row"><div id="answerform_title" name="answerform_title" class="large-12 columns"> </div></div></p>
+
+		<div id="form" align="left"></div>
 		
-		<div id="actionlink" align="center" class="large-12 columns" > <a href="#" class=" button expand" onclick="ShowAnswerForm(0)" style="font-weight: bold">Notiz erstellen</a> </div>
-    </div>
+		<div class="row"><div class="large-12 columns" id="actionlink" align="center"><a href="#" class=" button expand" onclick="ShowAnswerForm(0)" style="font-weight: bold">Notiz erstellen</a></div></div>
 	
 	</body>
 </html>
