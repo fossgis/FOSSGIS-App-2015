@@ -48,7 +48,7 @@
 	<div class="row">
 		<div class="large-12 columns">
 			<label style="font-weight: bold">Text: </br>
-				<textarea name="message" id="message"  required/></textarea ></br></br>
+				<textarea name="message" id="message" rows="4" required/></textarea ></br></br>
 			</label>
 		</div>
 	</div>
