@@ -1,5 +1,10 @@
 (function () {
   $(document).ready(function () {
+    
+          $('#navigation').on('toggled', function (event, tab) {
+            map.invalidateSize(true);
+          });
+
     var ajaxLoading = false;
     if (!ajaxLoading) {
       ajaxLoading = true;
