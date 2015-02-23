@@ -149,7 +149,7 @@ function GenerateHtmlComment($author_name, $author_mail, $message, $createdtime 
 		
 	$name=" <div class='author'>" . $author_name.":</div>";
 	if($author_mail!="") $name=" <div class='author'><a href='mailto:$encodedEmail' >$author_name:</a></div>"; 
-	$str="<div class='time'><br>Erstellt:  " . $createdtime .
+	$str="<div class='time'><br>Erstellt: " . $createdtime .
 		"</div>	<br> ".$name."<br> <div class='text' align='left'>" . $message."</div>";
 					
 	

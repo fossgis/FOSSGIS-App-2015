@@ -36,6 +36,7 @@ line-height: 0px;
     font-size: 11px;
 	position:relative;
 	right:30%;
+	width: 80%;
 	top:11px; 
 	pointer-events: none;
 	 
@@ -46,6 +47,7 @@ line-height: 0px;
     font-size: 13px;
 	position:relative;
 	right:-30%;
+	width: 80%;
 	top:6%;  
 }
 
@@ -53,6 +55,7 @@ line-height: 0px;
 	font-size: 18px;
 	position:relative;
 	right:30%;
+	width: 80%;
 	top:6%;  
 }
 
