@@ -6,6 +6,36 @@
 	<title>FOSSGIS 2015</title>
   <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <script type="text/javascript">
+		(function(document,navigator,standalone) {
+			// prevents links from apps from oppening in mobile safari
+			// this javascript must be the first script in the <head>
+			if ((standalone in navigator) && navigator[standalone]) {
+				var curnode, location=document.location, stop=/^(a|html)$/i;
+				document.addEventListener('click', function(e) {
+					curnode=e.target;
+					while (!(stop).test(curnode.nodeName)) {
+						curnode=curnode.parentNode;
+					}
+					// Condidions to open only links directly referred to the project inside the web app
+					// for opening all links inside the web app, use if(curnode.href) instead.
+					if( curnode.href && // is a link
+						(chref=curnode.href).replace(location.href,'').indexOf('#') && // is not an anchor
+						( !(/^[a-z\+\.\-]+:/i).test(chref) || // either does not have a proper scheme (relative links)
+						chref.indexOf(location.protocol+'//'+location.host)===0 ) // or is in the same protocol and domain
+					) {
+						e.preventDefault();
+						location.href = curnode.href;
+					}
+				},false);
+			}
+		})(document,window.navigator,'standalone');
+	</script>
+
 	<link rel="shortcut icon" href="img/favicon.png" type="image/png" />
 	<link rel="icon" href="img/favicon.png" type="image/png" />
 
@@ -17,6 +47,7 @@
 	<link rel="stylesheet" href="css/foundation.css">
 	<link rel="stylesheet" href="css/normalize.css">
 	<script src="js/vendor/modernizr.js"></script>
+	<script type="text/javascript" src="js/detect-browser.js"></script>
 	<link rel="stylesheet" href="css/leaflet.css" />
 	<script src="css/leaflet.js"></script>
 	<link rel="stylesheet" href="css/font-awesome-4.3.0/css/font-awesome.css">
@@ -36,8 +67,83 @@
 
 	<!-- header -->
 
+	<div id="iOSModal" class="reveal-modal" data-reveal>
+  	<p><strong>Willkommen zur Web-App der FOSSGIS 2015</strong></p>
+  	<p class="text-justify">F&uuml;r ein optimales Nutzererlebnis auf iOS-Geräten empfehlen wir, die Web-Application zu Ihrem Homescreen hinzuzufügen.<br/>Klicken sie dafür einfach auf <nobr>"<img src="img/iOS-ActionButton.png"  width="17" height="18">"</nobr>, anschließend auf <nobr>"<img src="img/iOS-AddToHomescreen.png"  width="20" height="20">"</nobr> und bestätigen Sie dann, indem Sie auf "Hinzufügen" klicken.<br/>Anschließen starten Sie die App einfach über das FOSSGIS Icon.</p>
+  	<input id="hideModal" type="checkbox"><label for="hideModal">Hinweis nicht mehr anzeigen!</label>
+  	<a class="close-reveal-modal">&#215;</a>
+	</div>
+
+	<script>
+		var iOS = false;
+		var iOSModal = $( "#iOSModal" );
+    p = navigator.platform;
+
+    // functions for cookies
+    function setCookie() {
+      if(document.getElementById("hideModal").checked == true){
+        document.cookie = "help=off";
+      } else {
+        document.cookie = "help=on";
+      }
+    }
+
+    function getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
+      }
+      return "";
+    }
+
+    function showiOSModal() {
+      var c = getCookie("help");
+      if(c=="" || c=="on"){
+        $(window).load(function(){
+        	$('#hideModal').removeAttr('checked');
+       		$('#iOSModal').foundation('reveal', 'open');
+     		});
+    	} else {
+    	}
+    }
+
+    $('#iOSModal').bind('closed', function() {
+    	setCookie();
+    });
+
+		// conditions for loading the modal
+		if( p === 'iPad' || p === 'iPhone' || p === 'iPod' ){
+    	iOS = true;
+		}
+
+		if (iOS == true) {
+			//document.getElementById("iOSPanel").style.display = "block";
+			if (window.navigator.standalone === false) {
+				showiOSModal();
+			} else {
+			}
+		}
+
+		/*
+		function readDeviceOrientation() {
+			if (Math.abs(window.orientation) === 90) {
+        // Landscape
+        document.getElementById("iOSPanel").style.display = "none";
+      } else {
+      	// Portrait
+      	document.getElementById("iOSPanel").style.display = "block";
+    	}
+		}
+
+		window.onorientationchange = readDeviceOrientation;
+		*/
+	</script>
+
   <div class="row">
-		<img src="img/header.png" height="100%" alt="SchlossMuenster">
+		<a href=""><img src="img/header.png" height="100%" alt="SchlossMuenster"></a>
 	</div>
 
 	<!-- page body -->
@@ -63,6 +169,9 @@
       <div class="tabs-content">
         <div class="content active" id="news">
         	<div style="margin-top:10px">
+        		<p class="text-justify">
+        			Achtung! Das FOSSGIS-Team sucht noch viele freiwillige Helfer. Nähere Informationen gibt es <a href="http://www.fossgis.de/konferenz/2015/anmeldung/" target="_blank">hier</a> oder direkt in unserem <a href="http://helfer.fossgis.de/" target="_blank">Engelsystem</a>.
+        		</p>
 						<a class="twitter-timeline" align="center" id="twitter-widget-0" href="https://twitter.com/FOSSGIS2015" data-widget-id="542438223738187776">Tweets von @FOSSGIS2015</a>
       			<script>
       				!function(d,s,id){
@@ -117,7 +226,7 @@
 						<dd class="accordion-navigation" id="eventsWednesday" style="margin-top:5px">
 							<a href="#panel1">Mittwoch</a>
 							<div id="panel1" class="content">
-							 	<dl class="tabs" data-tab>
+							 	<dl class="tabs" data-tab id="tabsWednesday">
 									<dd id="panel1-1tab" onClick="tabActive1()"><a href="#panel1-1" style="padding-bottom: 0.52rem; padding-top: 0.52rem">Aula</a></dd>
 									<dd id="panel1-2tab" onClick="tabActive2()"><a href="#panel1-2" style="padding-bottom: 0.52rem; padding-top: 0.52rem">S10</a></dd>
 									<dd id="panel1-3tab" onClick="tabActive3()"><a href="#panel1-3" style="padding-bottom: 0.52rem; padding-top: 0.52rem">S1</a></dd>
@@ -128,7 +237,21 @@
 								</dl>
 							  <div class="tabs-content">
 									<div class="content" id="panel1-1">
-									 
+										<!-- for design testing -->
+									 	<!--<div class='row'>									 		
+									 		<div class='small-12 medium-6 large-8 columns'>
+									 			<p>14:00:00 : Softwarewartung für OpenSource. Ein Widerspruch?</p>
+									 		</div>
+									 		<div class='small-12 medium-6 large-4 columns'>
+									 			<form>
+									 				
+									 					<input type='hidden' id='title' name='title' value="">
+									 					<a href='' class='button' style='width: 64%; padding: 0.001rem 0rem'>weitere Informationen</a>
+									 					<input type='submit' id='filter' class='button' style='width: 34%; padding: 0.001rem 0rem' value='Vormerken'>
+									 				
+									 			</form>
+									 		</div>
+										</div>-->
 									</div>
 									<div class="content" id="panel1-2">
 
@@ -154,7 +277,7 @@
 		   			<dd class="accordion-navigation" id="eventsThursday">
 							<a href="#panel2">Donnerstag</a>
 							<div id="panel2" class="content">
-								<dl class="tabs" data-tab>
+								<dl class="tabs" data-tab id="tabsThursday">
 									<dd id="panel2-1tab" onClick="tabActive1()"><a href="#panel2-1" style="padding-bottom: 0.52rem; padding-top: 0.52rem">Aula</a></dd>
 									<dd id="panel2-2tab" onClick="tabActive2()"><a href="#panel2-2" style="padding-bottom: 0.52rem; padding-top: 0.52rem">S10</a></dd>
 									<dd id="panel2-3tab" onClick="tabActive3()"><a href="#panel2-3" style="padding-bottom: 0.52rem; padding-top: 0.52rem">S1</a></dd>
@@ -191,7 +314,7 @@
 						<dd class="accordion-navigation" id="eventsFriday">
 							<a href="#panel3">Freitag</a>
 							<div id="panel3" class="content">
-								<dl class="tabs" data-tab>
+								<dl class="tabs" data-tab id="tabsFriday">
 									<dd id="panel3-1tab" onClick="tabActive1()"><a href="#panel3-1" style="padding-bottom: 0.52rem; padding-top: 0.52rem">Aula</a></dd>
 									<dd id="panel3-2tab" onClick="tabActive2()"><a href="#panel3-2" style="padding-bottom: 0.52rem; padding-top: 0.52rem">S10</a></dd>
 									<dd id="panel3-3tab" onClick="tabActive3()"><a href="#panel3-3" style="padding-bottom: 0.52rem; padding-top: 0.52rem">S1</a></dd>
@@ -235,10 +358,10 @@
 								</div>	
 							</div>	
 						</dd>
-					</dl> 
+					</dl>
  				</div>
  				<!--Auskommentiert bis auch eine Lösung für synchronisiertes Einladen gefunden ist-->
-				<!--<script>
+				<script>
 					function tabActive1 () {
 						$("#panel1-1").removeClass("content").addClass("content active");
 						$("#panel1-1tab").addClass("active");
@@ -264,6 +387,24 @@
 						$("#panel3-5tab").removeClass("active");
 						$("#panel3-6tab").removeClass("active");
 						$("#panel3-7tab").removeClass("active");
+						$("#panel1-2").removeClass("active");
+						$("#panel1-3").removeClass("active");
+						$("#panel1-4").removeClass("active");
+						$("#panel1-5").removeClass("active");
+						$("#panel1-6").removeClass("active");
+						$("#panel1-7").removeClass("active");
+						$("#panel2-2").removeClass("active");
+						$("#panel2-3").removeClass("active");
+						$("#panel2-4").removeClass("active");
+						$("#panel2-5").removeClass("active");
+						$("#panel2-6").removeClass("active");
+						$("#panel2-7").removeClass("active");
+						$("#panel3-2").removeClass("active");
+						$("#panel3-3").removeClass("active");
+						$("#panel3-4").removeClass("active");
+						$("#panel3-5").removeClass("active");
+						$("#panel3-6").removeClass("active");
+						$("#panel3-7").removeClass("active");
 					}
 				</script>
 				<script>
@@ -292,6 +433,24 @@
 						$("#panel3-5tab").removeClass("active");
 						$("#panel3-6tab").removeClass("active");
 						$("#panel3-7tab").removeClass("active");
+						$("#panel1-1").removeClass("active");
+						$("#panel1-3").removeClass("active");
+						$("#panel1-4").removeClass("active");
+						$("#panel1-5").removeClass("active");
+						$("#panel1-6").removeClass("active");
+						$("#panel1-7").removeClass("active");
+						$("#panel2-1").removeClass("active");
+						$("#panel2-3").removeClass("active");
+						$("#panel2-4").removeClass("active");
+						$("#panel2-5").removeClass("active");
+						$("#panel2-6").removeClass("active");
+						$("#panel2-7").removeClass("active");
+						$("#panel3-1").removeClass("active");
+						$("#panel3-3").removeClass("active");
+						$("#panel3-4").removeClass("active");
+						$("#panel3-5").removeClass("active");
+						$("#panel3-6").removeClass("active");
+						$("#panel3-7").removeClass("active");
 					}
 				</script>
 				<script>
@@ -320,6 +479,25 @@
 						$("#panel3-5tab").removeClass("active");
 						$("#panel3-6tab").removeClass("active");
 						$("#panel3-7tab").removeClass("active");
+						$("#panel1-1").removeClass("active");
+						$("#panel1-2").removeClass("active");
+						$("#panel1-4").removeClass("active");
+						$("#panel1-5").removeClass("active");
+						$("#panel1-6").removeClass("active");
+						$("#panel1-7").removeClass("active");
+						$("#panel2-1").removeClass("active");
+						$("#panel2-2").removeClass("active");
+						$("#panel2-4").removeClass("active");
+						$("#panel2-5").removeClass("active");
+						$("#panel2-6").removeClass("active");
+						$("#panel2-7").removeClass("active");
+						$("#panel3-1").removeClass("active");
+						$("#panel3-2").removeClass("active");
+						$("#panel3-4").removeClass("active");
+						$("#panel3-5").removeClass("active");
+						$("#panel3-6").removeClass("active");
+						$("#panel3-7").removeClass("active");
+
 					}
 				</script>
 				<script>
@@ -348,6 +526,24 @@
 						$("#panel3-5tab").removeClass("active");
 						$("#panel3-6tab").removeClass("active");
 						$("#panel3-7tab").removeClass("active");
+						$("#panel1-1").removeClass("active");
+						$("#panel1-2").removeClass("active");
+						$("#panel1-3").removeClass("active");
+						$("#panel1-5").removeClass("active");
+						$("#panel1-6").removeClass("active");
+						$("#panel1-7").removeClass("active");
+						$("#panel2-1").removeClass("active");
+						$("#panel2-2").removeClass("active");
+						$("#panel2-3").removeClass("active");
+						$("#panel2-5").removeClass("active");
+						$("#panel2-6").removeClass("active");
+						$("#panel2-7").removeClass("active");
+						$("#panel3-1").removeClass("active");
+						$("#panel3-2").removeClass("active");
+						$("#panel3-3").removeClass("active");
+						$("#panel3-5").removeClass("active");
+						$("#panel3-6").removeClass("active");
+						$("#panel3-7").removeClass("active");
 					}
 				</script>
 				<script>
@@ -376,6 +572,24 @@
 						$("#panel3-4tab").removeClass("active");
 						$("#panel3-6tab").removeClass("active");
 						$("#panel3-7tab").removeClass("active");
+						$("#panel1-1").removeClass("active");
+						$("#panel1-2").removeClass("active");
+						$("#panel1-3").removeClass("active");
+						$("#panel1-4").removeClass("active");
+						$("#panel1-6").removeClass("active");
+						$("#panel1-7").removeClass("active");
+						$("#panel2-1").removeClass("active");
+						$("#panel2-2").removeClass("active");
+						$("#panel2-3").removeClass("active");
+						$("#panel2-4").removeClass("active");
+						$("#panel2-6").removeClass("active");
+						$("#panel2-7").removeClass("active");
+						$("#panel3-1").removeClass("active");
+						$("#panel3-2").removeClass("active");
+						$("#panel3-3").removeClass("active");
+						$("#panel3-4").removeClass("active");
+						$("#panel3-6").removeClass("active");
+						$("#panel3-7").removeClass("active");
 					}
 				</script>
 				<script>
@@ -404,6 +618,24 @@
 						$("#panel3-4tab").removeClass("active");
 						$("#panel3-5tab").removeClass("active");
 						$("#panel3-7tab").removeClass("active");
+						$("#panel1-1").removeClass("active");
+						$("#panel1-2").removeClass("active");
+						$("#panel1-3").removeClass("active");
+						$("#panel1-4").removeClass("active");
+						$("#panel1-5").removeClass("active");
+						$("#panel1-7").removeClass("active");
+						$("#panel2-1").removeClass("active");
+						$("#panel2-2").removeClass("active");
+						$("#panel2-3").removeClass("active");
+						$("#panel2-4").removeClass("active");
+						$("#panel2-5").removeClass("active");
+						$("#panel2-7").removeClass("active");
+						$("#panel3-1").removeClass("active");
+						$("#panel3-2").removeClass("active");
+						$("#panel3-3").removeClass("active");
+						$("#panel3-4").removeClass("active");
+						$("#panel3-5").removeClass("active");
+						$("#panel3-7").removeClass("active");
 					}
 				</script>
 				<script>
@@ -432,8 +664,26 @@
 						$("#panel3-4tab").removeClass("active");
 						$("#panel3-5tab").removeClass("active");
 						$("#panel3-6tab").removeClass("active");
+						$("#panel1-1").removeClass("active");
+						$("#panel1-2").removeClass("active");
+						$("#panel1-3").removeClass("active");
+						$("#panel1-4").removeClass("active");
+						$("#panel1-5").removeClass("active");
+						$("#panel1-6").removeClass("active");
+						$("#panel2-1").removeClass("active");
+						$("#panel2-2").removeClass("active");
+						$("#panel2-3").removeClass("active");
+						$("#panel2-4").removeClass("active");
+						$("#panel2-5").removeClass("active");
+						$("#panel2-6").removeClass("active");
+						$("#panel3-1").removeClass("active");
+						$("#panel3-2").removeClass("active");
+						$("#panel3-3").removeClass("active");
+						$("#panel3-4").removeClass("active");
+						$("#panel3-5").removeClass("active");
+						$("#panel3-6").removeClass("active");
 					}
-				</script>-->
+				</script>
 
         <div class="content" id="navigation">
           <div id="map" style="width: 100%; margin-top:10px"></div>
@@ -542,7 +792,7 @@
 				<script>
           //initialize map
           var map = L.map('map').setView([51.9635, 7.60973],15);
-          map.options.minZoom = 6;
+          map.options.minZoom = 13;
           
           // create and load tile layers
           var mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v4/janu5.8327d153/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFudTUiLCJhIjoiR240TW5pTSJ9.XKYs-6ZWuWc-Yj8Wk1J2Rg', {
@@ -592,15 +842,25 @@
               redIcon = new specialIcon({iconUrl: 'css/images/marker-icon-red.png'}),
               orangeIcon = new specialIcon({iconUrl: 'css/images/marker-icon-orange.png'});
 
-          //add icons             
-          var bus1 = L.marker([51.96187, 7.61506], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/1362' width='425px' height='380px' style='overflow:auto'></object>", {maxWidth: "none"});
-          var bus2 = L.marker([51.962, 7.61542], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/1361' width='425px' height='380px' style='overflow:auto'></object>", {maxWidth: "none"});
-          var bus3 = L.marker([51.96933, 7.59644], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/5992' width='425px' height='380px' style='overflow:auto'></object>", {maxWidth: "none"});
-          var bus4 = L.marker([51.9691, 7.59657], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/5991' width='425px' height='380px' style='overflow:auto'></object>", {maxWidth: "none"});
-          var bus5 = L.marker([51.96111, 7.60798], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/5082' width='425px' height='380px' style='overflow:auto'></object>", {maxWidth: "none"});
-          var bus6 = L.marker([51.96124, 7.60802], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/5081' width='425px' height='380px' style='overflow:auto; '></object>", {maxWidth: "none"});
-          var parking1 = L.marker([51.96602, 7.60111], {icon: L.AwesomeMarkers.icon({icon: 'car', prefix: 'fa', markerColor: 'lightblue', iconColor: '#ffffff'}) }).bindPopup("<b>Parkhaus der Universit&auml;t</b><br/><a href='https://maps.google.com?daddr=Domagkstrasse+55+48149+Muenster+Deutschland' target='_blank'>Navigation</a>");
-          var parking2 = L.marker([51.96522, 7.61733], {icon: L.AwesomeMarkers.icon({icon: 'car', prefix: 'fa', markerColor: 'lightblue', iconColor: '#ffffff'}) }).bindPopup("<b>Parkplatz auf dem Schlossplatz</b><br/><a href='https://maps.google.com?daddr=Schlossplatz+24-26+48143+Muenster+Deutschland' target='_blank'>Navigation</a>");
+          //add icons
+          if (isMobile()) {
+          	var bus1 = L.marker([51.96187, 7.61506], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<b>Landgericht (Stadteinwärts)</b><br/><br/>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten<br/><br/><a href='http://www.stadtwerke-muenster.de/fis/1362' target='_blank'>Echtzeitauskunft</a>", {maxWidth: "none"});
+	          var bus2 = L.marker([51.962, 7.61542], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<b>Landgericht (Stadtauswärts)</b><br/><br/>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten<br/><br/><a href='http://www.stadtwerke-muenster.de/fis/1361' target='_blank'>Echtzeitauskunft</a>", {maxWidth: "none"});
+	          var bus3 = L.marker([51.96933, 7.59644], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<b>Mendelstraße (Stadteinwärts)</b><br/><br/>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten<br/><br/><a href='http://www.stadtwerke-muenster.de/fis/5992' target='_blank'>Echtzeitauskunft</a>", {maxWidth: "none"});
+	          var bus4 = L.marker([51.9691, 7.59657], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<b>Mendelstraße (Stadtauswärts)</b><br/><br/>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten<br/><br/><a href='http://www.stadtwerke-muenster.de/fis/5991' target='_blank'>Echtzeitauskunft</a>", {maxWidth: "none"});
+	          var bus5 = L.marker([51.96111, 7.60798], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<b>Hüfferstiftung (Stadteinwärts)</b><br/><br/>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten<br/><br/><a href='http://www.stadtwerke-muenster.de/fis/5082' target='_blank'>Echtzeitauskunft</a>", {maxWidth: "none"});
+	          var bus6 = L.marker([51.96124, 7.60802], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<b>Hüfferstiftung (Stadtauswärts)</b><br/><br/>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten<br/><br/><a href='http://www.stadtwerke-muenster.de/fis/5081' target='_blank'>Echtzeitauskunft</a>", {maxWidth: "none"});          
+	        } else {
+	        	var bus1 = L.marker([51.96187, 7.61506], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/1362' width='425px' height='380px' style='overflow:auto'></object>", {maxWidth: "none"});
+	          var bus2 = L.marker([51.962, 7.61542], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/1361' width='425px' height='380px' style='overflow:auto'></object>", {maxWidth: "none"});
+	          var bus3 = L.marker([51.96933, 7.59644], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/5992' width='425px' height='380px' style='overflow:auto'></object>", {maxWidth: "none"});
+	          var bus4 = L.marker([51.9691, 7.59657], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/5991' width='425px' height='380px' style='overflow:auto'></object>", {maxWidth: "none"});
+	          var bus5 = L.marker([51.96111, 7.60798], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/5082' width='425px' height='380px' style='overflow:auto'></object>", {maxWidth: "none"});
+	          var bus6 = L.marker([51.96124, 7.60802], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/5081' width='425px' height='380px' style='overflow:auto; '></object>", {maxWidth: "none"});	        	
+	        }
+
+          var parking1 = L.marker([51.96884, 7.59415], {icon: L.AwesomeMarkers.icon({icon: 'car', prefix: 'fa', markerColor: 'lightblue', iconColor: '#ffffff'}) }).bindPopup("<b>Parkplatz der FH M&uuml;nster</b><br/><a href='https://maps.google.com?daddr=Heisenbergstrasse+2+48149+Muenster+Deutschland' target='_blank'>Navigation</a>");
+          var parking2 = L.marker([51.96522, 7.61733], {icon: L.AwesomeMarkers.icon({icon: 'car', prefix: 'fa', markerColor: 'lightblue', iconColor: '#ffffff'}) }).bindPopup("<b>Parkplatz auf dem Schlossplatz</b><br/><a href='https://maps.google.com?daddr=Schlossplatz+48143+Muenster+Deutschland' target='_blank'>Navigation</a>");
 
           var hotel1 = L.marker([51.95568, 7.61759], {icon: L.AwesomeMarkers.icon({icon: 'bed', prefix: 'fa', markerColor: 'cadetblue', iconColor: '#ffffff'}) }).bindPopup("<b>Hotel Agora</b><br/>N&auml;here Informationen gibt es <a href='http://www.agora-muenster.de/index.php' target='_blank'>hier</a>!<br/><a href='https://maps.google.com?daddr=agora:+das+Hotel+am+Aasee+Bismarckallee+5+48151+Muenster+Deutschland' target='_blank'>Navigation</a>");
           var hotel2 = L.marker([51.95404, 7.61383], {icon: L.AwesomeMarkers.icon({icon: 'bed', prefix: 'fa', markerColor: 'cadetblue', iconColor: '#ffffff'}) }).bindPopup("<b>Jugendg&auml;stehaus am Aasee</b><br/>N&auml;here Informationen gibt es <a href='http://www.djh-wl.de/de/jugendherbergen/muenster' target='_blank'>hier</a>!<br/><a href='https://maps.google.com?daddr=JugendGaestehaus+Bismarckallee+31+48151+Muenster+Deutschland' target='_blank'>Navigation</a>");
@@ -617,158 +877,117 @@
           var gastronomy = L.layerGroup([social1, social2]).addTo(map);
           var transportation = L.layerGroup([bus1, bus2, bus3, bus4, bus5, bus6, parking1, parking2]).addTo(map);
 
-          var bike = L.polyline([[51.96356000, 7.612850000],
-            [51.96310000,7.612820000],
-            [51.96306000,7.612810000],
-            [51.96300000,7.612810000],
-            [51.96248000,7.612780000],
-            [51.96233000,7.612770000],
-            [51.96210000,7.612730000],
-            [51.96208000,7.612730000],
-            [51.96204000,7.612730000],
-            [51.96203000,7.612730000],
-            [51.96178000,7.612700000],
-            [51.96182000,7.612380000],
-            [51.96183000,7.612220000],
-            [51.96189000,7.611710000],
-            [51.96191000,7.611499999],
-            [51.96193000,7.611369999],
-            [51.96193000,7.611290000],
-            [51.96193000,7.611190000],
-            [51.96193000,7.611100000],
-            [51.96192000,7.610980000],
-            [51.96191000,7.610870000],
-            [51.96189000,7.610750000],
-            [51.96186000,7.610590000],
-            [51.96181000,7.610450000],
-            [51.96178000,7.610340000],
-            [51.96176000,7.610270000],
-            [51.96172000,7.610160000],
-            [51.96169000,7.610090000],
-            [51.96164000,7.609980000],
-            [51.96159000,7.609890000],
-            [51.96156000,7.609790000],
-            [51.96147000,7.609570000],
-            [51.96129000,7.609040000],
-            [51.96124000,7.608980000],
-            [51.96120000,7.608840000],
-            [51.96116000,7.608610000],
-            [51.96118000,7.608170000],
-            [51.96120000,7.607810000],
-            [51.96122000,7.607199999],
-            [51.96122000,7.607129999],
-            [51.96122000,7.607040000],
-            [51.96122000,7.606950000],
-            [51.96121000,7.606890000],
-            [51.96121000,7.606850000],
-            [51.96120000,7.606790000],
-            [51.96118000,7.606690000],
-            [51.96115000,7.606570000],
-            [51.96105000,7.606310000],
-            [51.96084000,7.605780000],
-            [51.96075000,7.605560000],
-            [51.96041000,7.604670000],
-            [51.96029000,7.604399999],
-            [51.96023000,7.604250000],
-            [51.96022000,7.604160000],
-            [51.96021000,7.604129999],
-            [51.96006000,7.603720000],
-            [51.95989000,7.603270000],
-            [51.95989000,7.603110000],
-            [51.95990000,7.602970000],
-            [51.95992000,7.602840000],
-            [51.95994000,7.602740000],
-            [51.95997000,7.602670000],
-            [51.96000000,7.602629999],
-            [51.96002000,7.602629999],
-            [51.96051000,7.602620000],
-            [51.96075000,7.602610000],
-            [51.96110000,7.602590000],
-            [51.96147000,7.602560000],
-            [51.96153000,7.602560000],
-            [51.96171000,7.602540000],
-            [51.96187000,7.602499999],
-            [51.96199000,7.602470000],
-            [51.96224000,7.602410000],
-            [51.96252000,7.602320000],
-            [51.96285000,7.602200000],
-            [51.96298000,7.602150000],
-            [51.96360000,7.601930000],
-            [51.96384000,7.601840000],
-            [51.96405000,7.601800000],
-            [51.96416000,7.601770000],
-            [51.96427000,7.601760000],
-            [51.96438000,7.601740000],
-            [51.96445000,7.601740000],
-            [51.96459000,7.601730000],
-            [51.96479000,7.601730000],
-            [51.96504000,7.601740000],
-            [51.96518000,7.601740000],
-            [51.96514000,7.601529999],
-            [51.96512000,7.601370000],
-            [51.96509000,7.601220000],
-            [51.96500000,7.600840000],
-            [51.96498000,7.600650000],
-            [51.96494000,7.600429999],
-            [51.96492000,7.600219999],
-            [51.96490000,7.599830000],
-            [51.96490000,7.599750000],
-            [51.96493000,7.599660000],
-            [51.96497000,7.599350000],
-            [51.96500000,7.599150000],
-            [51.96504000,7.598979999],
-            [51.96507000,7.598910000],
-            [51.96510000,7.598810000],
-            [51.96515000,7.598710000],
-            [51.96521000,7.598590000],
-            [51.96529000,7.598529999],
-            [51.96535000,7.598480000],
-            [51.96539000,7.598450000],
-            [51.96546000,7.598410000],
-            [51.96557000,7.598350000],
-            [51.96570000,7.598329999],
-            [51.96582000,7.598310000],
-            [51.96591000,7.598290000],
-            [51.96599000,7.598259999],
-            [51.96604000,7.598240000],
-            [51.96609000,7.598210000],
-            [51.96611000,7.598200000],
-            [51.96617000,7.598149999],
-            [51.96623000,7.598100000],
-            [51.96629000,7.598040000],
-            [51.96635000,7.597970000],
-            [51.96644000,7.597860000],
-            [51.96648000,7.597780000],
-            [51.96655000,7.597660000],
-            [51.96655000,7.597640000],
-            [51.96663000,7.597480000],
-            [51.96675000,7.597229999],
-            [51.96684000,7.597040000],
-            [51.96689000,7.596970000],
-            [51.96695000,7.596880000],
-            [51.96700000,7.596820000],
-            [51.96702000,7.596810000],
-            [51.96707000,7.596760000],
-            [51.96712000,7.596709999],
-            [51.96718000,7.596680000],
-            [51.96724000,7.596650000],
-            [51.96731000,7.596620000],
-            [51.96740000,7.596600000],
-            [51.96744000,7.596590000],
-            [51.96757000,7.596550000],
-            [51.96791000,7.596540000],
-            [51.96809000,7.596530000],
-            [51.96822000,7.596540000],
-            [51.96838000,7.596540000],
-            [51.96864000,7.596560000],
-            [51.96874000,7.596569999],
-            [51.96876000,7.596480000],
-            [51.96879000,7.596400000],
-            [51.96880000,7.596170000],
-            [51.96882000,7.595850000],
-            [51.96884000,7.595650000]], {
-              color: '#89cff0',
-              opacity: 0.75,
+          var bike = L.polyline([[51.96356000,7.613940000],
+						[51.96353000,7.613940000],
+						[51.96348000,7.615650000],
+						[51.96346000,7.616190000],
+						[51.96353000,7.616190000],
+						[51.96487000,7.616290000],
+						[51.96525000,7.616320000],
+						[51.96527000,7.616320000],
+						[51.96531000,7.616330000],
+						[51.96553000,7.616340000],
+						[51.96575000,7.616360000],
+						[51.96577000,7.616360000],
+						[51.96580000,7.616360000],
+						[51.96593000,7.616390000],
+						[51.96609000,7.616430000],
+						[51.96617000,7.616450000],
+						[51.96624000,7.616480000],
+						[51.96629000,7.616500000],
+						[51.96633000,7.616520000],
+						[51.96636000,7.616540000],
+						[51.96639000,7.616560000],
+						[51.96641000,7.616579999],
+						[51.96648000,7.616620000],
+						[51.96650000,7.616639999],
+						[51.96652000,7.616660000],
+						[51.96660000,7.616730000],
+						[51.96663000,7.616649999],
+						[51.96669000,7.616460000],
+						[51.96678000,7.616210000],
+						[51.96680000,7.616160000],
+						[51.96685000,7.616030000],
+						[51.96691000,7.615880000],
+						[51.96705000,7.615600000],
+						[51.96718000,7.615339999],
+						[51.96726000,7.615210000],
+						[51.96725000,7.614980000],
+						[51.96724000,7.614760000],
+						[51.96723000,7.614510000],
+						[51.96721000,7.614130000],
+						[51.96721000,7.613950000],
+						[51.96719000,7.613380000],
+						[51.96724000,7.612960000],
+						[51.96724000,7.612700000],
+						[51.96724000,7.612580000],
+						[51.96725000,7.612550000],
+						[51.96726000,7.612450000],
+						[51.96728000,7.612240000],
+						[51.96744000,7.611550000],
+						[51.96751000,7.611270000],
+						[51.96753000,7.611140000],
+						[51.96754000,7.611090000],
+						[51.96758000,7.611050000],
+						[51.96758000,7.611010000],
+						[51.96760000,7.610880000],
+						[51.96763000,7.610709999],
+						[51.96763000,7.610590000],
+						[51.96763000,7.610520000],
+						[51.96761000,7.610300000],
+						[51.96766000,7.610259999],
+						[51.96770000,7.610230000],
+						[51.96775000,7.610180000],
+						[51.96778000,7.610140000],
+						[51.96781000,7.610090000],
+						[51.96784000,7.610030000],
+						[51.96786000,7.609970000],
+						[51.96788000,7.609890000],
+						[51.96788000,7.609840000],
+						[51.96790000,7.609760000],
+						[51.96805000,7.609070000],
+						[51.96817000,7.608520000],
+						[51.96819000,7.608380000],
+						[51.96823000,7.608119999],
+						[51.96825000,7.607950000],
+						[51.96826000,7.607830000],
+						[51.96829000,7.607540000],
+						[51.96834000,7.606210000],
+						[51.96837000,7.605840000],
+						[51.96839000,7.605670000],
+						[51.96842000,7.605450000],
+						[51.96844000,7.605280000],
+						[51.96846000,7.605130000],
+						[51.96852000,7.604800000],
+						[51.96870000,7.604000000],
+						[51.96875000,7.603840000],
+						[51.96878000,7.603739999],
+						[51.96898000,7.602860000],
+						[51.96900000,7.602760000],
+						[51.96902000,7.602670000],
+						[51.96911000,7.602060000],
+						[51.96912000,7.602040000],
+						[51.96931000,7.601000000],
+						[51.96956000,7.599680000],
+						[51.96960000,7.599430000],
+						[51.96962000,7.599300000],
+						[51.96964000,7.599090000],
+						[51.96971000,7.598640000],
+						[51.96979000,7.597930000],
+						[51.96983000,7.597570000],
+						[51.96990000,7.596940000],
+						[51.96993000,7.596750000],
+						[51.96995000,7.596580000],
+						[51.96982000,7.596550000],
+						[51.96944000,7.596480000],
+						[51.96936000,7.596470000],
+						[51.96919000,7.596450000],
+						[51.96879000,7.596400000],
+						[51.96880000,7.596170000],
+						[51.96882000,7.595850000],
+						[51.96884000,7.595650000]], {
+              color: '#83F52C',
+              opacity: 0.7,
               weight: 8
             }).bindPopup('Fahrradroute zwischen den Tagungsorten');
             
@@ -896,8 +1115,8 @@
             [51.96879000,7.596400000],
             [51.96880000,7.596170000],
             [51.96882000,7.595919999]], {
-              color: '#89cff0',
-              opacity: 0.75,
+              color: '#83F52C',
+              opacity: 0.7,
               weight: 8
             }).bindPopup('Fußweg zwischen den Tagungsorten');
 
@@ -948,52 +1167,41 @@
           // initialize the location toolbar
           var lc = L.control.locate({follow: true}).addTo(map);
           map.on('dragstart', lc._stopFollowing, lc);
-          
-          //recenter map on tab active
-          function navigation() {
-            map.invalidateSize(true);
-          }
+
+          var popup = L.popup();
+         	
+          $('#navigation').on('toggled', function (event, tab) {
+    				map.invalidateSize(true);
+  				});
 
           $(window).on("resize", function() {
           	$("#map").height(($(window).height()*0.9));
           	map.invalidateSize(true);
           }).trigger("resize");
 				</script>
-
 				
-
-
-
-
-					<div class="content" id="schwarzesBrett">
-										<div class="row collapse">
-											<div class="large-12 columns">
-												<?php
-													include ('../backend/NoticeBoard/NoticeBoard.php');
-												?>
-
-											</div>
-										</div>
-									</div>
-
-								</div>
-
-							</div>
+				<div class="content" id="schwarzesBrett">
+					<div class="row collapse">
+						<div class="large-12 columns">
+							<?php
+								include ('../backend/NoticeBoard/index.php');
+							?>
 						</div>
+					</div>
+				</div>
 
-
+			</div>
 
 		</div>
 	</div>
-
 
 	<!-- Footer -->
 
 	<div class="row">
 		<ul class="breadcrumbs">
 			<li class="current"><a href="">Home</a></li>
-			<li><a href="Impressum.html">Impressum</a></li>
-			<li><a href="FAQ.html">FAQ</a></li>
+			<li><a href="http://giv-fossgis-app.uni-muenster.de/fossgis/frontend/Impressum.html">Impressum</a></li>
+			<li><a href="http://giv-fossgis-app.uni-muenster.de/fossgis/frontend/FAQ.html">FAQ</a></li>
 		</ul>
 	</div>
 
@@ -1029,17 +1237,108 @@
 		}
 	</script>
 
+	<script>
+		$('#panel1-1').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel1-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel1-2').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel1-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel1-3').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel1-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel1-4').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel1-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel1-5').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel1-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel1-6').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel1-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel1-7').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel1-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel2-1').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel2-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel2-2').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel2-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel2-3').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel2-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel2-4').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel2-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel2-5').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel2-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel2-6').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel2-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel2-7').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel2-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel3-1').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel3-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel3-2').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel3-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel3-3').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel3-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel3-4').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel3-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel3-5').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel3-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel3-6').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel3-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel3-7').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel3-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+	</script>
+
   <script>
   	$(document).foundation();
   	//Erlaubt mehrere Accordions aufzuhaben. Interferiert momentan mit dem Einladen der Veranstaltungen
-    /*
     $(document).foundation({
   		accordion: {
     		// allow multiple accordion panels to be active at the same time
     		multi_expand: true
   		}
   	});
-		*/
+		$(document).foundation('accordion', {
+  		callback: function (el){
+    		var containerPos = $(el).parent().offset().top;
+    		$('html, body').animate({ scrollTop: containerPos }, 600);
+  		}
+		});
   </script>
 
   <script type="text/javascript" src="js/menu.js"></script>
