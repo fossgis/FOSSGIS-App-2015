@@ -18,33 +18,30 @@
   }
 
   function getTitles($connection) {
-	$ititles = $_COOKIE['title'];
-	$ititles =  utf8_decode($ititles);
+    $ititles = $_COOKIE['title'];
+    $ititles =  utf8_decode($ititles);
 
     $titles = explode(",", $ititles);
     $maxi = count($titles);
 
-	$help = $maxi - 1;
-
-	$sql = "(Select title, date, start, room_id, duration
+    $help = $maxi - 1;
+    $sql = "(Select title, date, start, room_id, duration
 		From Speech
 		Where ";
     for ($i=0; $i < $maxi; $i++)
     {
-		if ($i == $help){
-			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%'";
-			$sqlarray[] = $sql;
-		}else{
-			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%' OR ";
-		}
-
+      if ($i == $help){
+        $sql = $sql."title LIKE '".utf8_encode($titles[$i])."%'";
+        $sqlarray[] = $sql;
+      }else{
+        $sql = $sql."title LIKE '".utf8_encode($titles[$i])."%' OR ";
+      }
     }
-	$sqlfor = $sqlarray[0];
-	$sqlend = $sqlfor." Order BY date)
+    $sqlfor = $sqlarray[0];
+    $sqlend = $sqlfor." Order BY date)
 		Order by start;";
 
-	$result = mysqli_query($connection, $sqlend);
-
+    $result = mysqli_query($connection, $sqlend);
 
     $number = 0;
     $array = [];
@@ -54,9 +51,9 @@
       $test->datum = (string)$row[1];
       $test->start = (string)$row[2];
       $test->room = (string)$row[3];
-	  $test->duration = (string)$row[4];
-	  $test->description = (string)$row[5];
-	  $test->number = $number++;
+      $test->duration = (string)$row[4];
+      // $test->description = (string)$row[5];
+      $test->number = $number++;
 
       array_push($array, $test);
     }
