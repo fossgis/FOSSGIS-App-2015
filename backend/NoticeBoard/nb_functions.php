@@ -105,14 +105,14 @@ function DisplayComments() {
 				if($stack[$d]['answer_to']=="$id") {
 					$html.= "<br><div class='reply'>";
 					$html.= GenerateHtmlComment($stack[$d]['author_name'], $stack[$d]['author_mail'], $stack[$d]['message'], $stack[$d]['createdtime']);
-					$html.= "</div><br><br>";
+					$html.= "</div><br>";
 				}
 			}
 			
 			// End
 			$html.="		
 				</div></div>
-				<br><br><br>    
+				<br>   
 				";
 		};
 	};
