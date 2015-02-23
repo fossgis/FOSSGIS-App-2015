@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors', '1');
 error_reporting(E_ALL | E_STRICT);
-include("../config.php");
+include("config.php");
 //global $connection;
 
 
@@ -20,8 +20,8 @@ function InsertComment ($message, $author_name, $author_mail, $answer_to) {
 	 
 	 $sql = "INSERT INTO NoticeBoard (message, author_name, author_mail, answer_to) 
 	 			VALUES ('$message', '$author_name', '$author_mail', $answer_to) ";
-echo $sql;
-	 mysqli_query($connection, $sql);			
+
+	 mysqli_query($GLOBALS["connection"], $sql);			
 }
  
 /**
@@ -34,7 +34,7 @@ echo $sql;
 function GetComments() {
    
     $sql="SELECT * FROM NoticeBoard";
-    $result = mysqli_query($connection, $sql);
+    $result=mysqli_query($GLOBALS["connection"], $sql);
     //$result=$GLOBALS["connection"]-> mysqli_query($sql);
     return $result;
 }
@@ -44,6 +44,26 @@ function GetComments() {
  * 
  * Get html formatted text, containing all comments
  */
+/*function DisplayComments() {
+    $html="";
+    
+    $res = GetComments();
+    echo count($res);
+    for($i=0; $i<count($res); $i++) {
+        $html.= "	
+	<div> 
+		<br> Author Name: " . $res[i]["author_name"] . "
+		<br> Author E-Mail: " . $res[i]["author_mail"] . "
+		<br> Message: " . $res[i]["message"] . "
+	</div>
+        <br><br><br>
+        ";
+    }
+    
+    echo $html;
+
+    
+} */
 
 function DisplayComments() {
     $html ="";
@@ -102,6 +122,7 @@ function DisplayComments() {
 
 
 /* GenerateHtmlComment
+
 * Generate the html content from a comment
 */
 function GenerateHtmlComment($author_name, $author_mail, $message, $createdtime ) {
