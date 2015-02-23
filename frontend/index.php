@@ -151,20 +151,20 @@
   <div class="row">  
 		<div class="large-12 columns">
   		<br/>
-			<dl class="tabs" align="center" data-tab>
-        <dd class="active">
+			<ul class="tabs" data-tab>
+        <li class="tab-title active">
         	<a href="#news">Aktuelles</a>
-        </dd>
-       	<dd>
+        </li>
+       	<li class="tab-title" >
         	<a href="#veranstaltungen">Veranstaltungen</a>
-        </dd>
-        <dd id="navigationTab">
+        </li>
+        <li class="tab-title" id="navigationTab">
         	<a href="#navigation" id="navigationTabA">Navigation</a>
-       	</dd>
-				<dd id="boardTab">
+       	</li>
+				<li class="tab-title" id="boardTab">
 					<a href="#schwarzesBrett">Schwarzes Brett</a>
-				</dd>
-    	</dl>
+				</li>
+    	</ul>
 
       <div class="tabs-content">
         <div class="content active" id="news">
