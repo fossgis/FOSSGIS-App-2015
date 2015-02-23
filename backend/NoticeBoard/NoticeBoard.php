@@ -51,13 +51,13 @@
      
 
    
-	<div align="center">
-		<div id="comments"> </div>   
+	
+		<div id="comments" align="center"> </div>   
 
-		<h5><div id="answerform_title" name="answerform_title"> </div>	</h5>
-		<div id="form"> </div>
+		<p><div class="row"><div id="answerform_title" name="answerform_title" class="large-12 columns"> </div></div>	</p>
+		<div id="form" align="left"> </div>
 		
-		<div id="actionlink" align="center" > <a href="#" class="tiny button expand" onclick="ShowAnswerForm(0)"> Eintrag erstellen </a> </div>
+		<div id="actionlink" align="center" class="large-12 columns" > <a href="#" class=" button expand" onclick="ShowAnswerForm(0)"> Eintrag erstellen </a> </div>
     </div>
 	
 	</body>

@@ -40,7 +40,7 @@
 	<div class="row">
 		<div class="large-12 columns">
 			<label style="font-weight: bold">Mail (Optional, <b> &ouml;ffentlich</b>): </br>
-				<input type="text" id="author_mail" name="author_mail" placeholder="Ihre Mailadresse" required/>
+				<input type="text" id="author_mail" name="author_mail" placeholder="Ihre Mailadresse"/>
 			</label>
 		</div>
 	</div>
@@ -48,16 +48,17 @@
 	<div class="row">
 		<div class="large-12 columns">
 			<label style="font-weight: bold">Text: </br>
-				<textarea name="message" id="message"  required/></textarea ></br></br>
+				<textarea name="message" id="message" rows="4" required/></textarea ></br></br>
 			</label>
 		</div>
 	</div>
 			
 			
-		
-	
-	<input id="submit" type="submit" class="button expand" value="Abschicken" style="width: 250px;"/>
-	
+	<div class="large-12 columns">	
+		<div class="row">
+			<input id="submit" type="submit" class="button expand" value="Abschicken"/>
+		</div>
+	</div>
 	
 	</form>
 <br><br>
