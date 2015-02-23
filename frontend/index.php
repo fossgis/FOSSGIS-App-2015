@@ -158,7 +158,7 @@
        	<dd>
         	<a href="#veranstaltungen">Veranstaltungen</a>
         </dd>
-        <dd id="navigationTab" onclick="navigation()">
+        <dd id="navigationTab" onclick="showNavigation()">
         	<a href="#navigation">Navigation</a>
        	</dd>
 				<dd id="boardTab">
@@ -1173,6 +1173,10 @@
           $('#navigation').on('toggled', function (event, tab) {
     				map.invalidateSize(true);
   				});
+
+					//function showNavigation () {
+						//map.invalidateSize(true);
+					//}
 
           $(window).on("resize", function() {
           	$("#map").height(($(window).height()*0.9));
