@@ -159,7 +159,7 @@
         	<a href="#veranstaltungen">Veranstaltungen</a>
         </dd>
         <dd id="navigationTab">
-        	<a href="#navigation" onclick="navigation()">Navigation</a>
+        	<a href="#navigation" id="navigationTabA">Navigation</a>
        	</dd>
 				<dd id="boardTab">
 					<a href="#schwarzesBrett">Schwarzes Brett</a>
@@ -1170,13 +1170,13 @@
 
           var popup = L.popup();
          	
-          $('#navigation').on('toggled', function (event, tab) {
-    				map.invalidateSize(true);
-  				});
+          //$('#navigation').on('toggled', function (event, tab) {
+    				//map.invalidateSize(true);
+  				//});
 
-					function navigation () {
-						map.invalidateSize(true);
-					}
+  				$('#navigationTabA').click(function() {
+  					map.invalidateSize(true);
+					});
 
           $(window).on("resize", function() {
           	$("#map").height(($(window).height()*0.9));
