@@ -152,8 +152,8 @@
 		<div class="large-12 columns">
   		<br/>
 			<dl class="tabs" align="center" data-tab data-options="scroll_to_content: false">
-        <dd class="active" id"newsTab">
-        	<a href="#news">Aktuelles</a>
+        <dd class="active">
+        	<a href="#news" id"newsTab">Aktuelles</a>
         </dd>
        	<dd>
         	<a href="#veranstaltungen">Veranstaltungen</a>
