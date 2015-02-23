@@ -9,14 +9,26 @@ body {
     text-align: left;
 }	
 
-
+@media only screen and (min-width: 40.063em) {
 	.comment {
-    width: 45%;
+    width: 50%;
     padding: 30px 10px 10px;
     margin-bottom: 1px;
     background: url("sticky_note.gif") no-repeat scroll 0% 0% #FFF8BE;
    
     /*transform: rotate(-1deg); */
+	}
+}
+
+@media only screen and (max-width: 40em) {
+	.comment {
+    width: 100%;
+    padding: 30px 10px 10px;
+    margin-bottom: 1px;
+    background: url("sticky_note.gif") no-repeat scroll 0% 0% #FFF8BE;
+   
+    /*transform: rotate(-1deg); */
+	}
 }
 
 .comment .time {
@@ -47,8 +59,8 @@ line-height: 0px;
 .comment .text {
 	
     font-size: 15px;
-	right:20%;
-	width: 66%;
+	right:30%;
+	width: 80%;
 	font-family: MV Boli;
 	text-align: justify;
 }

@@ -54,9 +54,31 @@
 
   <!-- header -->
 
-	<div class="row">  
+	<div class="row" style="display: block" id="header">  
     <a href="http://giv-fossgis-app.uni-muenster.de/fossgis/frontend/index.php"><img src="img/header.png" height="100%" alt="SchlossMuenster"></a>
   </div>
+
+  <div class="row" style="display: none" id="header-back">  
+    <a href="http://giv-fossgis-app.uni-muenster.de/fossgis/frontend/index.php"><img src="img/header-back.png" height="100%" alt="SchlossMuenster"></a>
+  </div>
+
+  <script>
+    var iOS = false;
+    p = navigator.platform;
+
+    // conditions for loading the modal
+    if( p === 'iPad' || p === 'iPhone' || p === 'iPod' ){
+      iOS = true;
+    }
+
+    if (iOS == true) {
+      if (window.navigator.standalone === false) {
+      } else {
+        document.getElementById("header").style.display = "none";
+        document.getElementById("header-back").style.display = "block";
+      }
+    }
+  </script>
 
   <!--page body -->
 

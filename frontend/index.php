@@ -74,6 +74,10 @@
   	<a class="close-reveal-modal">&#215;</a>
 	</div>
 
+  <div class="row">
+		<a href=""><img src="img/header.png" height="100%" alt="SchlossMuenster"></a>
+	</div>
+
 	<script>
 		var iOS = false;
 		var iOSModal = $( "#iOSModal" );
@@ -141,10 +145,6 @@
 		window.onorientationchange = readDeviceOrientation;
 		*/
 	</script>
-
-  <div class="row">
-		<a href=""><img src="img/header.png" height="100%" alt="SchlossMuenster"></a>
-	</div>
 
 	<!-- page body -->
 
@@ -686,7 +686,7 @@
 				</script>
 
         <div class="content" id="navigation">
-          <div id="map" style="width: 100%; margin-top:10px"></div>
+          <div id="map" style="width: 100%; margin-top: 10px"></div>
           <br/>
 					<dl class="accordion" data-accordion data-options="scroll_to_content: true">
 		  			<dd class="accordion-navigation">
