@@ -1171,7 +1171,8 @@
           var popup = L.popup();
 
           $('#navigation').on('toggled', function (event, tab) {
-    				map.invalidateSize(true);
+          	setTimeout(function() { map.invalidateSize(true); }, 2000);
+    				
   				});
 
 					//function showNavigation () {
