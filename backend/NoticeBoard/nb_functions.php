@@ -97,7 +97,7 @@ function DisplayComments() {
 					
 					
 			// Add answer link
-			$html.="<a href='#' onclick='ShowAnswerForm($id);' class='answer'>Antworten</a>";
+			$html.="<div class='answer'><a href='#' onclick='ShowAnswerForm($id);'>Antworten</a></div>";
 
 
 			// Search for answers
