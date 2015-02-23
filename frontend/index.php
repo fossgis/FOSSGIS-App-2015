@@ -158,8 +158,8 @@
        	<dd>
         	<a href="#veranstaltungen">Veranstaltungen</a>
         </dd>
-        <dd id="navigationTab" onclick="navigation()">
-        	<a href="#navigation">Navigation</a>
+        <dd id="navigationTab">
+        	<a href="#navigation" onclick="navigation()">Navigation</a>
        	</dd>
 				<dd id="boardTab">
 					<a href="#schwarzesBrett">Schwarzes Brett</a>
