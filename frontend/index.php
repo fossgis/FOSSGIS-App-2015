@@ -61,10 +61,6 @@
 		iframe[id^='twitter-widget-0']{ width:100% !important;}
 	</style>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="../backend/NoticeBoard/main.css" />
-	<link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
-
 </head>
 
 <body onLoad="checkDate()">
