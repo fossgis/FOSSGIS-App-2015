@@ -9,7 +9,7 @@
     $(document).ready(function(){
         // Bind to the submit event of our form
         $("#answerform").submit(function(event){
-            $.post('nb_ret_insertcomment.php', $(this).serialize(),function(data) {
+            $.post('../backend/NoticeBoard/nb_ret_insertcomment.php', $(this).serialize(),function(data) {
                 $("#commentInsert").html("Der Kommentar wurde erfolgreich hinzugef&uuml;gt.");
 				DisplayComments();
             });
@@ -22,13 +22,13 @@
 </script>
 
 <div id="commentInsert">
- <form action="NoticeBoard.php" method="post" id="answerform">
-    
-	<input type="hidden" name="answer_to" id="answer_to" value="!answerid!" />
-    Name: </br><input type="text" id="author_name" name="author_name" required /></br></br>
-    Mail (optional): </br><input type="text" id="author_mail" name="author_mail" /></br></br>
-    Text: </br><textarea name="message" id="message" required/></textarea ></br></br>
-    <input id="submit" type="submit" class="button expand" value="Abschicken" />
-</form>
+	 <form action="NoticeBoard.php" method="post" id="answerform">
+		
+		<input type="hidden" name="answer_to" id="answer_to" value="!answerid!" />
+		Name: </br><input type="text" id="author_name" name="author_name" style="width: 250px;" required /></br>
+		Mail (optional): </br><input type="text" id="author_mail" name="author_mail" style="width: 250px;" /></br>
+		Text: </br><textarea name="message" id="message" width="410px" style="width: 370px; height: 110px;" required/></textarea ></br></br>
+		<input id="submit" type="submit" class="button expand" value="Abschicken" style="width: 250px;"/>
+	</form>
 <br><br>
 </div>
