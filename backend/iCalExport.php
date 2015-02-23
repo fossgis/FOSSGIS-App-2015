@@ -4,12 +4,12 @@
 	//error_reporting(E_ALL | E_STRICT);
 	
     $Filename = "FossGISKalender.ics";
-    header("Content-Type: text/Calendar");
-    header("Content-Disposition: inline; filename=$Filename");
+    //header("Content-Type: text/Calendar");
+    //header("Content-Disposition: inline; filename=$Filename");
 
 
     echo "BEGIN:VCALENDAR\n";
-    echo "VERSION:1.0\n";
+    echo "VERSION:2.0\n";
     echo "PRODID:FossGIS-app\n";
     echo "METHOD:PUBLISH\n";
 	echo "X-WR-TIMEZONE:UTC\n";
@@ -19,6 +19,7 @@
     $ititles = $_COOKIE['title'];
 	$ititles =  utf8_decode($ititles);
 
+	echo "ititles: ".$ititles;
     $titles = explode(",", $ititles);
     $maxi = count($titles);
 
@@ -41,6 +42,7 @@
 	$sqlend = $sqlfor." order by date)
 		Order by start;";
 		
+	echo " SQL-Abfrage: ".$sqlend;
 
 	
 		
@@ -54,6 +56,8 @@
 		
 		$start2 = explode(":", $start);
 		$duration2 = explode(":", $duration);
+		
+		$startstring = implode("", $start2);
 		
 		$resulthour = (int)$start2[0] + (int)$duration2[0];
 		$resultminutes = (int)$start2[1] + (int)$duration2[1];
@@ -78,19 +82,40 @@
 			$resultseconds = (string)$resultseconds;
 			$resultseconds = "0".$resultseconds;
 		}
-		
 	
 		$resultt = array($resulthour, $resultminutes, $resultseconds);
 		
-		$resulttime = implode(":", $resultt);
+		$resulttime = implode("", $resultt);
 
+		
+		$idatestart = $row[1];
+		$idateend = $row[1];
+		
+		$datestart = explode("-", $idatestart);
+		$dateend = explode("-", $idateend);
+		
+		$datestart2 = implode("", $datestart);
+		$dateend2 = implode("", $dateend);
+		
+		$resultdatestart = (string)$datestart2."T";
+		$resultdateend = (string)$dateend2."T";
+		
+		//echo $resultdatestart;
+
+
+		$resultstartdt = $resultdatestart . $startstring ."Z";
+		$resultenddt = $resultdateend . $resulttime ."Z";
+		
+		//echo $resultstartdt;
+		//echo $resultenddt;
+		
 		echo 
 		"
 		BEGIN:VEVENT\
 		SUMMARY:". $row[0] . "\n
 		LOCATION;ENCODING=QUOTED-PRINTABLE:".$row[3]. "\n
-		DTSTART:".$row[2]. "\n
-		DTEND:".$resulttime. "\n
+		DTSTART:".$resultstartdt. "\n
+		DTEND:".$resultenddt. "\n
 		END:VEVENT\n
 		";
     }
