@@ -158,7 +158,7 @@
        	<dd>
         	<a href="#veranstaltungen">Veranstaltungen</a>
         </dd>
-        <dd id="navigationTab" onclick="showNavigation()">
+        <dd id="navigationTab">
         	<a href="#navigation">Navigation</a>
        	</dd>
 				<dd id="boardTab">
