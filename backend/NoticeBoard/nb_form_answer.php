@@ -26,7 +26,7 @@
 		
 		<input type="hidden" name="answer_to" id="answer_to" value="!answerid!" />
 		Name: </br><input type="text" id="author_name" name="author_name" style="width: 250px;" required /></br>
-		Mail (optional, <b> &Ouml;ffentlich</b>): </br><input type="text" id="author_mail" name="author_mail" style="width: 250px;" /></br>
+		Mail (Optional, <b> &ouml;ffentlich</b>): </br><input type="text" id="author_mail" name="author_mail" style="width: 250px;" /></br>
 		Text: </br><textarea name="message" id="message" width="410px" style="width: 370px; height: 110px;" required/></textarea ></br></br>
 		<input id="submit" type="submit" class="button expand" value="Abschicken" style="width: 250px;"/>
 	</form>
