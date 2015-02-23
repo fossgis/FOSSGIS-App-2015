@@ -24,11 +24,41 @@
 <div id="commentInsert">
 	 <form action="NoticeBoard.php" method="post" id="answerform">
 		
-		<input type="hidden" name="answer_to" id="answer_to" value="!answerid!" />
-		Name: </br><input type="text" id="author_name" name="author_name" style="width: 250px;" required /></br>
-		Mail (Optional, <b> &ouml;ffentlich</b>): </br><input type="text" id="author_mail" name="author_mail" style="width: 250px;" /></br>
-		Text: </br><textarea name="message" id="message" width="410px" style="width: 370px; height: 110px;" required/></textarea ></br></br>
-		<input id="submit" type="submit" class="button expand" value="Abschicken" style="width: 250px;"/>
+	<input type="hidden" name="answer_to" id="answer_to" value="!answerid!" />
+
+	
+	<div class="row">
+		<div class="large-12 columns">
+			<label style="font-weight: bold">Name: </br>
+				<input type="text" id="author_name" name="author_name" placeholder="Ihr gew&uuml;nschter Name" required/>
+			</label>
+		</div>
+	</div>
+	
+		
+			
+	<div class="row">
+		<div class="large-12 columns">
+			<label style="font-weight: bold">Mail (Optional, <b> &ouml;ffentlich</b>): </br>
+				<input type="text" id="author_mail" name="author_mail" placeholder="Ihre Mailadresse" required/>
+			</label>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="large-12 columns">
+			<label style="font-weight: bold">Text: </br>
+				<textarea name="message" id="message"  required/></textarea ></br></br>
+			</label>
+		</div>
+	</div>
+			
+			
+		
+	
+	<input id="submit" type="submit" class="button expand" value="Abschicken" style="width: 250px;"/>
+	
+	
 	</form>
 <br><br>
 </div>
