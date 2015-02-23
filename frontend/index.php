@@ -61,6 +61,10 @@
 		iframe[id^='twitter-widget-0']{ width:100% !important;}
 	</style>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../backend/NoticeBoard/main.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
+
 </head>
 
 <body onLoad="checkDate()">
@@ -1185,6 +1189,18 @@
 				</script>
 				
 				<div class="content" id="schwarzesBrett">
+					<!--
+					<div class="row" style="margin-top: 10px">
+						<div class="large-12 columns">
+							<div id="comments" class="comment" align="center">
+								<div class='time'>Erstellt: 23.02.2015</div>
+								<br/>
+								<div class='author'>Admin</div>
+								<div class='text' align='left'>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
+								<div class='answer'><a href='#' onclick='ShowAnswerForm($id);'>Antworten</a></div>
+							</div>
+						</div>
+					</div>-->
 					<div class="row collapse">
 						<div class="large-12 columns">
 							<?php

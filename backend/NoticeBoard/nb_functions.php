@@ -97,7 +97,7 @@ function DisplayComments() {
 					
 					
 			// Add answer link
-			$html.="<br><a href='#' onclick='ShowAnswerForm($id);' class='answer'>Antworten </a><br>";
+			$html.="<a href='#' onclick='ShowAnswerForm($id);' class='answer'>Antworten</a>";
 
 
 			// Search for answers
@@ -149,8 +149,8 @@ function GenerateHtmlComment($author_name, $author_mail, $message, $createdtime 
 		
 	$name=" <div class='author'>" . $author_name.":</div>";
 	if($author_mail!="") $name=" <div class='author'><a href='mailto:$encodedEmail' >$author_name:</a></div>"; 
-	$str="<div class='time'><br>Erstellt: " . $createdtime .
-		"</div>	<br> ".$name."<br> <div class='text' align='left'>" . $message."</div>";
+	$str="<div class='time'>Erstellt: " . $createdtime .
+		"</div>	<br> ".$name."<div class='text' align='left'>" . $message."</div>";
 					
 	
 	
