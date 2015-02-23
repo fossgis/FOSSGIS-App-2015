@@ -50,9 +50,7 @@
     </script>
      
 
-    <?php
-		//include ('nb_functions.php');
-    ?>
+   
 	<div align="center">
 		<div id="comments"> </div>   
 
