@@ -132,7 +132,7 @@ function GenerateHtmlComment($author_name, $author_mail, $message, $createdtime 
 	$createdtime= $date->format('d.m.Y H:m');*/
 		
 	$name=" <div class='author'>" . $author_name.":</div>";
-	if($author_mail!="") $name=" <div class='author'><a href='mailto:$author_mail' style="unicode-bidi:bidi-override; direction: rtl;">$author_name:</a></div>"; 
+	if($author_mail!="") $name=" <div class='author'><a href='mailto:$author_mail' >$author_name:</a></div>"; 
 	$str="<div class='time'><br>Erstellt:  " . $createdtime .
 		"</div>	<br> ".$name."<br> <div class='text' align='left'>" . $message."</div>";
 					
