@@ -31,10 +31,10 @@
     for ($i=0; $i < $maxi; $i++)
     {	
 		if ($i == $help){
-			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%' AND LENGTH(title) >= 2";
+			$sql = $sql."(title LIKE '".utf8_encode($titles[$i])."%' AND LENGTH(title) >= 2)";
 			$sqlarray[] = $sql;
 		}else{
-			$sql = $sql."LENGTH(title) >= 2 AND title LIKE '".utf8_encode($titles[$i])."%' OR ";
+			$sql = $sql."(LENGTH(title) >= 2 AND title LIKE '".utf8_encode($titles[$i])."%') OR ";
 		}
 		
     }
