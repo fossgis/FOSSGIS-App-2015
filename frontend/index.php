@@ -151,7 +151,7 @@
   <div class="row">  
 		<div class="large-12 columns">
   		<br/>
-			<dl class="tabs" align="center" data-tab data-options="scroll_to_content: false">
+			<dl class="tabs" align="center" data-tab>
         <dd class="active">
         	<a href="#news">Aktuelles</a>
         </dd>
@@ -1170,13 +1170,13 @@
 
           var popup = L.popup();
          	
-          //$('#navigation').on('toggled', function (event, tab) {
-    				//map.invalidateSize(true);
-  				//});
+          $('#navigation').on('toggled', function (event, tab) {
+    				map.invalidateSize(true);
+  				});
 
-  				$('#navigationTabA').click(function() {
-  					map.invalidateSize(true);
-					});
+  				//$('#navigationTabA').click(function() {
+  					//map.invalidateSize(true);
+					//});
 
           $(window).on("resize", function() {
           	$("#map").height(($(window).height()*0.9));
