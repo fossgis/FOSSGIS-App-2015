@@ -55,9 +55,9 @@
 			
 			
 		
-	
-	<input id="submit" type="submit" class="button expand" value="Abschicken" style="width: 250px;"/>
-	
+	<div class="row">
+		<input id="submit" type="submit" class="button expand" value="Abschicken"/>
+	</div>
 	
 	</form>
 <br><br>
