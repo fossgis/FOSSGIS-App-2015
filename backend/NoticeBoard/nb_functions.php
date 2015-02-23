@@ -120,19 +120,35 @@ function DisplayComments() {
     echo $html;
 }
 
+/**
+ * Encode an email address to display on your website
+ */
+function encode_email_address( $email ) {
+
+     $output = '';
+
+     for ($i = 0; $i < strlen($email); $i++) 
+     { 
+          $output .= '&#'.ord($email[$i]).';'; 
+     }
+
+     return $output;
+}
 
 /* GenerateHtmlComment
 
 * Generate the html content from a comment
 */
 function GenerateHtmlComment($author_name, $author_mail, $message, $createdtime ) {
+	$encodedEmail = encode_email_address( $author_mail );
+	
 	$date = date_create($createdtime);
 	$createdtime = date_format($date, 'd.m.Y H:i');
 	/*$date = DateTime::createFromFormat('Y-m-d H:m:s', $createdtime);
 	$createdtime= $date->format('d.m.Y H:m');*/
 		
 	$name=" <div class='author'>" . $author_name.":</div>";
-	if($author_mail!="") $name=" <div class='author'><a href='mailto:$author_mail' >$author_name:</a></div>"; 
+	if($author_mail!="") $name=" <div class='author'><a href='mailto:$encodedEmail' >$author_name:</a></div>"; 
 	$str="<div class='time'><br>Erstellt:  " . $createdtime .
 		"</div>	<br> ".$name."<br> <div class='text' align='left'>" . $message."</div>";
 					
