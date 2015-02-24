@@ -1,7 +1,7 @@
 <?php
 
-	//ini_set('display_errors', '1');
-	//error_reporting(E_ALL | E_STRICT);
+	ini_set('display_errors', '1');
+	error_reporting(E_ALL | E_STRICT);
 	
     $Filename = "FossGISKalender.ics";
     //header("Content-Type: text/Calendar");
