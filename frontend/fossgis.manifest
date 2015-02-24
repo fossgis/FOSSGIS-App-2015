@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#v2.2 vom 24.02.2015
+#v2.3 vom 24.02.2015
 
 CACHE:
 img/favicon.png
@@ -23,5 +23,8 @@ index-offline.html
 
 NETWORK:
 *
+
+FALLBACK:
+* index-offline.html
 
 
