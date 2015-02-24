@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#v1.1 vom 24.02.2015
+#v1.2 vom 24.02.2015
 
 CACHE:
 img/favicon.png
@@ -11,16 +11,10 @@ img/header.png
 img/header-back.png
 css/foundation.css
 css/normalize.css
-js/vendor/modernizr.js
-js/detect-browser.js
 css/leaflet.css
-css/leaflet.js
 css/font-awesome-4.3.0/css/font-awesome.css
 css/leaflet.awesome-markers.css
-css/leaflet.awesome-markers.js
 js/vendor/locate/dist/L.Control.Locate.css
-js/vendor/locate/dist/L.Control.Locate.min.js
-js/vendor/jquery.js
 css/main.css
 css/sticky_note.gif
 FAQ.html
@@ -29,7 +23,7 @@ Impressum.html
 NETWORK:
 index.php
 
-FALLBACK
-index.php index-offline.html
+FALLBACK:
+index.php /index-offline.html
 
 
