@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html manifest="fossgis.manifest">
 
 <head>
 
