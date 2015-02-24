@@ -5,7 +5,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
 <style>
-
 @media only screen and (min-width: 64.063em) {
 	.comment {
     width: 70%;
@@ -37,6 +36,34 @@
    
     /*transform: rotate(-1deg); */
 	}
+}
+
+.comment .time {
+line-height: 0px;
+    font-size: 11px;
+	position:relative;
+	padding-left: 10%;
+	text-align: left;
+	top:11px; 
+	pointer-events: none;
+	 
+}
+
+.comment .answer {
+	line-height: 0px;
+    font-size: 13px;
+	text-align: right;
+	padding-top: 10px;
+	padding-right: 10%;
+	top:6%;  
+}
+
+.comment .author {
+	font-size: 18px;
+	position:relative;
+	text-align: left;
+	padding-left: 10%;
+	top:6%;  
 }
 
 .comment .text {
