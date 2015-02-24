@@ -78,6 +78,8 @@
   	<a class="close-reveal-modal">&#215;</a>
 	</div>
 
+	<iframe id='manifest_iframe_hack' style='display: none;' src='temporary_manifest_hack.html'></iframe> 
+
   <div class="row">
 		<a href=""><img src="img/header.png" height="100%" alt="SchlossMuenster"></a>
 	</div>
