@@ -39,8 +39,8 @@
 		
     }
 	$sqlfor = $sqlarray[0];
-	$sqlend = $sqlfor." order by date)
-		Order by start;";
+	$sqlend = $sqlfor." order by start)
+		Order by date;";
 		
 	echo " SQL-Abfrage: ".$sqlend;
 

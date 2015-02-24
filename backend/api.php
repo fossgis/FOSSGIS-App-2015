@@ -38,8 +38,8 @@
       }
     }
     $sqlfor = $sqlarray[0];
-    $sqlend = $sqlfor." Order BY date)
-		Order by start;";
+    $sqlend = $sqlfor." Order BY start)
+		Order by date;";
 
     $result = mysqli_query($connection, $sqlend);
 
