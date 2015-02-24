@@ -34,7 +34,7 @@
 			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%'";
 			$sqlarray[] = $sql;
 		}else{
-			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%') OR ";
+			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%' OR ";
 		}
 		
     }
