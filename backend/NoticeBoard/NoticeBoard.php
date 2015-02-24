@@ -49,40 +49,12 @@ body {
 	}
 }
 
-.comment .time {
-line-height: 0px;
-    font-size: 11px;
-	position:relative;
-	padding-left: 10%;
-	text-align: left;
-	top:11px; 
-	pointer-events: none;
-	 
-}
-
-.comment .answer {
-	line-height: 0px;
-    font-size: 13px;
-	text-align: right;
-	padding-top: 10px;
-	padding-right: 10%;
-	top:6%;  
-}
-
 .comment .author {
 	font-size: 18px;
 	position:relative;
 	text-align: left;
 	padding-left: 10%;
 	top:6%;  
-}
-
-.comment .text {
-	
-    font-size: 15px;
-	width: 80%;
-	font-family: MV Boli;
-	text-align: justify;
 }
 
 .comment .reply {
