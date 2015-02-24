@@ -5,16 +5,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
 <style>
-body {
-    color: #444;
-    background-color: #FFF;
-    font-family: MuseoSans,"Lucida Grande",Arial,sans-serif;
-   
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1.6em;
-    text-align: left;
-}	
 
 @media only screen and (min-width: 64.063em) {
 	.comment {
@@ -49,12 +39,12 @@ body {
 	}
 }
 
-.comment .author {
-	font-size: 18px;
-	position:relative;
-	text-align: left;
-	padding-left: 10%;
-	top:6%;  
+.comment .text {
+	
+    font-size: 15px;
+	width: 80%;
+	font-family: MV Boli;
+	text-align: justify;
 }
 
 .comment .reply {
