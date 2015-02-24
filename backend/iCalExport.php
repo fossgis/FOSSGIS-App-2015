@@ -18,7 +18,7 @@
     $ititles = $_COOKIE['title'];
 	$ititles =  utf8_decode($ititles);
 
-	//echo "ititles: ".$ititles;
+	echo "ititles: ".$ititles;
     $titles = explode(",", $ititles);
     $maxi = count($titles);
 
@@ -41,7 +41,7 @@
 	$sqlend = $sqlfor." order by start)
 		Order by date;";
 		
-	//echo " SQL-Abfrage: ".$sqlend;
+	echo " SQL-Abfrage: ".$sqlend;
 
 	
 		
