@@ -31,10 +31,10 @@
     for ($i=0; $i < $maxi; $i++)
     {	
 		if ($i == $help){
-			$sql = $sql."(title LIKE '".utf8_encode($titles[$i])."%' AND LENGTH(title) >= 2)";
+			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%'";
 			$sqlarray[] = $sql;
 		}else{
-			$sql = $sql."(LENGTH(title) >= 2 AND title LIKE '".utf8_encode($titles[$i])."%') OR ";
+			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%') OR ";
 		}
 		
     }
@@ -113,7 +113,7 @@
 		"
 		BEGIN:VEVENT\
 		SUMMARY:". $row[0] . "\n
-		LOCATION;ENCODING=QUOTED-PRINTABLE:".$row[3]. "\n
+		LOCATION:".$row[3]. "\n
 		DTSTART:".$resultstartdt. "\n
 		DTEND:".$resultenddt. "\n
 		END:VEVENT\n
