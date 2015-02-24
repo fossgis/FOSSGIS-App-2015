@@ -1,0 +1,107 @@
+<!doctype html>
+<html manifest="fossgis.manifest">
+
+<head>
+
+	<title>FOSSGIS 2015</title>
+  <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <script type="text/javascript">
+		(function(document,navigator,standalone) {
+			// prevents links from apps from oppening in mobile safari
+			// this javascript must be the first script in the <head>
+			if ((standalone in navigator) && navigator[standalone]) {
+				var curnode, location=document.location, stop=/^(a|html)$/i;
+				document.addEventListener('click', function(e) {
+					curnode=e.target;
+					while (!(stop).test(curnode.nodeName)) {
+						curnode=curnode.parentNode;
+					}
+					// Condidions to open only links directly referred to the project inside the web app
+					// for opening all links inside the web app, use if(curnode.href) instead.
+					if( curnode.href && // is a link
+						(chref=curnode.href).replace(location.href,'').indexOf('#') && // is not an anchor
+						( !(/^[a-z\+\.\-]+:/i).test(chref) || // either does not have a proper scheme (relative links)
+						chref.indexOf(location.protocol+'//'+location.host)===0 ) // or is in the same protocol and domain
+					) {
+						e.preventDefault();
+						location.href = curnode.href;
+					}
+				},false);
+			}
+		})(document,window.navigator,'standalone');
+	</script>
+
+	<link rel="shortcut icon" href="img/favicon.png" type="image/png" />
+	<link rel="icon" href="img/favicon.png" type="image/png" />
+
+	<link rel="apple-touch-icon" sizes="57x57" href="img/apple-icon-57x57.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.png" />
+	
+	<link rel="stylesheet" href="css/foundation.css">
+	<link rel="stylesheet" href="css/normalize.css">
+	<script src="js/vendor/modernizr.js"></script>
+	<script type="text/javascript" src="js/detect-browser.js"></script>
+	<link rel="stylesheet" href="css/leaflet.css" />
+	<script src="css/leaflet.js"></script>
+	<link rel="stylesheet" href="css/font-awesome-4.3.0/css/font-awesome.css">
+	<link rel="stylesheet" href="css/leaflet.awesome-markers.css">
+	<script src="css/leaflet.awesome-markers.js"></script>
+	<link rel="stylesheet" href="js/vendor/locate/dist/L.Control.Locate.css" />
+	<script src="js/vendor/locate/dist/L.Control.Locate.min.js" ></script>
+	<script src="js/vendor/jquery.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
+
+</head>
+
+<body>
+
+	<!-- header -->
+
+  <div class="row">
+		<a href=""><img src="img/header.png" height="100%" alt="SchlossMuenster"></a>
+	</div>
+
+	<!-- page body -->
+
+	<div class="row">
+		<div class="large-12 columns">
+			<br/>
+			<br/>
+			<br/>
+			<h2 class="text-center">Sie benötigen eine Internetverbindung um die Web-App der FOSSGIS 2015 in vollem Umfang nutzen zu können</h2>
+			<br/>
+			<br/>
+			<br/>
+		</div>
+	</div>
+
+	<!-- Footer -->
+
+	<div class="row">
+		<ul class="breadcrumbs">
+			<li class="current"><a href="">Home</a></li>
+			<li><a href="http://giv-fossgis-app.uni-muenster.de/fossgis/frontend/Impressum.html">Impressum</a></li>
+			<li><a href="http://giv-fossgis-app.uni-muenster.de/fossgis/frontend/FAQ.html">FAQ</a></li>
+		</ul>
+	</div>
+
+  <script src="js/foundation.min.js"></script>
+
+
+  <script>
+  	$(document).foundation();
+  </script>
+
+</body>
+
+</html>
