@@ -25,7 +25,7 @@
     $maxi = count($titles);
 
     $help = $maxi - 1;
-    $sql = "(Select title, date, start, room_id, duration
+    $sql = "(Select title, date, start, room_id, duration, description
 		From Speech
 		Where ";
     for ($i=0; $i < $maxi; $i++)
@@ -47,12 +47,12 @@
     $array = [];
     while($row = mysqli_fetch_array($result)){
       $test = new stdClass();
-      $test->title = (string)$row[0];
-      $test->datum = (string)$row[1];
-      $test->start = (string)$row[2];
-      $test->room = (string)$row[3];
-      $test->duration = (string)$row[4];
-      // $test->description = (string)$row[5];
+      $test->title = (string)utf8_decode($row[0]);
+      $test->datum = (string)utf8_decode($row[1]);
+      $test->start = (string)utf8_decode($row[2]);
+      $test->room = (string)utf8_decode($row[3]);
+      $test->duration = (string)utf8_decode($row[4]);
+	  $test->description = (string)utf8_decode($row[5]);
       $test->number = $number++;
 
       array_push($array, $test);
