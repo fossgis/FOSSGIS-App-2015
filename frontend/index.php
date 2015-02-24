@@ -160,7 +160,7 @@
         	<a href="#news">Aktuelles</a>
         </li>
        	<li class="tab-title" >
-        	<a href="#veranstaltungen">Veranstaltungen</a>
+        	<a href="#veranstaltungen">Programm</a>
         </li>
         <li class="tab-title" id="navigationTab">
         	<a href="#navigation" id="navigationTabA">Navigation</a>
