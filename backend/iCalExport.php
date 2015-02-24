@@ -4,8 +4,8 @@
 	error_reporting(E_ALL | E_STRICT);
 	
     $Filename = "FossGISKalender.ics";
-    header("Content-Type: text/Calendar");
-    header("Content-Disposition: inline; filename=$Filename");
+    //header("Content-Type: text/Calendar");
+    //header("Content-Disposition: inline; filename=$Filename");
 
 
     echo "BEGIN:VCALENDAR\n";
