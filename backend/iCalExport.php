@@ -18,9 +18,12 @@
     
     $ititles = $_COOKIE['title'];
 	$ititles =  utf8_decode($ititles);
-
+	$lentitles = strlen($ititles);
+	
 	echo "ititles: ".$ititles;
+	if ($lentitles >= 2){
     $titles = explode(",", $ititles);
+	}
     $maxi = count($titles);
 
 	$help = $maxi - 1;
