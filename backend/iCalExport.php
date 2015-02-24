@@ -1,7 +1,7 @@
 <?php
 
-	//ini_set('display_errors', '1');
-	//error_reporting(E_ALL | E_STRICT);
+	ini_set('display_errors', '1');
+	error_reporting(E_ALL | E_STRICT);
 	
     $Filename = "FossGISKalender.ics";
     //header("Content-Type: text/Calendar");
@@ -12,7 +12,6 @@
     echo "VERSION:2.0\n";
     echo "PRODID:FossGIS-app\n";
     echo "METHOD:PUBLISH\n";
-	echo "X-WR-TIMEZONE:UTC\n";
 
     require 'config.php';
     
@@ -31,10 +30,10 @@
     for ($i=0; $i < $maxi; $i++)
     {	
 		if ($i == $help){
-			$sql = $sql."(title LIKE '".utf8_encode($titles[$i])."%' AND LENGTH(title) >= 2)";
+			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%'";
 			$sqlarray[] = $sql;
 		}else{
-			$sql = $sql."(LENGTH(title) >= 2 AND title LIKE '".utf8_encode($titles[$i])."%') OR ";
+			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%' OR ";
 		}
 		
     }
@@ -50,6 +49,11 @@
 	   
             
     while($row = mysqli_fetch_array($result)){
+	
+		/*
+		*	Calculation of starttime and endtime
+		*
+		*/
 	
 		$start = $row[2];
 		$duration = $row[4];
@@ -112,8 +116,10 @@
 		echo 
 		"
 		BEGIN:VEVENT\
+		LOCATION:".$row[3]. "\n
 		SUMMARY:". $row[0] . "\n
-		LOCATION;ENCODING=QUOTED-PRINTABLE:".$row[3]. "\n
+		DESCRIPTION:". $row[0] . "\n
+		CLASS:PUBLIC\n
 		DTSTART:".$resultstartdt. "\n
 		DTEND:".$resultenddt. "\n
 		END:VEVENT\n
