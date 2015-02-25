@@ -170,7 +170,7 @@
   <div class="row">  
 		<div class="large-12 columns">
   		<br/>
-			<ul class="tabs" data-tab data-options="deep_linking:true" data-options="scroll_to_content: false">
+			<ul class="tabs" data-tab data-options="deep_linking: true; scroll_to_content: false">
         <li class="tab-title active">
         	<a href="#news">Aktuelles</a>
         </li>
