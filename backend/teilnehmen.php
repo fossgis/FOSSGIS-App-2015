@@ -37,7 +37,7 @@
 		setcookie('title', $list, strtotime("+1 month"));
 	}
 	
-	header("Location: ../frontend/index.php");
+	//header("Location: ../frontend/index.php");
 	exit();
 	
 	
