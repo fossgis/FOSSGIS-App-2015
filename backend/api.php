@@ -20,7 +20,8 @@
   function getTitles($connection) {
     $ititles = $_COOKIE['title'];
     $ititles =  utf8_decode($ititles);
-
+	
+	if (strlen($ititles)>0){
     $titles = explode(",", $ititles);
     $maxi = count($titles);
 
@@ -47,12 +48,12 @@
     $array = [];
     while($row = mysqli_fetch_array($result)){
       $test = new stdClass();
-      $test->title = (string)utf8_decode($row[0]);
-      $test->datum = (string)utf8_decode($row[1]);
-      $test->start = (string)utf8_decode($row[2]);
-      $test->room = (string)utf8_decode($row[3]);
-      $test->duration = (string)utf8_decode($row[4]);
-	  $test->description = (string)utf8_decode($row[5]);
+      $test->title = (string)$row[0];
+      $test->datum = (string)$row[1];
+      $test->start = (string)$row[2];
+      $test->room = (string)$row[3];
+      $test->duration = (string)$row[4];
+	  $test->description = (string)$row[5];
       $test->number = $number++;
 
       array_push($array, $test);
@@ -62,6 +63,10 @@
     mysqli_close($connection);
 
     return json_encode($array);
+	
+	}else{
+		return null;
+	}
   }
 
   function getSpeeches($connection) {
