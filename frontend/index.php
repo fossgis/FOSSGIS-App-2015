@@ -68,11 +68,9 @@
 	<script>
 		$(document).ready(function() {
    		var hash = window.location.hash;
-
-   		if (hash == "#fndtn-veranstaltungen") {
-       	$('[data-accordion] [href="#panel4"]').trigger('click.fndtn.accordion');
+			if (hash == "#fndtn-veranstaltungen") {
+       	$('[data-accordion] [href="#panel4"]').click();
    		} else {
-
    		}
 		});
 	</script>
@@ -367,7 +365,7 @@
 							</div>
 			 			</dd>
 			 		</dl>	 				
-					<dl class="accordion1" data-accordion>
+					<dl class="accordion" data-accordion>
 						<dd class="accordion-navigation" style="margin-top:22px">
 							<a href="#panel4">Meine Veranstaltungen</a>
 							<div id="panel4" class="content">
