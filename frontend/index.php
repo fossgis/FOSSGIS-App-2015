@@ -226,7 +226,7 @@
 							<input type="text" id="searchtext" placeholder="Finde Veranstaltungen">
 						</div>
 						<div class="large-2 columns small-12 columns">
-							<a href="" class="tiny button expand" id="search">Suchen</a>
+							<a href="#veranstaltungen" class="tiny button expand" id="search">Suchen</a>
 				  			<style>
 									#search{
 									  padding-top: 0.52rem;
