@@ -84,6 +84,15 @@
     });
   }
   //});
+
+    $(document).ready(function() {
+      var hash = window.location.hash;
+      if (hash == "#fndtn-veranstaltungen") {
+        $('[data-accordion] [href="#panel4"]').click();
+        showMyEvents();
+      } else {
+      }
+    });
   
   $("#search").click(function (evt) {
     ajaxLoading = true;
