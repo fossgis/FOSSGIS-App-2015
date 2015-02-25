@@ -371,11 +371,11 @@
 			 			</dd>
 			 		</dl>
 					<dl class="accordion" data-accordion>
-						<dd id="myevents" class="accordion-navigation" style="margin-top:22px">
-							<a href="#panel4">Meine Veranstaltungen</a>
+						<dd class="accordion-navigation" style="margin-top:22px">
+							<a id="myevents" href="#panel4">Meine Veranstaltungen</a>
 							<div id="panel4" class="content">
 								<div>
-									<a href="../backend/iCalExport.php" class="button" type="submit">Kalenderexport</a>
+									<a href="../backend/iCalExport.php" class="button expand" style="font-weight: bold" type="submit">Kalenderexport</a>
 								</div>	
 								<br>
 								<div id="myevent">
