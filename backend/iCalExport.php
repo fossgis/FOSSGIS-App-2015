@@ -10,10 +10,37 @@
 	if (strlen($ititles)>0){
 	
 	//Create download for a specific filename
-    $Filename = "FossGISKalender.vcs";
-    header("Content-Type: text/x-vCalendar");
-    header("Content-Disposition: attachment; filename=$Filename");
+	
+	//Detect special conditions devices
+	$iPod    = stripos($_SERVER['HTTP_USER_AGENT'],"iPod");
+	$iPhone  = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone");
+	$iPad    = stripos($_SERVER['HTTP_USER_AGENT'],"iPad");
+	$Android = stripos($_SERVER['HTTP_USER_AGENT'],"Android");
 
+	//do something with this information
+	if( $iPod || $iPhone ){
+		//browser reported as an iPhone/iPod touch
+		$Filename = "FossGISKalender.ics";
+		header("Content-Type: text/Calendar");
+		header("Content-Disposition: attachment; filename=$Filename");	
+	
+	}else if($iPad){
+		//browser reported as an iPad
+		$Filename = "FossGISKalender.ics";
+		header("Content-Type: text/Calendar");
+		header("Content-Disposition: attachment; filename=$Filename");		
+		
+	}else if($Android){
+		//browser reported as an Android device
+		$Filename = "FossGISKalender.vcs";
+		header("Content-Type: text/x-vCalendar");
+		header("Content-Disposition: attachment; filename=$Filename");
+	}else{
+		//browser reported as an iPad
+		$Filename = "FossGISKalender.ics";
+		header("Content-Type: text/Calendar");
+		header("Content-Disposition: attachment; filename=$Filename");	
+	}
 	// Create iCal file part 1
     echo "BEGIN:VCALENDAR\n";
     echo "VERSION:2.0\n";
