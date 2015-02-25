@@ -109,7 +109,7 @@
 
   function getSearch($connection,$search) {
 
-    $sql = "SELECT title, start , subtitle, description, duration, GROUP_CONCAT(name) FROM Speech
+    $sql = "SELECT title, start , subtitle, description, duration, room_id, Speech.id, date, GROUP_CONCAT(name) FROM Speech
       LEFT OUTER JOIN SpeakerSpeech
       ON Speech.id = SpeakerSpeech.speech_id
       LEFT OUTER JOIN Speaker
@@ -126,13 +126,16 @@
     while ($row = mysqli_fetch_array($result)) {
 
 	  $test = new stdClass();
-      $test->title = (string)utf8_decode($row[0]);
-      $test->start = (string)utf8_decode($row[1]);
-      $test->subtitle = (string)utf8_decode($row[2]);
-      $test->description = (string)utf8_decode($row[3]);
-      $test->duration = (string)utf8_decode($row[4]);
-	  $test->name = (string)utf8_decode($row[5]);
+      $test->title = (string)$row[0];
+      $test->start = (string)$row[1];
+      $test->subtitle = (string)$row[2];
+      $test->description = (string)$row[3];
       $test->number = $number++;
+      $test->duration = (string)$row[4];
+      $test->name = (string)$row[5];
+	  $test->id = (string)$row[6];
+      $test->date = (string)$row[7];
+      $test->speaker = (string)$row[8];
 
       array_push($array, $test);
     }
