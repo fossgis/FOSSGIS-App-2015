@@ -214,7 +214,7 @@
 							<input type="text" id="searchtext" placeholder="Finde Veranstaltungen">
 						</div>
 						<div class="large-2 columns small-12 columns">
-							<input type="button" class="tiny expand" id="eventsearch" value="Suchen">
+							<input type="button" class="button tiny expand" id="eventsearch" value="Suchen">
 				  			<style>
 									#eventsearch{
 									  padding-top: 0.52rem;
@@ -360,14 +360,13 @@
 							</div>
 			 			</dd>
 			 		</dl>
-					<dl class="accordion" data-accordion>
+					<dl class="accordion1" data-accordion>
 						<dd id="myevents" class="accordion-navigation" style="margin-top:22px">
 							<a href="#panel4">Meine Veranstaltungen</a>
 							<div id="panel4" class="content">
 								<div>
 									<a href="../backend/iCalExport.php" class="button expand" style="font-weight: bold" type="submit">Kalenderexport</a>
-								</div>	
-								<br>
+								</div>
 								<div id="myevent">
 								
 								</div>
@@ -1359,7 +1358,7 @@
   		}
 		});
   </script>
-  
+
   <script type="text/javascript" src="js/menu.js"></script>
 
 </body>

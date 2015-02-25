@@ -77,8 +77,8 @@ function showMyEvents () {
       var obj = JSON.parse(data);
 	  $("#myevent").html("");
       obj.forEach(function (speech) {
-        $("#myevent").append("<div class='row'><div class='small-12 medium-6 large-8 columns'><p>" +speech.datum+" "+speech.start+" : "+speech.title+"</p></div><div class='small-12 medium-6 large-4 columns'><a href='#' class='button openmodal' style='width: 64%; padding: 0.001rem 0rem' data-reveal-id='infos"+speech.number+"-"+target.slice(1,target.length)+"'> weitere Informationen</a></div></div>");
-        $("#myevent").append("<div id='infos"+speech.number+"-"+target.slice(1,target.length)+"' class='reveal-modal' data-reveal><h2>"+speech.title+"</h2><p class='lead'>Raum: "+speech.room+"</p><p>Dauer: "+speech.duration+"</p><p>"+speech.description+"</p><a class='close-reveal-modal'>&#215;</a></div>");
+        $("#myevent").append("<div class='row'><div class='small-12 medium-8 large-9 columns'><p>" +speech.datum+" "+speech.start+" : "+speech.title+"</p></div><div class='small-12 medium-4 large-3 columns'><a href='#' class='button openmodal' style='width: 100%; padding: 0.001rem 0rem' data-reveal-id='infos"+speech.number+"-"+target.slice(1,target.length)+"'> weitere Informationen</a></div></div>");
+        $("#myevent").append("<div id='infos"+speech.number+"-"+target.slice(1,target.length)+"' class='reveal-modal' data-reveal><h2>"+speech.title+"</h2><p class='lead'>Raum: "+speech.room+"</p><p>Dauer: "+speech.duration+"</p><p>"+speech.description+"</p><iframe width='100%' height='200px' scr='http://pb.fossgis.de/feedback/FOSSGIS2014/event/741.de.html'></iframe><a class='close-reveal-modal'>&#215;</a></div>");
       });
     }).fail(function (err) {
       console.log(err);
