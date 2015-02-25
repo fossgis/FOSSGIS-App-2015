@@ -65,17 +65,6 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
 	<link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
 
-	<script>
-		$(document).ready(function() {
-   		var hash = window.location.hash;
-			if (hash == "#fndtn-veranstaltungen") {
-       	$('[data-accordion] [href="#panel4"]').click();
-       	showMyEvents();
-   		} else {
-   		}
-		});
-	</script>
-
 </head>
 
 <body onLoad="checkDate()">
@@ -1372,6 +1361,17 @@
   </script>
 
   <script type="text/javascript" src="js/menu.js"></script>
+
+  <script>
+		$(document).ready(function() {
+   		var hash = window.location.hash;
+			if (hash == "#fndtn-veranstaltungen") {
+       	$('[data-accordion] [href="#panel4"]').click();
+       	showMyEvents();
+   		} else {
+   		}
+		});
+	</script>
 
 </body>
 
