@@ -62,8 +62,11 @@
     $(target+" > .tabs-content > "+tab).append("<div id='infos"+speech.number+"-"+target.slice(1,target.length)+"' class='reveal-modal' data-reveal><h2>"+speech.title+"</h2><p class='lead'>"+speech.subtitle+"</p><p>Dauer: "+speech.duration+"</p><p>Referent: "+speech.speaker+"</p><p>"+speech.description+"</p><a class='close-reveal-modal'>&#215;</a></div>");
   }
 
-  //$("#myevents").click(function (evt) {
-  function showMyEvents () {
+  $("#myevents").click(function (evt) {
+  	showMyEvents();
+  });
+  
+function showMyEvents () {
     ajaxLoading = true;
     $.ajax({
       url: "/fossgis/backend/api.php",
@@ -83,7 +86,6 @@
       ajaxLoading = false;
     });
   }
-  //});
 
     $(document).ready(function() {
       var hash = window.location.hash;
