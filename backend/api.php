@@ -107,7 +107,8 @@
       ON Speech.id = SpeakerSpeech.speech_id
       LEFT OUTER JOIN Speaker
       On SpeakerSpeech.speaker_id = Speaker.id
-      WHERE title LIKE '".$search."%'
+      WHERE title LIKE '".$search."%' OR
+	  description LIKE '%".$search."%'
       GROUP BY start
       Order by start";
 
@@ -117,14 +118,14 @@
     $array = [];
     while ($row = mysqli_fetch_array($result)) {
 
-      $test = new stdClass();
-      $test->title = (string)$row[0];
-      $test->start = (string)$row[1];
-      $test->subtitle = (string)$row[2];
-      $test->description = (string)$row[3];
+	  $test = new stdClass();
+      $test->title = (string)utf8_decode($row[0]);
+      $test->start = (string)utf8_decode($row[1]);
+      $test->subtitle = (string)utf8_decode($row[2]);
+      $test->description = (string)utf8_decode($row[3]);
+      $test->duration = (string)utf8_decode($row[4]);
+	  $test->name = (string)utf8_decode($row[5]);
       $test->number = $number++;
-      $test->duration = (string)$row[4];
-      $test->name = (string)$row[5];
 
       array_push($array, $test);
     }
