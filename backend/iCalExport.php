@@ -10,8 +10,8 @@
 	if (strlen($ititles)>0){
 	
 	//Create download for a specific filename
-    $Filename = "FossGISKalender.ics";
-    header("Content-Type: text/Calendar");
+    $Filename = "FossGISKalender.vcs";
+    header("Content-Type: text/x-vCalendar");
     header("Content-Disposition: attachment; filename=$Filename");
 
 	// Create iCal file part 1
