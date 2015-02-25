@@ -65,8 +65,6 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
 	<link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
 
-  <script type="text/javascript" src="js/menu.js"></script>
-
 </head>
 
 <body onLoad="checkDate()">
@@ -216,7 +214,7 @@
 							<input type="text" id="searchtext" placeholder="Finde Veranstaltungen">
 						</div>
 						<div class="large-2 columns small-12 columns">
-							<input type="button" class="tiny expand" id="eventsearch" onClick="searchEvents()" value="Suchen">
+							<input type="button" class="tiny expand" id="eventsearch" value="Suchen">
 				  			<style>
 									#eventsearch{
 									  padding-top: 0.52rem;
@@ -1361,6 +1359,8 @@
   		}
 		});
   </script>
+  
+  <script type="text/javascript" src="js/menu.js"></script>
 
 </body>
 
