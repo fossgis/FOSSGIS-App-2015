@@ -372,7 +372,7 @@
 							<a href="#panel4">Meine Veranstaltungen</a>
 							<div id="panel4" class="content">
 								<div>
-									<a href="../backend/iCalExport.php" class="button" type="submit">Kalenderexport</a>
+									<a target="_blank" href="../backend/iCalExport.php" class="button" type="submit">Kalenderexport</a>
 								</div>	
 							</div>	
 						</dd>
