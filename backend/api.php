@@ -32,10 +32,10 @@
     for ($i=0; $i < $maxi; $i++)
     {
       if ($i == $help){
-        $sql = $sql."title LIKE '".utf8_encode($titles[$i])."%'";
+        $sql = $sql."Speech.id = '".$titles[$i]."'";
         $sqlarray[] = $sql;
       }else{
-        $sql = $sql."title LIKE '".utf8_encode($titles[$i])."%' OR ";
+        $sql = $sql."Speech.id = '".$titles[$i]."' OR ";
       }
     }
     $sqlfor = $sqlarray[0];
@@ -71,7 +71,7 @@
 
   function getSpeeches($connection) {
 
-    $sql = "SELECT title, start , subtitle, description, duration, room_id, date, GROUP_CONCAT(name) FROM Speech
+    $sql = "SELECT title, start , subtitle, description, duration, room_id, Speech.id, date, GROUP_CONCAT(name) FROM Speech
       LEFT OUTER JOIN SpeakerSpeech
       ON Speech.id = SpeakerSpeech.speech_id
       LEFT OUTER JOIN Speaker
@@ -93,8 +93,10 @@
       $test->number = $number++;
       $test->duration = (string)$row[4];
       $test->name = (string)$row[5];
-      $test->date = (string)$row[6];
-      $test->speaker = (string)$row[7];
+	  $test->id = (string)$row[6];
+      $test->date = (string)$row[7];
+      $test->speaker = (string)$row[8];
+	  
 
       array_push($array, $test);
     }
