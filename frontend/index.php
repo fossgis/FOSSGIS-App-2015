@@ -368,12 +368,16 @@
 			 			</dd>
 			 		</dl>	 				
 					<dl class="accordion1" data-accordion>
-						<dd class="accordion-navigation" style="margin-top:22px">
+						<dd id="myevents" class="accordion-navigation" style="margin-top:22px">
 							<a href="#panel4">Meine Veranstaltungen</a>
 							<div id="panel4" class="content">
 								<div>
 									<a href="../backend/iCalExport.php" class="button" type="submit">Kalenderexport</a>
 								</div>	
+								<br>
+								<div id="myevent">
+								
+								</div>
 							</div>	
 						</dd>
 					</dl>
