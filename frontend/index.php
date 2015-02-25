@@ -70,8 +70,7 @@
    		var hash = window.location.hash;
 			if (hash == "#fndtn-veranstaltungen") {
        	$('[data-accordion] [href="#panel4"]').click();
-       	$('[data-accordion] [href="#panel4"]').click();
-       	$('#myevents').click();
+       	showMyEvents();
    		} else {
    		}
 		});
