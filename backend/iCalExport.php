@@ -1,24 +1,28 @@
 <?php
 
-	ini_set('display_errors', '1');
-	error_reporting(E_ALL | E_STRICT);
+	//ini_set('display_errors', '1');
+	//error_reporting(E_ALL | E_STRICT);
 	
+	// Get the cookies out of your browser
+	$ititles = $_COOKIE['title'];
+	$ititles =  utf8_decode($ititles);
+	
+	if (strlen($ititles)>0){
+	
+	//Create download for a specific filename
     $Filename = "FossGISKalender.ics";
     header("Content-Type: text/Calendar");
     header("Content-Disposition: inline; filename=$Filename");
 
-
+	// Create iCal file part 1
     echo "BEGIN:VCALENDAR\n";
     echo "VERSION:2.0\n";
     echo "PRODID:FossGIS-app\n";
     echo "METHOD:PUBLISH\n";
 
     require 'config.php';
-    
-    $ititles = $_COOKIE['title'];
-	$ititles =  utf8_decode($ititles);
 
-	//echo "ititles: ".$ititles;
+	// Get all requested information out of the database
     $titles = explode(",", $ititles);
     $maxi = count($titles);
 
@@ -40,10 +44,6 @@
 	$sqlfor = $sqlarray[0];
 	$sqlend = $sqlfor." order by start)
 		Order by date;";
-		
-	//echo " SQL-Abfrage: ".$sqlend;
-
-	
 		
 	$result = mysqli_query($connection, $sqlend);
 	   
@@ -104,27 +104,21 @@
 		$resultdatestart = (string)$datestart2."T";
 		$resultdateend = (string)$dateend2."T";
 		
-		//echo $resultdatestart;
-
-
+		// endresult
 		$resultstartdt = $resultdatestart . $startstring ."Z";
 		$resultenddt = $resultdateend . $resulttime ."Z";
 		
-		//echo $resultstartdt;
-		//echo $resultenddt;
-		
-		echo 
-		"
-		BEGIN:VEVENT\
-		LOCATION:".$row[3]. "\n
-		SUMMARY:". $row[0] . "\n
-		DESCRIPTION:". $row[0] . "\n
-		CLASS:PUBLIC\n
-		DTSTART:".$resultstartdt. "\n
-		DTEND:".$resultenddt. "\n
-		END:VEVENT\n
-		";
+	// Create iCal file part 2
+	echo "BEGIN:VEVENT\n";
+	echo "LOCATION:".$row[3]. "\n";
+	echo "SUMMARY:". $row[0] . "\n";
+	echo "DESCRIPTION:". $row[0] . "\n";
+	echo "CLASS:PUBLIC\n";
+	echo "DTSTART:".$resultstartdt. "\n";
+	echo "DTEND:".$resultenddt. "\n";
+	echo "END:VEVENT\n";
     }
 	echo "END:VCALENDAR";
-	
+	}
+	else{ echo utf8_decode("Keine Veranstaltung ausgewählt."); }
 ?>
