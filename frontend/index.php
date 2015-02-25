@@ -1362,17 +1362,6 @@
 
   <script type="text/javascript" src="js/menu.js"></script>
 
-  <script>
-		$(document).ready(function() {
-   		var hash = window.location.hash;
-			if (hash == "#fndtn-veranstaltungen") {
-       	$('[data-accordion] [href="#panel4"]').click();
-       	showMyEvents();
-   		} else {
-   		}
-		});
-	</script>
-
 </body>
 
 </html>
