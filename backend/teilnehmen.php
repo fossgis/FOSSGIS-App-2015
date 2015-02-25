@@ -37,7 +37,7 @@
 		setcookie('title', $list, strtotime("+1 month"));
 	}
 	
-	header("Location: ../frontend/index.php#fndtn-veranstaltungen");
+	header("Location: ../frontend/index.php#veranstaltungen");
 	exit();
 	
 	
