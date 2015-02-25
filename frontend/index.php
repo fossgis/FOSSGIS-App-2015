@@ -214,7 +214,7 @@
 							<input type="text" id="searchtext" placeholder="Finde Veranstaltungen">
 						</div>
 						<div class="large-2 columns small-12 columns">
-							<input class="tiny button expand" id="eventsearch" value="Suchen">
+							<button class="tiny expand" id="eventsearch">Suchen</button>
 				  			<style>
 									#eventsearch{
 									  padding-top: 0.52rem;
