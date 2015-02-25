@@ -65,6 +65,8 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
 	<link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
 
+  <script type="text/javascript" src="js/menu.js"></script>
+
 </head>
 
 <body onLoad="checkDate()">
@@ -1359,8 +1361,6 @@
   		}
 		});
   </script>
-
-  <script type="text/javascript" src="js/menu.js"></script>
 
 </body>
 
