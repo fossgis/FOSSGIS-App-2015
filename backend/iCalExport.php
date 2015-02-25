@@ -36,7 +36,7 @@
 		header("Content-Type: text/x-vCalendar");
 		header("Content-Disposition: attachment; filename=$Filename");
 	}else{
-		//browser reported as an iPad
+		//browser reported as an anything else
 		$Filename = "FossGISKalender.ics";
 		header("Content-Type: text/Calendar");
 		header("Content-Disposition: attachment; filename=$Filename");	
