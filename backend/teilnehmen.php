@@ -5,22 +5,26 @@
 
 	require_once('config.php');
 	
-	$title = (string)$_GET['titleid'];
+	$title = (string)$_GET['title'];
 	
 	//$title = utf8_encode($title);
 	//echo $title;
 	
-	$sql1 = "SELECT participants FROM Speech WHERE id='".$title."'";
+	$sql1 = "SELECT participants FROM Speech WHERE title LIKE '%".$title."%'";
 	
 	$participants = mysqli_query($connection, $sql1);
 	
 	while ($row = mysqli_fetch_array($participants)){
 		$part = (int)$row[0];
 		$part = $part+1;
-		$sql = "UPDATE Speech SET participants = '".$part."' WHERE id='".$title."'";
+		$sql = "UPDATE Speech SET participants = '".$part."' WHERE title LIKE '%".$title."%'";
 		$result = mysqli_query($connection, $sql);
 	}
-
+	//$part = (int)$participants + 1;
+	
+	//$sql = "UPDATE Speech SET participants = '".$part."' WHERE title LIKE '%".$title."%'";
+	
+	//$result = mysqli_query($connection, $sql);
 	
 	
 	if((string)$_COOKIE['title'] == ""){
