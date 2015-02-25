@@ -65,18 +65,17 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
 	<link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
 
-	<!--
 	<script>
 		$(document).ready(function() {
    		var hash = window.location.hash;
 
-   		if (hash != "") {
-       	$('#tabs a[href="' + hash + '"]').handle_location_hash_change();
+   		if (hash == "#fndtn-veranstaltungen") {
+       	$('[data-accordion] [href="#panel4"]').trigger('click.fndtn.accordion');
    		} else {
 
    		}
 		});
-	</script>-->
+	</script>
 
 </head>
 
