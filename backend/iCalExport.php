@@ -61,10 +61,10 @@
     for ($i=0; $i < $maxi; $i++)
     {	
 		if ($i == $help){
-			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%'";
+			$sql = $sql."id = '".$titles[$i]."%'";
 			$sqlarray[] = $sql;
 		}else{
-			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%' OR ";
+			$sql = $sql."id = '".$titles[$i]."%' OR ";
 		}
 		
     }
