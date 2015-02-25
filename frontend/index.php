@@ -65,6 +65,19 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
 	<link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
 
+	<!--
+	<script>
+		$(document).ready(function() {
+   		var hash = window.location.hash;
+
+   		if (hash != "") {
+       	$('#tabs a[href="' + hash + '"]').handle_location_hash_change();
+   		} else {
+
+   		}
+		});
+	</script>-->
+
 </head>
 
 <body onLoad="checkDate()">
@@ -157,7 +170,7 @@
   <div class="row">  
 		<div class="large-12 columns">
   		<br/>
-			<ul class="tabs" data-tab>
+			<ul class="tabs" data-tab data-options="deep_linking:true" data-options="scroll_to_content: false">
         <li class="tab-title active">
         	<a href="#news">Aktuelles</a>
         </li>
