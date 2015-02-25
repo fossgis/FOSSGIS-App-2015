@@ -5,26 +5,22 @@
 
 	require_once('config.php');
 	
-	$title = (string)$_GET['title'];
+	$title = (string)$_GET['titleid'];
 	
 	//$title = utf8_encode($title);
 	//echo $title;
 	
-	$sql1 = "SELECT participants FROM Speech WHERE title LIKE '%".$title."%'";
+	$sql1 = "SELECT participants FROM Speech WHERE Speech.id='".$title."'";
 	
 	$participants = mysqli_query($connection, $sql1);
 	
 	while ($row = mysqli_fetch_array($participants)){
 		$part = (int)$row[0];
 		$part = $part+1;
-		$sql = "UPDATE Speech SET participants = '".$part."' WHERE title LIKE '%".$title."%'";
+		$sql = "UPDATE Speech SET participants = '".$part."' WHERE Speech.id='".$title."'";
 		$result = mysqli_query($connection, $sql);
 	}
-	//$part = (int)$participants + 1;
-	
-	//$sql = "UPDATE Speech SET participants = '".$part."' WHERE title LIKE '%".$title."%'";
-	
-	//$result = mysqli_query($connection, $sql);
+
 	
 	
 	if((string)$_COOKIE['title'] == ""){
@@ -37,7 +33,7 @@
 		setcookie('title', $list, strtotime("+1 month"));
 	}
 	
-	header("Location: ../frontend/index.php#fndtn-veranstaltungen");
+	header("Location: ../frontend/index.php#veranstaltungen");
 	exit();
 	
 	

@@ -36,7 +36,7 @@
 		header("Content-Type: text/x-vCalendar");
 		header("Content-Disposition: attachment; filename=$Filename");
 	}else{
-		//browser reported as an iPad
+		//browser reported as an anything else
 		$Filename = "FossGISKalender.ics";
 		header("Content-Type: text/Calendar");
 		header("Content-Disposition: attachment; filename=$Filename");	
@@ -61,10 +61,10 @@
     for ($i=0; $i < $maxi; $i++)
     {	
 		if ($i == $help){
-			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%'";
+			$sql = $sql."Speech.id = '".$titles[$i]."%'";
 			$sqlarray[] = $sql;
 		}else{
-			$sql = $sql."title LIKE '".utf8_encode($titles[$i])."%' OR ";
+			$sql = $sql."Speech.id = '".$titles[$i]."%' OR ";
 		}
 		
     }
