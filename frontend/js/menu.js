@@ -96,7 +96,7 @@ function showMyEvents () {
       }
     });
   
-  $("#search").click(function (evt) {
+  $("#eventsearch").click(function (evt) {
     ajaxLoading = true;
 	search = $("#searchtext").val();
 	$.ajax({

@@ -214,9 +214,9 @@
 							<input type="text" id="searchtext" placeholder="Finde Veranstaltungen">
 						</div>
 						<div class="large-2 columns small-12 columns">
-							<div href="#fndtn-veranstaltungen" class="tiny button expand" id="search">Suchen</div>
+							<input type="submit" href="#fndtn-veranstaltungen" class="tiny button expand" id="eventsearch" value="Suchen">
 				  			<style>
-									#search{
+									#eventsearch{
 									  padding-top: 0.52rem;
 									  padding-right: 2rem;
 									  padding-bottom: 0.52rem;
