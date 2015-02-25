@@ -70,6 +70,8 @@
    		var hash = window.location.hash;
 			if (hash == "#fndtn-veranstaltungen") {
        	$('[data-accordion] [href="#panel4"]').click();
+       	$('[data-accordion] [href="#panel4"]').click();
+       	$('#myevents').click();
    		} else {
    		}
 		});
@@ -371,8 +373,8 @@
 			 			</dd>
 			 		</dl>
 					<dl class="accordion" data-accordion>
-						<dd class="accordion-navigation" style="margin-top:22px">
-							<a id="myevents" href="#panel4">Meine Veranstaltungen</a>
+						<dd id="myevents" class="accordion-navigation" style="margin-top:22px">
+							<a href="#panel4">Meine Veranstaltungen</a>
 							<div id="panel4" class="content">
 								<div>
 									<a href="../backend/iCalExport.php" class="button expand" style="font-weight: bold" type="submit">Kalenderexport</a>
