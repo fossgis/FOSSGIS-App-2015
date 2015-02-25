@@ -96,7 +96,8 @@ function showMyEvents () {
       }
     });
   
-  $("#eventsearch").click(function (evt) {
+  //$("#eventsearch").click(function (evt) {
+  function searchEvents () {
     ajaxLoading = true;
 	search = $("#searchtext").val();
 	$.ajax({
@@ -116,7 +117,7 @@ function showMyEvents () {
     }).always(function () {
       ajaxLoading = false;
     });
-  });
-     
-  
+  }
+  //});  
+
 }());

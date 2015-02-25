@@ -214,7 +214,7 @@
 							<input type="text" id="searchtext" placeholder="Finde Veranstaltungen">
 						</div>
 						<div class="large-2 columns small-12 columns">
-							<button class="tiny expand" id="eventsearch">Suchen</button>
+							<a class="button tiny expand" id="eventsearch" onClick="searchEvents()">Suchen</a>
 				  			<style>
 									#eventsearch{
 									  padding-top: 0.52rem;
