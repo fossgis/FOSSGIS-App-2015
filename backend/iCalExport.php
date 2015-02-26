@@ -19,12 +19,13 @@
 		$Android = stripos($_SERVER['HTTP_USER_AGENT'],"Android");
 
 		//do something with this information
-		if(($iPod || $iPhone || $iPad) && window.navigator.standalone===true ){
+		if(($iPod || $iPhone || $iPad)  ){
 			//browser reported as an iPhone/iPod touch
-			$Filename = "FossGISKalender.ics";
+			/*$Filename = "FossGISKalender.ics";
 			header("Content-Type: text/Calendar");
 			header("Content-Disposition: attachment; filename=$Filename");	
-		
+		*/
+		echo window.navigator.standalone;
 		
 		}else if($Android){
 			//browser reported as an Android device
