@@ -129,6 +129,9 @@ function showMyEvents () {
           $("#mysearch").append("<div class='row'><div class='small-12 medium-6 large-8 columns'><p>"+speech.date+" "+speech.start+" : "+speech.title+"</p></div><div class='small-12 medium-6 large-4 columns'><form action='../backend/teilnehmen.php' method='get'><input type=hidden id=titleid name=titleid value="+speech.id+"><a href='#' class='button openmodal' style='width: 64%; padding: 0.001rem 0rem' data-reveal-id='infos"+speech.number+"'> weitere Informationen</a> <input type='submit' id='filter' class='button' style='width: 34%; padding: 0.001rem 0rem' value='Vormerken'></form></div></div>");
           $("#mysearch").append("<div id='infos"+speech.number+"-"+target.slice(1,target.length)+"' class='reveal-modal' data-reveal><h2>"+speech.title+"</h2><p class='lead'>"+speech.subtitle+"</p><p>Raum: "+speech.name+"</p><p>Dauer: "+speech.duration+"</p><p>Referent: "+speech.speaker+"</p><p class='text-justify'>"+speech.description+"</p><input type='button' class='button expand' value='Vortrag bewerten' style='font-weight: bold' onClick='toggle_visibility()'><p>http://pb.fossgis.de/feedback/FOSSGIS2014/event/"+speech.id+".de.html</p><iframe id='rateFrame' width='100%' height='250px' frameborder='0' src='http://pb.fossgis.de/feedback/FOSSGIS2014/event/"+speech.id+".de.html' style='overflow: auto; display: none'></iframe><a class='close-reveal-modal'>&#215;</a></div>");
       });
+      if (obj.length == 0) {
+        $("#mysearch").append("<div class='row'><div class='small-12 columns'>Zu dieser Suchanfrage gibt es leider keine Ergebnisse</div></div>")
+      }
       }).fail(function (err) {
         console.log(err);
       }).always(function () {
