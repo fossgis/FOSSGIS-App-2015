@@ -367,10 +367,10 @@
 									-->
 									
 									<div onclick="
-									if(window.navigator.standalone) {
-										parent.location='../backend/iCalExport.php?standalone=1'; }
+									if(window.navigator.standalone===false) {
+										parent.location='../backend/iCalExport.php?standalone=0'; }
 									else {
-										parent.location='../backend/iCalExport.phpstandalone=0';
+										parent.location='../backend/iCalExport.phpstandalone=1';
 									}" class="button expand" style="font-weight: bold" type="submit">Kalenderexport</div>
 								</div>
 								<!--div class='row'>
