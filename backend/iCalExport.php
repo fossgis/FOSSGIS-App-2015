@@ -169,7 +169,7 @@
 	}
 	else{ 
 		echo utf8_decode("Keine Veranstaltung ausgewählt.")."<br><br>
-				<h4><?<a href='javascript:history.back()'>Zur&uuml;ck!</a></a></h4>"; 
+				<h4><a href='javascript:history.back()'>Zur&uuml;ck!</a></h4>"; 
 	}
 	
 	
