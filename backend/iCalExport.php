@@ -19,7 +19,7 @@
 		$Android = stripos($_SERVER['HTTP_USER_AGENT'],"Android");
 
 		//do something with this information
-		if(($iPod || $iPhone || $iPad) && window.navigator.standalone===false){
+		if(($iPod || $iPhone || $iPad) && window.navigator.standalone===true ){
 			//browser reported as an iPhone/iPod touch
 			$Filename = "FossGISKalender.ics";
 			header("Content-Type: text/Calendar");
