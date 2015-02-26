@@ -19,7 +19,7 @@
 		$Android = stripos($_SERVER['HTTP_USER_AGENT'],"Android");
 
 		//do something with this information
-		if(($iPod || $iPhone || $iPad) && (stripos(strtolower($_SERVER['HTTP_USER_AGENT']),"safari"))){
+		if(($iPod || $iPhone || $iPad) && (stripos($_SERVER['HTTP_USER_AGENT'],"safari"))>0 ){
 			//browser reported as an iPhone/iPod touch
 			$Filename = "FossGISKalender.ics";
 			header("Content-Type: text/Calendar");
@@ -145,7 +145,7 @@
 		$output.= "END:VCALENDAR";
 		
 		// Extra output to file for iPod/iPhone work around
-		if(($iPod || $iPhone || $iPad) && (stripos(strtolower($_SERVER['HTTP_USER_AGENT']),"safari")) == false){
+		if(($iPod || $iPhone || $iPad) && (stripos($_SERVER['HTTP_USER_AGENT'],"safari")) < 1 ){
 			$content='<?php
 					header("Content-Type: text/Calendar");
 					header("Content-Disposition: attachment; filename=FossGISKalender.ics");?>';
