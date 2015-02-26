@@ -159,7 +159,7 @@
 			
 			// Link to created file
 			echo "<h2><a href='http://giv-fossgis-app.uni-muenster.de/fossgis/backend/calexport/".$id.".php'  target='_blank'> In Kalender importieren!</a></h2><br><br>
-			<h2><a href='http://giv-fossgis-app.uni-muenster.de/fossgis/frontend/'  target='_blank'> Zurück zur Webseite!</a></h2>";
+			<h4><a href='javascript:history.back()'>Zur&uuml;ck!</a></h4>";
 			
 			
 		} else {
