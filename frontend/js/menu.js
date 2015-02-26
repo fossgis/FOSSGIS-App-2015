@@ -60,8 +60,17 @@
         break;
     }
     $(target+" > .tabs-content > "+tab).append("<div class='row'><div class='small-12 medium-6 large-8 columns'><p>"+speech.start+" : "+speech.title+"</p></div><div class='small-12 medium-6 large-4 columns'><form action='../backend/teilnehmen.php' method='get'><input type=hidden id=titleid name=titleid value="+speech.id+"><a href='#' class='button openmodal' style='width: 64%; padding: 0.001rem 0rem' data-reveal-id='infos"+speech.number+"-"+target.slice(1,target.length)+"'>weitere Informationen</a> <input type='submit' id='filter' class='button' style='width: 34%; padding: 0.001rem 0rem' value='Vormerken'></form></div></div>");
-    $(target+" > .tabs-content > "+tab).append("<div id='infos"+speech.number+"-"+target.slice(1,target.length)+"' class='reveal-modal' data-reveal><h2>"+speech.title+"</h2><p class='lead'>"+speech.subtitle+"</p><p>Dauer: "+speech.duration+"</p><p>Referent: "+speech.speaker+"</p><p class='text-justify'>"+speech.description+"</p><input type='button' class='button expand' value='Vortrag bewerten' style='font-weight: bold' onClick='toggle_visibility()'><iframe id='rateFrame' width='100%' height='250px' frameborder='0' src='http://pb.fossgis.de/feedback/FOSSGIS2014/event/741.de.html' style='overflow: auto; display: block'></iframe><a class='close-reveal-modal'>&#215;</a></div>");
+    $(target+" > .tabs-content > "+tab).append("<div id='infos"+speech.number+"-"+target.slice(1,target.length)+"' class='reveal-modal' data-reveal><h2>"+speech.title+"</h2><p class='lead'>"+speech.subtitle+"</p><p>Dauer: "+speech.duration+"</p><p>Referent: "+speech.speaker+"</p><p class='text-justify'>"+speech.description+"</p><input type='button' class='button expand' value='Vortrag bewerten' style='font-weight: bold' id='rateButton'><iframe id='rateFrame' width='100%' height='250px' frameborder='0' src='http://pb.fossgis.de/feedback/FOSSGIS2014/event/741.de.html' style='overflow: auto; display: none'></iframe><a class='close-reveal-modal'>&#215;</a></div>");
   }
+
+  $("#rateButton").click(function (evt){
+    var e = document.getElementById('rateFrame');
+            if(e.style.display == 'block') {
+              e.style.display = 'none';
+            } else {
+              e.style.display = 'block';
+            }
+  });
 
   $("#myevents").click(function (evt) {
   	showMyEvents();
