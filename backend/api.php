@@ -26,7 +26,7 @@
     $maxi = count($titles);
 
     $help = $maxi - 1;
-    $sql = "(Select title, date, start, room_id, Speech.id, duration, description
+    $sql = "(Select title, date, start, room_id, duration, description, Speech.id
 		From Speech
 		Where ";
     for ($i=0; $i < $maxi; $i++)
