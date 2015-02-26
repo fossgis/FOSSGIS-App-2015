@@ -363,7 +363,15 @@
 							<a href="#panel4">Meine Veranstaltungen</a>
 							<div id="panel4" class="content">
 								<div>
-									<a href="../backend/iCalExport.php" class="button expand" style="font-weight: bold" type="submit">Kalenderexport</a>
+									<!--<a href="../backend/iCalExport.php" class="button expand" style="font-weight: bold" type="submit">Kalenderexport</a>
+									-->
+									
+									<div onclick="
+									if(window.navigator.standalone) {
+										parent.location='../backend/iCalExport.php'; alert(2); }
+									else {
+										parent.location='../backend/iCalExport.php'; alert(3);
+									}" class="button expand" style="font-weight: bold" type="submit">Kalenderexport</div>
 								</div>
 								<!--div class='row'>
 									<div class='small-12 medium-8 large-9 columns'>
