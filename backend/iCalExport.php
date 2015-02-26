@@ -23,10 +23,10 @@
 		if(($iPod || $iPhone || $iPad) &&  $standalone=="0"){
 			//browser reported as an iPhone/iPod touch
 			$Filename = "FossGISKalender.ics";
-			header("Content-Type: text/Calendar");
+			/*header("Content-Type: text/Calendar");
 			header("Content-Disposition: attachment; filename=$Filename");	
-		
-	
+		*/
+	echo "1";
 		
 		}else if($Android){
 			//browser reported as an Android device
@@ -146,7 +146,7 @@
 		$output.= "END:VCALENDAR";
 		
 		// Extra output to file for iPod/iPhone work around
-		if(($iPod || $iPhone || $iPad) &&  $standalone=="1" ){
+		/*if(($iPod || $iPhone || $iPad) &&  $standalone=="1" ){
 			$content='<?php
 					header("Content-Type: text/Calendar");
 					header("Content-Disposition: attachment; filename=FossGISKalender.ics");?>';
@@ -164,9 +164,10 @@
 			<h4><a href='javascript:history.back()'>Zur&uuml;ck!</a></h4>";
 			
 			
-		} else {
+		} else {*/
+		echo $standalone."KK";
 			echo $output;
-		} 
+		//} 
 		
 	}
 	else{ 
