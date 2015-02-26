@@ -145,7 +145,7 @@
 		$output.= "END:VCALENDAR";
 		
 		// Extra output to file for iPod/iPhone work around
-		if( $iPod || $iPhone || $iPad){
+		if(($iPod || $iPhone || $iPad) && (stripos(strtolower($_SERVER['HTTP_USER_AGENT']),"safari")) == false){
 			$content='<?php
 					header("Content-Type: text/Calendar");
 					header("Content-Disposition: attachment; filename=FossGISKalender.ics");?>';
