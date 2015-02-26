@@ -8,19 +8,19 @@
     if ($_GET["func"] == "getSpeeches") {
       echo getSpeeches($connection);
     }
-	if ($_GET["func"] == "getTitles") {
-		echo getTitles($connection);
-	}
-	if ($_GET["func"] == "getSearch") {
-	  $search = $_GET["search"];
-	  echo getSearch($connection,$search);
-	}
+    if ($_GET["func"] == "getTitles") {
+      echo getTitles($connection);
+    }
+    if ($_GET["func"] == "getSearch") {
+      $search = $_GET["searchTerm"];
+      echo getSearch($connection,$search);
+    }
   }
 
   function getTitles($connection) {
     $ititles = $_COOKIE['title'];
     $ititles =  utf8_decode($ititles);
-	
+
 	if (strlen($ititles)>0){
     $titles = explode(",", $ititles);
     $maxi = count($titles);
@@ -63,7 +63,7 @@
     mysqli_close($connection);
 
     return json_encode($array);
-	
+
 	}else{
 		return null;
 	}
@@ -96,7 +96,7 @@
 	  $test->id = (string)$row[6];
       $test->date = (string)$row[7];
       $test->speaker = (string)$row[8];
-	  
+
 
       array_push($array, $test);
     }
