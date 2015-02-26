@@ -365,16 +365,6 @@
 								<div>
 									<a href="../backend/iCalExport.php" class="button expand" style="font-weight: bold" type="submit">Kalenderexport</a>
 								</div>
-								<script>
-    							function toggle_visibility() {
-       							var e = document.getElementById('rateFrame');
-       							if(e.style.display == 'block') {
-          						e.style.display = 'none';
-          					} else {
-          						e.style.display = 'block';
-          					}
-    							}
-								</script>
 								<!--div class='row'>
 									<div class='small-12 medium-8 large-9 columns'>
 										<p>2015-03-12 09:00:00 : OpenLayers 3</p>

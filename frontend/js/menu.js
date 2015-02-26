@@ -1,6 +1,16 @@
 (function () {
   $(document).ready(function () {
 
+    
+    function toggle_visibility() {
+      var e = document.getElementById('rateFrame');
+      if(e.style.display == 'block') {
+        e.style.display = 'none';
+      } else {
+        e.style.display = 'block';
+      }
+    }
+
     $('#navigation').on('toggled', function (event, tab) {
       map.invalidateSize(true);
     });
@@ -105,7 +115,7 @@ function showMyEvents () {
   $("#eventsearch").click(function (evt) {
     ajaxLoading = true;
     search = $("#searchtext").val();
-    if (search.length > 3) {
+    if (search.length > 2) {
       $.ajax({
         url: "/fossgis/backend/api.php",
         data: {
