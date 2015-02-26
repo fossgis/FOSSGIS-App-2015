@@ -26,7 +26,7 @@
     $maxi = count($titles);
 
     $help = $maxi - 1;
-    $sql = "(Select title, date, start, room_id, duration, description
+    $sql = "(Select title, date, start, room_id, duration, description, Speech.id
 		From Speech
 		Where ";
     for ($i=0; $i < $maxi; $i++)
@@ -54,6 +54,7 @@
       $test->room = (string)$row[3];
       $test->duration = (string)$row[4];
 	  $test->description = (string)$row[5];
+    $test->id = (string)$row[6];
       $test->number = $number++;
 
       array_push($array, $test);
