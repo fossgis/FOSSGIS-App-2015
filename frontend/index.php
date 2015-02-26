@@ -208,6 +208,17 @@
 		  		</div>
         </div>
 
+        <script>
+        	function toggle_visibility() {
+			      var e = document.getElementById('rateFrame');
+			      if(e.style.display == 'block') {
+			        e.style.display = 'none';
+			      } else {
+			        e.style.display = 'block';
+			      }
+			    }
+			  </script>
+			  
 				<div class="content" id="veranstaltungen">
 					<div class="row collapse" style="margin-top:10px">
 						<div class="large-10 columns small-12 columns">
