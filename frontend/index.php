@@ -225,13 +225,11 @@
 									  font-weight: bold;
 									}
 				  			</style>
-							<br>
-							<div id="mysearch">
-								
-							</div>
 						</div>
-						
-			  	</div>
+						<div id="mysearch">
+
+						</div>
+					</div>
 
 		  		<dl class="accordion" data-accordion>
 						<dd class="accordion-navigation" id="eventsWednesday" style="margin-top:5px">
@@ -367,6 +365,33 @@
 								<div>
 									<a href="../backend/iCalExport.php" class="button expand" style="font-weight: bold" type="submit">Kalenderexport</a>
 								</div>
+								<script>
+    							function toggle_visibility() {
+       							var e = document.getElementById('rateFrame');
+       							if(e.style.display == 'block') {
+          						e.style.display = 'none';
+          					} else {
+          						e.style.display = 'block';
+          					}
+    							}
+								</script>
+								<!--div class='row'>
+									<div class='small-12 medium-8 large-9 columns'>
+										<p>2015-03-12 09:00:00 : OpenLayers 3</p>
+									</div>
+									<div class='small-12 medium-4 large-3 columns'>
+										<a href='#' class='button openmodal' style='width: 100%; padding: 0.001rem 0rem' data-reveal-id='openlayers3'>weitere Informationen</a>
+									</div>
+								</div>
+								<div id='openlayers3' class='reveal-modal' data-reveal>
+									<h2>OpenLayers 3</h2>
+									<p class='lead'>Raum: S10</p>
+									<p>Dauer: 00:30:00</p>
+									<p class='text-justify'>OpenLayers 3 (der Nachfolger des weitverbreiteten OpenLayers 2) liegt nach längerer Entwicklungszeit seit Ende August 2014 in der Version 3.0.0 vor und bringt als hoch performante und vielfältige JavaScript Bibliothek alles mit, was man für moderne Kartenanwendungen im Web benötigt. Der Vortrag wird OpenLayers 3 vorstellen und zahlreiche Beispiele der Verwendung zeigen. Auf Unterschiede zur Vorgängerversion wird eingegangen werden, und wir werden zeigen, wo und warum OpenLayers 3 anders ist. Wir werden aktuelle Entwicklungen - wie etwa das OL3-Cesium Project, welches die dritte Dimension für OpenLayers zuänglich macht - präsentieren und auch einen Blick in die zukünftige Entwicklung wagen.</p>
+									<input type='button' class='button expand' value='Vortrag bewerten' style='font-weight: bold' onClick='toggle_visibility()''>
+									<iframe id='rateFrame' width='100%' height='250px' frameborder='0' src='http://pb.fossgis.de/feedback/FOSSGIS2014/event/741.de.html' style='overflow: auto; display: none'></iframe>
+									<a class='close-reveal-modal'>&#215;</a>
+								</div-->
 								<div id="myevent">
 								
 								</div>
@@ -374,7 +399,7 @@
 						</dd>
 					</dl>
  				</div>
- 				<!--Auskommentiert bis auch eine Lösung für synchronisiertes Einladen gefunden ist-->
+ 				<!--synchronisiertes Einladen, funktioniert, aber wie sinnvoll ist es?-->
 				<script>
 					function tabActive1 () {
 						$("#panel1-1").removeClass("content").addClass("content active");
