@@ -368,9 +368,9 @@
 									
 									<div onclick="
 									if(window.navigator.standalone===false) {
-										parent.location='../backend/iCalExport.php?standalone=0'; }
+										alert(0); }
 									else {
-										parent.location='../backend/iCalExport.php?standalone=1';
+										alert(1);
 									}" class="button expand" style="font-weight: bold" type="submit">Kalenderexport</div>
 								</div>
 								<!--div class='row'>
