@@ -365,7 +365,7 @@
 							<a href="#panel4">Meine Veranstaltungen</a>
 							<div id="panel4" class="content">
 								<div>
-									<a href="../backend/iCalExport.php" class="button expand" style="font-weight: bold" type="submit">Kalenderexport</a>
+									<a href="webcal://giv-fossgis-app.uni-muenster.de/fossgis/backend/iCalExport.php" class="button expand" style="font-weight: bold" type="submit">Kalenderexport</a>
 								</div>
 								<div id="myevent">
 
