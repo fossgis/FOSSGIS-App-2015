@@ -43,7 +43,7 @@
 	<link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.png" />
 	<link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.png" />
 	<link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.png" />
-	
+
 	<link rel="stylesheet" href="css/foundation.css">
 	<link rel="stylesheet" href="css/normalize.css">
 	<script src="js/vendor/modernizr.js"></script>
@@ -78,7 +78,7 @@
   	<a class="close-reveal-modal">&#215;</a>
 	</div>
 
-	<iframe id='manifest_iframe_hack' style='display: none;' src='temporary_manifest_hack.html'></iframe> 
+	<iframe id='manifest_iframe_hack' style='display: none;' src='temporary_manifest_hack.html'></iframe>
 
   <div class="row">
 		<a href=""><img src="img/header.png" height="100%" alt="SchlossMuenster"></a>
@@ -154,7 +154,7 @@
 
 	<!-- page body -->
 
-  <div class="row">  
+  <div class="row">
 		<div class="large-12 columns">
   		<br/>
 			<ul class="tabs" data-tab data-options="deep_linking: true; scroll_to_content: false">
@@ -206,8 +206,8 @@
 							Die Konferenz wird vorwiegend durch ehrenamtliches Engagement getragen, wobei neben den Teilnehmergebühren, die Spenden- und vor allem die Sponsoren- und Ausstellerstandeinnahmen eine wichtige finanzielle Einnahmequelle darstellen, um die Kosten für die Konferenz zu decken und darüber hinaus Open Source Projekte zu fördern. <a href="http://www.fossgis.de/konferenz/2015/" target="_blank">Hier</a> geht's zur offiziellen Webpräsenz der FOSSGIS Konferenz 2015.
 						</p>
 		  		</div>
-        </div> 
-	  
+        </div>
+
 				<div class="content" id="veranstaltungen">
 					<div class="row collapse" style="margin-top:10px">
 						<div class="large-10 columns small-12 columns">
@@ -225,13 +225,13 @@
 									  font-weight: bold;
 									}
 				  			</style>
-							<br>
-							<div id="mysearch">
-								
 							</div>
+
+                <div id="mysearch">
+
+                </div>
+
 						</div>
-						
-			  	</div>
 
 		  		<dl class="accordion" data-accordion>
 						<dd class="accordion-navigation" id="eventsWednesday" style="margin-top:5px">
@@ -249,17 +249,17 @@
 							  <div class="tabs-content">
 									<div class="content" id="panel1-1">
 										<!-- for design testing -->
-									 	<!--<div class='row'>									 		
+									 	<!--<div class='row'>
 									 		<div class='small-12 medium-6 large-8 columns'>
 									 			<p>14:00:00 : Softwarewartung für OpenSource. Ein Widerspruch?</p>
 									 		</div>
 									 		<div class='small-12 medium-6 large-4 columns'>
 									 			<form>
-									 				
+
 									 					<input type='hidden' id='title' name='title' value="">
 									 					<a href='' class='button' style='width: 64%; padding: 0.001rem 0rem'>weitere Informationen</a>
 									 					<input type='submit' id='filter' class='button' style='width: 34%; padding: 0.001rem 0rem' value='Vormerken'>
-									 				
+
 									 			</form>
 									 		</div>
 										</div>-->
@@ -296,7 +296,7 @@
 									<dd id="panel2-5tab" onClick="tabActive5()"><a href="#panel2-5" style="padding-bottom: 0.52rem; padding-top: 0.52rem">StudLab 1</a></dd>
 									<dd id="panel2-6tab" onClick="tabActive6()"><a href="#panel2-6" style="padding-bottom: 0.52rem; padding-top: 0.52rem">StudLab 2</a></dd>
 									<dd id="panel2-7tab" onClick="tabActive7()"><a href="#panel2-7" style="padding-bottom: 0.52rem; padding-top: 0.52rem">StudLab 3</a></dd>
-								</dl> 
+								</dl>
 			  				<div class="tabs-content">
 									<div class="content" id="panel2-1">
 
@@ -333,7 +333,7 @@
 									<dd id="panel3-5tab" onClick="tabActive5()"><a href="#panel3-5" style="padding-bottom: 0.52rem; padding-top: 0.52rem">StudLab 1</a></dd>
 									<dd id="panel3-6tab" onClick="tabActive6()"><a href="#panel3-6" style="padding-bottom: 0.52rem; padding-top: 0.52rem">StudLab 2</a></dd>
 									<dd id="panel3-7tab" onClick="tabActive7()"><a href="#panel3-7" style="padding-bottom: 0.52rem; padding-top: 0.52rem">StudLab 3</a></dd>
-								</dl> 
+								</dl>
 			 					<div class="tabs-content">
 									<div class="content" id="panel3-1">
 
@@ -368,9 +368,9 @@
 									<a href="../backend/iCalExport.php" class="button expand" style="font-weight: bold" type="submit">Kalenderexport</a>
 								</div>
 								<div id="myevent">
-								
+
 								</div>
-							</div>	
+							</div>
 						</dd>
 					</dl>
  				</div>
@@ -801,13 +801,13 @@
 		  			$("#navigationTab").removeClass( "active" );
 		  			$("#boardTab").addClass( "active" );
 		  		}
-		  	</script>		  
+		  	</script>
 
 				<script>
           //initialize map
           var map = L.map('map').setView([51.9635, 7.60973],15);
           map.options.minZoom = 13;
-          
+
           // create and load tile layers
           var mapboxTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v4/janu5.8327d153/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFudTUiLCJhIjoiR240TW5pTSJ9.XKYs-6ZWuWc-Yj8Wk1J2Rg', {
             zIndex: 1,
@@ -863,14 +863,14 @@
 	          var bus3 = L.marker([51.96933, 7.59644], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<b>Mendelstraße (Stadteinwärts)</b><br/><br/>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten<br/><br/><a href='http://www.stadtwerke-muenster.de/fis/5992' target='_blank'>Echtzeitauskunft</a>", {maxWidth: "none"});
 	          var bus4 = L.marker([51.9691, 7.59657], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<b>Mendelstraße (Stadtauswärts)</b><br/><br/>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten<br/><br/><a href='http://www.stadtwerke-muenster.de/fis/5991' target='_blank'>Echtzeitauskunft</a>", {maxWidth: "none"});
 	          var bus5 = L.marker([51.96111, 7.60798], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<b>Hüfferstiftung (Stadteinwärts)</b><br/><br/>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten<br/><br/><a href='http://www.stadtwerke-muenster.de/fis/5082' target='_blank'>Echtzeitauskunft</a>", {maxWidth: "none"});
-	          var bus6 = L.marker([51.96124, 7.60802], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<b>Hüfferstiftung (Stadtauswärts)</b><br/><br/>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten<br/><br/><a href='http://www.stadtwerke-muenster.de/fis/5081' target='_blank'>Echtzeitauskunft</a>", {maxWidth: "none"});          
+	          var bus6 = L.marker([51.96124, 7.60802], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<b>Hüfferstiftung (Stadtauswärts)</b><br/><br/>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten<br/><br/><a href='http://www.stadtwerke-muenster.de/fis/5081' target='_blank'>Echtzeitauskunft</a>", {maxWidth: "none"});
 	        } else {
 	        	var bus1 = L.marker([51.96187, 7.61506], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/1362' width='425px' height='380px' style='overflow:auto'></object>", {maxWidth: "none"});
 	          var bus2 = L.marker([51.962, 7.61542], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/1361' width='425px' height='380px' style='overflow:auto'></object>", {maxWidth: "none"});
 	          var bus3 = L.marker([51.96933, 7.59644], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/5992' width='425px' height='380px' style='overflow:auto'></object>", {maxWidth: "none"});
 	          var bus4 = L.marker([51.9691, 7.59657], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/5991' width='425px' height='380px' style='overflow:auto'></object>", {maxWidth: "none"});
 	          var bus5 = L.marker([51.96111, 7.60798], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/5082' width='425px' height='380px' style='overflow:auto'></object>", {maxWidth: "none"});
-	          var bus6 = L.marker([51.96124, 7.60802], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/5081' width='425px' height='380px' style='overflow:auto; '></object>", {maxWidth: "none"});	        	
+	          var bus6 = L.marker([51.96124, 7.60802], {icon: L.AwesomeMarkers.icon({icon: 'bus', prefix: 'fa', markerColor: 'blue', iconColor: '#ffffff'}) }).bindPopup("<center><b>Linie 13 verkehrt alle 20 Minuten zwischen den Tagungsorten</b></center><object type='text/html' data='http://www.stadtwerke-muenster.de/fis/5081' width='425px' height='380px' style='overflow:auto; '></object>", {maxWidth: "none"});
 	        }
 
           var parking1 = L.marker([51.96884, 7.59415], {icon: L.AwesomeMarkers.icon({icon: 'car', prefix: 'fa', markerColor: 'lightblue', iconColor: '#ffffff'}) }).bindPopup("<b>Parkplatz der FH M&uuml;nster</b><br/><a href='https://maps.google.com?daddr=Heisenbergstrasse+2+48149+Muenster+Deutschland' target='_blank'>Navigation</a>");
@@ -1004,7 +1004,7 @@
               opacity: 0.7,
               weight: 8
             }).bindPopup('Fahrradroute zwischen den Tagungsorten');
-            
+
           var foot = L.polyline([[51.96356000,7.612850000],
             [51.96360000,7.612770000],
             [51.96364000,7.612679999],
@@ -1183,7 +1183,7 @@
           map.on('dragstart', lc._stopFollowing, lc);
 
           var popup = L.popup();
-         	
+
           //$('#navigation').on('toggled', function (event, tab) {
     				//map.invalidateSize(true);
   				//});
@@ -1197,7 +1197,7 @@
           	map.invalidateSize(true);
           }).trigger("resize");
 				</script>
-				
+
 				<div class="content" id="schwarzesBrett">
 					<div class="row" style="margin-top: 10px">
 						<div class="large-12 columns">
@@ -1231,17 +1231,17 @@
 			var dd = today.getDate();
 			var mm = today.getMonth()+1; //January is 0!
 			var yyyy = today.getFullYear();
-		
+
 			if(dd<10) {
 				dd='0'+dd
-			} 
-			
+			}
+
 			if(mm<10) {
 				mm='0'+mm
-			} 
+			}
 
 			today = dd+'/'+mm+'/'+yyyy;
-			
+
 			if (today == '11/03/2015') {
 				$('#eventsWednesday').removeClass('content').addClass('content active');
 				$('#panel1').removeClass('content').addClass('content active');
