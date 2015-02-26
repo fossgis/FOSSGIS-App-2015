@@ -1,8 +1,6 @@
 (function () {
-  $(document).ready(function () {
 
-    
-    function toggle_visibility() {
+  function toggle_visibility() {
       var e = document.getElementById('rateFrame');
       if(e.style.display == 'block') {
         e.style.display = 'none';
@@ -10,6 +8,8 @@
         e.style.display = 'block';
       }
     }
+
+  $(document).ready(function () {
 
     $('#navigation').on('toggled', function (event, tab) {
       map.invalidateSize(true);
