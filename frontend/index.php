@@ -211,7 +211,7 @@
 				<div class="content" id="veranstaltungen">
 					<div class="row collapse" style="margin-top:10px">
 						<div class="large-10 columns small-12 columns">
-							<input onchange="alert(2)" type="text" id="searchtext" placeholder="Veranstaltungssuche (Titel, Thema, ...)">
+							<input onkeydown="$('#mysearch').html('');" type="text" id="searchtext" placeholder="Veranstaltungssuche (Titel, Thema, ...)">
 						</div>
 						<div class="large-2 columns small-12 columns">
 							<input type="button" class="button tiny expand" id="eventsearch" value="Suchen">
