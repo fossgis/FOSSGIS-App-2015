@@ -130,7 +130,7 @@ function showMyEvents () {
           $("#mysearch").append("<div id='infos"+speech.number+"-"+target.slice(1,target.length)+"' class='reveal-modal' data-reveal><h2>"+speech.title+"</h2><p class='lead'>"+speech.subtitle+"</p><p>Raum: "+speech.name+"</p><p>Dauer: "+speech.duration+"</p><p>Referent: "+speech.speaker+"</p><p class='text-justify'>"+speech.description+"</p><input type='button' class='button expand' value='Vortrag bewerten' style='font-weight: bold' onClick='toggle_visibility()'><p>http://pb.fossgis.de/feedback/FOSSGIS2014/event/"+speech.id+".de.html</p><iframe id='rateFrame' width='100%' height='250px' frameborder='0' src='http://pb.fossgis.de/feedback/FOSSGIS2014/event/"+speech.id+".de.html' style='overflow: auto; display: none'></iframe><a class='close-reveal-modal'>&#215;</a></div>");
       });
       if (obj.length == 0) {
-        $("#mysearch").append("<div class='row'><div class='small-12 columns'>Zu dieser Suchanfrage gibt es leider keine Ergebnisse</div></div>")
+        $("#mysearch").append("<div class='row'><div class='small-12 columns'>Zu dieser Suchanfrage gibt es leider keine Ergebnisse...</div></div><br/>")
       }
       }).fail(function (err) {
         console.log(err);
