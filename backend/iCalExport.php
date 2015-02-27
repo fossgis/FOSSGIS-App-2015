@@ -159,8 +159,7 @@
 			file_put_contents("calexport/$id.php", $content);
 			
 			// Link to created file
-			echo "<h2><a href='http://giv-fossgis-app.uni-muenster.de/fossgis/backend/calexport/".$id.".php'  target='_blank'> In Kalender importieren!</a></h2><br><br>
-			<h4><a href='javascript:history.back()'>Zur&uuml;ck!</a></h4>";
+			echo "<br/><br/><p align='justify'><span style='font-family: Helvetica; font-size: 2.5em; font-weight: bold'><a href='http://giv-fossgis-app.uni-muenster.de/fossgis/backend/calexport/".$id.".php'  target='_blank'>In Kalender importieren!</a></span></p><br/><br/><p align='justify'><span style='font-family: Helvetica; font-size: 2.5em; font-weight: bold'><a href='javascript:history.back()'>Zur&uuml;ck!</a></span></p>";
 			
 			
 		} else {
@@ -170,8 +169,7 @@
 		
 	}
 	else{ 
-		echo utf8_decode("Keine Veranstaltung ausgewählt.")."<br><br>
-				<h4><a href='javascript:history.back()'>Zur&uuml;ck!</a></h4>"; 
+		echo "<br/><br/><p align='justify'><span style='font-family: Helvetica; font-size: 2.5em; font-weight: bold'>Keine Veranstaltungen ausgew&auml;hlt!</span></p><br/><br/><p align='justify'><span style='font-family: Helvetica; font-size: 2.5em; font-weight: bold'><a href='javascript:history.back()'>Zur&uuml;ck!</a></span></p>"; 
 	}
 	
 	

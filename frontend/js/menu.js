@@ -68,7 +68,7 @@
     var fbid = $('#'+id+' input[type=hidden]').val();
     console.log(fbid);
     if ($('#rateFrame').length === 0) {
-      $(evt.target.parentElement).append("<iframe id='rateFrame' width='100%' height='250px' frameborder='0' src='http://pb.fossgis.de/feedback/FOSSGIS2014/event/'"+fbid+"'.de.html' style='overflow: auto;'></iframe>");
+      $(evt.target.parentElement).append("<iframe id='rateFrame' width='100%' height='250px' frameborder='0' src='http://pb.fossgis.de/feedback/FOSSGIS2014/event/'"+fbid+"'.de.html' style='overflow: auto'></iframe>");
     }
   });
 
