@@ -1,6 +1,6 @@
 CACHE MANIFEST
 
-#v2.7 vom 24.02.2015
+#v3.0 vom 24.02.2015
 
 CACHE:
 img/favicon.png
@@ -10,6 +10,10 @@ img/apple-icon-114x114.png
 img/apple-icon-144x144.png
 img/header.png
 img/header-back.png
+temporary_manifest_hack.html
+FAQ.html
+Impressum.html
+index-offline.html
 css/foundation.css
 css/normalize.css
 css/leaflet.css
@@ -18,10 +22,6 @@ css/leaflet.awesome-markers.css
 js/vendor/locate/dist/L.Control.Locate.css
 css/main.css
 css/sticky_note.gif
-temporary_manifest_hack.html
-FAQ.html
-Impressum.html
-index-offline.html
 
 NETWORK:
 *
