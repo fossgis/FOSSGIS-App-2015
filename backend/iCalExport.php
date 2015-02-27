@@ -137,6 +137,7 @@
 		$output.= "LOCATION:".$row[3]. "\n";
 		$output.= "SUMMARY:". $row[0] . "\n";
 		$output.= "DESCRIPTION:". $row[0] . "\n";
+		$output.= "URL:""http://ifgi.de/fossgisapp" . "\n";
 		$output.= "CLASS:PUBLIC\n";
 		$output.= "DTSTART:".$resultstartdt. "\n";
 		$output.= "DTEND:".$resultenddt. "\n";
