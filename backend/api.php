@@ -115,10 +115,10 @@
       ON Speech.id = SpeakerSpeech.speech_id
       LEFT OUTER JOIN Speaker
       On SpeakerSpeech.speaker_id = Speaker.id
-      WHERE title LIKE '".$search."%' OR
+      WHERE title LIKE '%".$search."%' OR
 	  description LIKE '%".$search."%'
       GROUP BY start
-      Order by start";
+      Order by date";
 
     $result = mysqli_query($connection, $sql);
 

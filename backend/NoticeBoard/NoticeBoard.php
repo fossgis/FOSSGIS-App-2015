@@ -132,7 +132,7 @@ line-height: 0px;
 
 		<div id="form" align="left"></div>
 		
-		<div class="row"><div class="large-12 columns" id="actionlink" align="center"><a href="#" class=" button expand" onclick="ShowAnswerForm(0)" style="font-weight: bold">Notiz erstellen</a></div></div>
+		<div class="row"><div class="large-12 columns" id="actionlink" align="center"><a href="#fndtn-schwarzesBrett" class=" button expand" onclick="ShowAnswerForm(0)" style="font-weight: bold">Notiz erstellen</a></div></div>
 	
 	</body>
 </html>
