@@ -369,7 +369,7 @@
 									-->
 									
 									<div onclick="
-									if(window.navigator.standalone===false) {
+									if(window.navigator.standalone===false && navigator.userAgent.toLowerCase().indexOf('fossgis')==-1 ) {
 										parent.location='../backend/iCalExport.php?standalone=0';}
 									else {
 										parent.location='../backend/iCalExport.php?standalone=1';
