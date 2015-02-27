@@ -28,10 +28,12 @@
 				header("Content-Disposition: attachment; filename=$Filename");	
 			}
 		}else if($Android){
-			//browser reported as an Android device
-			$Filename = "FossGISKalender.vcs";
-			header("Content-Type: text/x-vCalendar");
-			header("Content-Disposition: attachment; filename=$Filename");
+			if($standalone=="0") {
+				//browser reported as an Android device
+				$Filename = "FossGISKalender.vcs";
+				header("Content-Type: text/x-vCalendar");
+				header("Content-Disposition: attachment; filename=$Filename");
+			}
 		}else{
 			//browser reported as an anything else
 			$Filename = "FossGISKalender.ics";
@@ -146,11 +148,20 @@
 		$output.= "END:VCALENDAR";
 		
 		// Extra output to file for iPod/iPhone work around
-		if(($iPod || $iPhone || $iPad) &&  $standalone=="1" ){
-			$content='<?php
+		if(($iPod || $iPhone || $iPad || $Android) &&  $standalone=="1" ){
+			// Generate design specific 
+			$content="";
+			if($Android) {
+				$content='<?php
+					header("Content-Type: text/x-vCalendar");
+					header("Content-Disposition: attachment; filename=FossGISKalender.vcs");
+					?>';	
+				
+			} else {
+				$content='<?php
 					header("Content-Type: text/Calendar");
 					header("Content-Disposition: attachment; filename=FossGISKalender.ics");?>';
-			
+			}
 			$content.=$output;
 			
 			// Generate unique hash
