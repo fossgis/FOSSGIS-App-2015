@@ -4342,13 +4342,13 @@ dialog {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 998; }
+  z-index: 1010; }
   .clearing-blackout .clearing-close {
     display: block; }
 
 .clearing-container {
   position: relative;
-  z-index: 998;
+  z-index: 1010;
   height: 100%;
   overflow: hidden;
   margin: 0; }
@@ -4364,10 +4364,11 @@ dialog {
   height: 95%;
   position: relative; }
   .visible-img img {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -50%;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
     max-height: 100%;
     max-width: 100%; }
 
@@ -4385,7 +4386,7 @@ dialog {
   left: 0; }
 
 .clearing-close {
-  z-index: 999;
+  z-index: 1011;
   padding-left: 20px;
   padding-top: 10px;
   font-size: 30px;
@@ -4448,7 +4449,7 @@ dialog {
     text-align: center; }
     .clearing-assembled .clearing-container .carousel > ul {
       display: inline-block;
-      z-index: 999;
+      z-index: 1011;
       height: 100%;
       position: relative;
       float: none; }

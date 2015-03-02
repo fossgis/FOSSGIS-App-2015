@@ -161,7 +161,7 @@
         <li class="tab-title active">
         	<a href="#news">Aktuelles</a>
         </li>
-       	<li class="tab-title" >
+       	<li class="tab-title" id="programmTab">
         	<a href="#veranstaltungen">Programm</a>
         </li>
         <li class="tab-title" id="navigationTab">
@@ -283,6 +283,7 @@
 
 									</div>
 							  </div>
+							  <p>Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
 							</div>
 						</dd>
 		   			<dd class="accordion-navigation" id="eventsThursday">
@@ -320,6 +321,7 @@
 
 									</div>
 			  				</div>
+			  				<p>Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
 							</div>
 		  			</dd>
 						<dd class="accordion-navigation" id="eventsFriday">
@@ -357,6 +359,7 @@
 
 									</div>
 			  				</div>
+			  				<p>Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
 							</div>
 			 			</dd>
 			 		</dl>
@@ -395,10 +398,17 @@
 								<div id="myevent">
 
 								</div>
+								<p>Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
 							</div>
 						</dd>
 					</dl>
  				</div>
+ 				<script>
+ 					function showRooms () {
+		  			$("#navigationTabA").click();
+		  			$("#roomsAccordionA").click();		  			
+		  		}
+ 				</script>
  				<!--synchronisiertes Einladen, funktioniert, aber wie sinnvoll ist es?-->
 				<script>
 					function tabActive1 () {
@@ -813,6 +823,22 @@
                 	Alle Mitglieder des FOSSGIS-Vereins, Freunde und Interessierte sind herzlich eingeladen.
                 </p>
               </div>
+            </dd>
+            <dd class="accordion-navigation" id="roomsAccordion">
+            	<a href="#panel4N" id="roomsAccordionA">Raumpl&auml;ne</a>
+            	<div id="panel4N" class="content">
+            		<h5>Tagungsräume im Schloss</h5>
+            		<ul class="clearing-thmubs small-block-grid-1" data-clearing>
+            			<li><a href="img/Schloss-klein.jpg"><img data-caption="Tagungsr&auml;ume im Schloss" src="img/Schloss-klein.jpg"></a></li>
+            		</ul>
+            		<h5>Computer-Pools im GEO1 (Workshops)</h5>
+            		<br/>
+            		<ul class="clearing-thumbs small-block-grid-1 medium-block-grid-3" data-clearing>
+            			<li><a href="img/125Karte.jpg"><img data-caption="CIP-Pool 125" src="img/125Karte.jpg"></a></li>
+            			<li><a href="img/126Karte.jpg"><img data-caption="CIP-Pool 126" src="img/126Karte.jpg"></a></li>
+            			<li><a href="img/130Karte.jpg"><img data-caption="CIP-Pool 130" src="img/130Karte.jpg"></a></li>
+            		</ul>            		
+            	</div>
             </dd>
           </dl>
         </div>
