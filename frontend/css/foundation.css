@@ -4364,11 +4364,11 @@ dialog {
   height: 95%;
   position: relative; }
   .visible-img img {
-    position: relative;
+    position: inherit;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5%;
+    margin-top: 2%;
     max-height: 100%;
     max-width: 100%; }
 

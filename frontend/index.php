@@ -831,7 +831,7 @@
             	<a href="#panel4N" id="roomsAccordionA">Raumpl&auml;ne</a>
             	<div id="panel4N" class="content">
             		<h5>Tagungsräume im Schloss</h5>
-            		<ul class="clearing-thmubs small-block-grid-1" data-clearing>
+            		<ul class="clearing-thumbs small-block-grid-1" data-clearing>
             			<li><a href="img/Schloss-klein.jpg"><img data-caption="Tagungsr&auml;ume im Schloss" src="img/Schloss-klein.jpg"></a></li>
             		</ul>
             		<h5>Computer-Pools im GEO1 (1.OG - Workshops)</h5>
