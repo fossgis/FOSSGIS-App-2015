@@ -4350,7 +4350,7 @@ dialog {
   position: relative;
   z-index: 1010;
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
   margin: 0; }
 
 .clearing-touch-label {
@@ -4458,7 +4458,7 @@ dialog {
         width: 120px;
         min-height: inherit;
         float: left;
-        overflow: hidden;
+        overflow: auto;
         margin-right: 0;
         padding: 0;
         position: relative;
@@ -4481,7 +4481,7 @@ dialog {
           opacity: 0.8; }
   .clearing-assembled .clearing-container .visible-img {
     background: #333333;
-    overflow: hidden;
+    overflow: auto;
     height: 85%; }
 
   .clearing-close {
