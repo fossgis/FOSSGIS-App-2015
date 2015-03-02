@@ -869,7 +869,7 @@
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
               '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
               'Imagery &copy; <a href="http://mapbox.com">Mapbox</a>'
-          });
+          }).addTo(map);
 
           var mapBox = L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
             zIndex: 1,
@@ -878,7 +878,7 @@
               '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
               'Imagery &copy; <a href="http://mapbox.com">Mapbox</a>',
             id: 'examples.map-i875mjb7'
-          }).addTo(map);
+          });
 
           var aerial = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png', {
             zIndex: 1,
@@ -1215,8 +1215,8 @@
 
           // crate a baseLayer-variable in which all the basemap-tile-layers are stored
           var baseLayers = {
-            //"FOSSGIS MapBox": mapboxTiles,
-            "OSM MapBox": mapBox,
+            "FOSSGIS MapBox": mapboxTiles,
+            //"OSM MapBox": mapBox,
             "ESRI Aerial": aerial,
             "OSM Standard": OSM
           };
