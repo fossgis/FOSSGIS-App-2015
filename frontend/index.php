@@ -386,7 +386,7 @@
 										<a href='#' class='button openmodal' style='width: 100%; padding: 0.001rem 0rem' data-reveal-id='openlayers3'>weitere Informationen</a>
 									</div>
 								</div>
-								<div id='openlayers3' class='reveal-modal' data-reveal>
+								<div id='openlayers3' class='reveal-modal' data-reveal style="max-height: 95%; overflow: scroll">
 									<h2>OpenLayers 3</h2>
 									<p class='lead'>Raum: S10</p>
 									<p>Dauer: 00:30:00</p>
