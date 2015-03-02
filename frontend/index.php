@@ -218,9 +218,9 @@
 							<input type="button" class="button tiny expand" id="eventsearch" value="Suchen">
 				  			<style>
 									#eventsearch{
-									  padding-top: 0.52rem;
+									  padding-top: 0.54rem;
 									  padding-right: 2rem;
-									  padding-bottom: 0.52rem;
+									  padding-bottom: 0.54rem;
 									  padding-left: 2rem;
 									  font-size: 1rem;
 									  font-weight: bold;
@@ -398,6 +398,7 @@
 								<div id="myevent">
 
 								</div>
+								<br/>
 								<p class="text-justify">Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
 							</div>
 						</dd>
