@@ -1,6 +1,6 @@
 CACHE MANIFEST
 
-#v4.0 vom 02.03.2015
+#v5.0 vom 02.03.2015
 
 CACHE:
 img/favicon.png
@@ -26,6 +26,9 @@ css/leaflet.awesome-markers.css
 js/vendor/locate/dist/L.Control.Locate.css
 css/main.css
 css/sticky_note.gif
+js/vendor/jquery.js
+js/foundation.min.js
+js/menu.js
 
 NETWORK:
 *
