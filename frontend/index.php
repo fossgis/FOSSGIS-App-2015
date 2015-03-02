@@ -406,6 +406,8 @@
  				<script>
  					function showRooms () {
 		  			$("#navigationTabA").click();
+		  			$("#roomsAccordion").removeClass( "active" );
+		  			$("#panel4N").removeClass( "content active" ).addClass( "content" );
 		  			$("#roomsAccordionA").click();		  			
 		  		}
  				</script>
@@ -831,7 +833,7 @@
             		<ul class="clearing-thmubs small-block-grid-1" data-clearing>
             			<li><a href="img/Schloss-klein.jpg"><img data-caption="Tagungsr&auml;ume im Schloss" src="img/Schloss-klein.jpg"></a></li>
             		</ul>
-            		<h5>Computer-Pools im GEO1 (Workshops)</h5>
+            		<h5>Computer-Pools im GEO1 (1.OG - Workshops)</h5>
             		<br/>
             		<ul class="clearing-thumbs small-block-grid-1 medium-block-grid-3" data-clearing>
             			<li><a href="img/125Karte.jpg"><img data-caption="CIP-Pool 125" src="img/125Karte.jpg"></a></li>

@@ -1,6 +1,6 @@
 CACHE MANIFEST
 
-#v3.0 vom 24.02.2015
+#v4.0 vom 02.03.2015
 
 CACHE:
 img/favicon.png
@@ -10,6 +10,10 @@ img/apple-icon-114x114.png
 img/apple-icon-144x144.png
 img/header.png
 img/header-back.png
+img/125Karte.jpg
+img/126Karte.jpg
+img/130Karte.jpg
+img/Schloss-klein.jpg
 temporary_manifest_hack.html
 FAQ.html
 Impressum.html

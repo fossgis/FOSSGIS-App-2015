@@ -1,5 +1,5 @@
 <!doctype html>
-<html manifest="fossgis.manifest">
+<html>
 
 <head>
 
@@ -43,7 +43,7 @@
 	<link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.png" />
 	<link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.png" />
 	<link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.png" />
-	
+
 	<link rel="stylesheet" href="css/foundation.css">
 	<link rel="stylesheet" href="css/normalize.css">
 	<script src="js/vendor/modernizr.js"></script>
@@ -57,31 +57,795 @@
 	<script src="js/vendor/locate/dist/L.Control.Locate.min.js" ></script>
 	<script src="js/vendor/jquery.js"></script>
 
+	<style type="text/css">
+		iframe[id^='twitter-widget-0']{ width:100% !important;}
+	</style>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/main.css" />
 	<link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
 
 </head>
 
-<body>
+<body onLoad="checkDate()">
 
 	<!-- header -->
+
+	<div id="iOSModal" class="reveal-modal" data-reveal>
+  	<p><strong>Willkommen zur Web-App der FOSSGIS 2015</strong></p>
+  	<p class="text-justify">F&uuml;r ein optimales Nutzererlebnis auf iOS-Geräten empfehlen wir, die Web-Application zu Ihrem Homescreen hinzuzufügen.<br/>Klicken sie dafür einfach auf <nobr>"<img src="img/iOS-ActionButton.png"  width="17" height="18">"</nobr>, anschließend auf <nobr>"<img src="img/iOS-AddToHomescreen.png"  width="20" height="20">"</nobr> und bestätigen Sie dann, indem Sie auf "Hinzufügen" klicken.<br/>Anschließen starten Sie die App einfach über das FOSSGIS Icon.</p>
+  	<input id="hideModal" type="checkbox"><label for="hideModal">Hinweis nicht mehr anzeigen!</label>
+  	<a class="close-reveal-modal">&#215;</a>
+	</div>
+
+	<iframe id='manifest_iframe_hack' style='display: none;' src='temporary_manifest_hack.html'></iframe>
 
   <div class="row">
 		<a href=""><img src="img/header.png" height="100%" alt="SchlossMuenster"></a>
 	</div>
 
+	<script>
+		var iOS = false;
+		var iOSModal = $( "#iOSModal" );
+    p = navigator.platform;
+
+    // functions for cookies
+    function setCookie() {
+      if(document.getElementById("hideModal").checked == true){
+        document.cookie = "help=off";
+      } else {
+        document.cookie = "help=on";
+      }
+    }
+
+    function getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
+      }
+      return "";
+    }
+
+    function showiOSModal() {
+      var c = getCookie("help");
+      if(c=="" || c=="on"){
+        $(window).load(function(){
+        	$('#hideModal').removeAttr('checked');
+       		$('#iOSModal').foundation('reveal', 'open');
+     		});
+    	} else {
+    	}
+    }
+
+    $('#iOSModal').bind('closed', function() {
+    	setCookie();
+    });
+
+		// conditions for loading the modal
+		if( p === 'iPad' || p === 'iPhone' || p === 'iPod' ){
+    	iOS = true;
+		}
+
+		if (iOS == true) {
+			//document.getElementById("iOSPanel").style.display = "block";
+			if (window.navigator.standalone === false) {
+				showiOSModal();
+			} else {
+			}
+		}
+
+		/*
+		function readDeviceOrientation() {
+			if (Math.abs(window.orientation) === 90) {
+        // Landscape
+        document.getElementById("iOSPanel").style.display = "none";
+      } else {
+      	// Portrait
+      	document.getElementById("iOSPanel").style.display = "block";
+    	}
+		}
+
+		window.onorientationchange = readDeviceOrientation;
+		*/
+	</script>
+
 	<!-- page body -->
 
-	<div class="row">
+  <div class="row">
 		<div class="large-12 columns">
-			<br/>
-			<br/>
-			<br/>
-			<h2 class="text-center">Sie benötigen eine Internetverbindung um die Web-App der FOSSGIS 2015 in vollem Umfang nutzen zu können</h2>
-			<br/>
-			<br/>
-			<br/>
+  		<br/>
+			<ul class="tabs" data-tab data-options="deep_linking: true; scroll_to_content: false">
+        <li class="tab-title active">
+        	<a href="#news">Aktuelles</a>
+        </li>
+       	<li class="tab-title" id="programmTab">
+        	<a href="#veranstaltungen">Programm</a>
+        </li>
+        <li class="tab-title" id="navigationTab">
+        	<a href="#navigation" id="navigationTabA">Navigation</a>
+       	</li>
+				<li class="tab-title" id="boardTab">
+					<a href="#schwarzesBrett">Schwarzes Brett</a>
+				</li>
+    	</ul>
+
+      <div class="tabs-content">
+        <div class="content active" id="news">
+        	<div>
+						<br/>
+						<br/>
+						<h2 class="text-center">Sie benötigen eine Internetverbindung um die Web-App der FOSSGIS 2015 in vollem Umfang nutzen zu können</h2>
+						<br/>
+						<br/>
+						<br/>
+        		<p class="text-justify">
+        			Achtung! Das FOSSGIS-Team sucht noch viele freiwillige Helfer. Nähere Informationen gibt es <a href="http://www.fossgis.de/konferenz/2015/anmeldung/" target="_blank">hier</a> oder direkt in unserem <a href="http://helfer.fossgis.de/" target="_blank">Engelsystem</a>.
+        		</p>
+						<p class="text-justify">
+							Die FOSSGIS-Konferenz ist im D-A-CH-Raum die führende Konferenz für Freie und Open Source Software für Geoinformationssysteme sowie für die Themen Open Data und OpenStreetMap.
+						</p>
+						<p class="text-justify">
+							Die FOSSGIS-Konferenz 2015 wird vom gemeinnützigen Verein <a href="http://www.fossgis.de/" target="_blank">FOSSGIS e.V</a>, der <a href="http://www.openstreetmap.de/" target="_blank">OpenStreetMap Community</a> und der <a href="http://www.osgeo.org/" target="_blank">Open Source Geospatial Foundation (OSGeo)</a> in Zusammenarbeit mit dem <a href="http://www.uni-muenster.de/Geoinformatics/" target="_blank">Institut für Geoinformatik</a> und der <a href="http://www.uni-muenster.de/de/" target="_blank">Universität Münster </a> organisiert.
+						</p>
+						<p class="text-justify">
+							Die Konferenz wird vorwiegend durch ehrenamtliches Engagement getragen, wobei neben den Teilnehmergebühren, die Spenden- und vor allem die Sponsoren- und Ausstellerstandeinnahmen eine wichtige finanzielle Einnahmequelle darstellen, um die Kosten für die Konferenz zu decken und darüber hinaus Open Source Projekte zu fördern. <a href="http://www.fossgis.de/konferenz/2015/" target="_blank">Hier</a> geht's zur offiziellen Webpräsenz der FOSSGIS Konferenz 2015.
+						</p>
+		  		</div>
+        </div>
+
+				<div class="content" id="veranstaltungen">
+					<br/>
+					<br/>
+					<h2 class="text-center">Sie benötigen eine Internetverbindung um die Web-App der FOSSGIS 2015 in vollem Umfang nutzen zu können</h2>
+					<br/>
+					<br/>
+					<br/>
+
+		  		<dl class="accordion" data-accordion>
+						<dd class="accordion-navigation" id="eventsWednesday" style="margin-top:5px">
+							<a href="#panel1">Mittwoch</a>
+							<div id="panel1" class="content">
+							 	<dl class="tabs" data-tab id="tabsWednesday">
+									<dd id="panel1-1tab" onClick="tabActive1()"><a href="#panel1-1" style="padding-bottom: 0.52rem; padding-top: 0.52rem">Aula</a></dd>
+									<dd id="panel1-2tab" onClick="tabActive2()"><a href="#panel1-2" style="padding-bottom: 0.52rem; padding-top: 0.52rem">S10</a></dd>
+									<dd id="panel1-3tab" onClick="tabActive3()"><a href="#panel1-3" style="padding-bottom: 0.52rem; padding-top: 0.52rem">S1</a></dd>
+									<dd id="panel1-4tab" onClick="tabActive4()"><a href="#panel1-4" style="padding-bottom: 0.52rem; padding-top: 0.52rem">S2</a></dd>
+									<dd id="panel1-5tab" onClick="tabActive5()"><a href="#panel1-5" style="padding-bottom: 0.52rem; padding-top: 0.52rem">StudLab 1</a></dd>
+									<dd id="panel1-6tab" onClick="tabActive6()"><a href="#panel1-6" style="padding-bottom: 0.52rem; padding-top: 0.52rem">StudLab 2</a></dd>
+									<dd id="panel1-7tab" onClick="tabActive7()"><a href="#panel1-7" style="padding-bottom: 0.52rem; padding-top: 0.52rem">StudLab 3</a></dd>
+								</dl>
+							  <div class="tabs-content">
+									<div class="content" id="panel1-1">
+										<!-- for design testing -->
+									 	<!--<div class='row'>
+									 		<div class='small-12 medium-6 large-8 columns'>
+									 			<p>14:00:00 : Softwarewartung für OpenSource. Ein Widerspruch?</p>
+									 		</div>
+									 		<div class='small-12 medium-6 large-4 columns'>
+									 			<form>
+
+									 					<input type='hidden' id='title' name='title' value="">
+									 					<a href='' class='button' style='width: 64%; padding: 0.001rem 0rem'>weitere Informationen</a>
+									 					<input type='submit' id='filter' class='button' style='width: 34%; padding: 0.001rem 0rem' value='Vormerken'>
+
+									 			</form>
+									 		</div>
+										</div>-->
+									</div>
+									<div class="content" id="panel1-2">
+
+									</div>
+									<div class="content" id="panel1-3">
+
+									</div>
+									<div class="content" id="panel1-4">
+
+									</div>
+									<div class="content" id="panel1-5">
+
+									</div>
+									<div class="content" id="panel1-6">
+
+									</div>
+									<div class="content" id="panel1-7">
+
+									</div>
+							  </div>
+							  <p>Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
+							</div>
+						</dd>
+		   			<dd class="accordion-navigation" id="eventsThursday">
+							<a href="#panel2">Donnerstag</a>
+							<div id="panel2" class="content">
+								<dl class="tabs" data-tab id="tabsThursday">
+									<dd id="panel2-1tab" onClick="tabActive1()"><a href="#panel2-1" style="padding-bottom: 0.52rem; padding-top: 0.52rem">Aula</a></dd>
+									<dd id="panel2-2tab" onClick="tabActive2()"><a href="#panel2-2" style="padding-bottom: 0.52rem; padding-top: 0.52rem">S10</a></dd>
+									<dd id="panel2-3tab" onClick="tabActive3()"><a href="#panel2-3" style="padding-bottom: 0.52rem; padding-top: 0.52rem">S1</a></dd>
+									<dd id="panel2-4tab" onClick="tabActive4()"><a href="#panel2-4" style="padding-bottom: 0.52rem; padding-top: 0.52rem">S2</a></dd>
+									<dd id="panel2-5tab" onClick="tabActive5()"><a href="#panel2-5" style="padding-bottom: 0.52rem; padding-top: 0.52rem">StudLab 1</a></dd>
+									<dd id="panel2-6tab" onClick="tabActive6()"><a href="#panel2-6" style="padding-bottom: 0.52rem; padding-top: 0.52rem">StudLab 2</a></dd>
+									<dd id="panel2-7tab" onClick="tabActive7()"><a href="#panel2-7" style="padding-bottom: 0.52rem; padding-top: 0.52rem">StudLab 3</a></dd>
+								</dl>
+			  				<div class="tabs-content">
+									<div class="content" id="panel2-1">
+
+									</div>
+									<div class="content" id="panel2-2">
+
+									</div>
+									<div class="content" id="panel2-3">
+
+									</div>
+									<div class="content" id="panel2-4">
+
+									</div>
+									<div class="content" id="panel2-5">
+
+									</div>
+									<div class="content" id="panel2-6">
+
+									</div>
+									<div class="content" id="panel2-7">
+
+									</div>
+			  				</div>
+			  				<p>Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
+							</div>
+		  			</dd>
+						<dd class="accordion-navigation" id="eventsFriday">
+							<a href="#panel3">Freitag</a>
+							<div id="panel3" class="content">
+								<dl class="tabs" data-tab id="tabsFriday">
+									<dd id="panel3-1tab" onClick="tabActive1()"><a href="#panel3-1" style="padding-bottom: 0.52rem; padding-top: 0.52rem">Aula</a></dd>
+									<dd id="panel3-2tab" onClick="tabActive2()"><a href="#panel3-2" style="padding-bottom: 0.52rem; padding-top: 0.52rem">S10</a></dd>
+									<dd id="panel3-3tab" onClick="tabActive3()"><a href="#panel3-3" style="padding-bottom: 0.52rem; padding-top: 0.52rem">S1</a></dd>
+									<dd id="panel3-4tab" onClick="tabActive4()"><a href="#panel3-4" style="padding-bottom: 0.52rem; padding-top: 0.52rem">S2</a></dd>
+									<dd id="panel3-5tab" onClick="tabActive5()"><a href="#panel3-5" style="padding-bottom: 0.52rem; padding-top: 0.52rem">StudLab 1</a></dd>
+									<dd id="panel3-6tab" onClick="tabActive6()"><a href="#panel3-6" style="padding-bottom: 0.52rem; padding-top: 0.52rem">StudLab 2</a></dd>
+									<dd id="panel3-7tab" onClick="tabActive7()"><a href="#panel3-7" style="padding-bottom: 0.52rem; padding-top: 0.52rem">StudLab 3</a></dd>
+								</dl>
+			 					<div class="tabs-content">
+									<div class="content" id="panel3-1">
+
+									</div>
+									<div class="content" id="panel3-2">
+
+									</div>
+									<div class="content" id="panel3-3">
+
+									</div>
+									<div class="content" id="panel3-4">
+
+									</div>
+									<div class="content" id="panel3-5">
+
+									</div>
+									<div class="content" id="panel3-6">
+
+									</div>
+									<div class="content" id="panel3-7">
+
+									</div>
+			  				</div>
+			  				<p>Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
+							</div>
+			 			</dd>
+			 		</dl>
+					<dl class="accordion1" data-accordion>
+						<dd id="myevents" class="accordion-navigation" style="margin-top:22px">
+							<a href="#panel4">Meine Veranstaltungen</a>
+							<div id="panel4" class="content">
+								<div>
+									<!--<a href="../backend/iCalExport.php" class="button expand" style="font-weight: bold" type="submit">Kalenderexport</a>
+									-->
+									
+									<div onclick="
+									if(window.navigator.standalone===false) {
+										parent.location='../backend/iCalExport.php?standalone=0';}
+									else {
+										parent.location='../backend/iCalExport.php?standalone=1';
+									}" class="button expand" style="font-weight: bold" type="submit">Kalenderexport</div>
+								</div>
+								<!--div class='row'>
+									<div class='small-12 medium-8 large-9 columns'>
+										<p>2015-03-12 09:00:00 : OpenLayers 3</p>
+									</div>
+									<div class='small-12 medium-4 large-3 columns'>
+										<a href='#' class='button openmodal' style='width: 100%; padding: 0.001rem 0rem' data-reveal-id='openlayers3'>weitere Informationen</a>
+									</div>
+								</div>
+								<div id='openlayers3' class='reveal-modal' data-reveal>
+									<h2>OpenLayers 3</h2>
+									<p class='lead'>Raum: S10</p>
+									<p>Dauer: 00:30:00</p>
+									<p class='text-justify'>OpenLayers 3 (der Nachfolger des weitverbreiteten OpenLayers 2) liegt nach längerer Entwicklungszeit seit Ende August 2014 in der Version 3.0.0 vor und bringt als hoch performante und vielfältige JavaScript Bibliothek alles mit, was man für moderne Kartenanwendungen im Web benötigt. Der Vortrag wird OpenLayers 3 vorstellen und zahlreiche Beispiele der Verwendung zeigen. Auf Unterschiede zur Vorgängerversion wird eingegangen werden, und wir werden zeigen, wo und warum OpenLayers 3 anders ist. Wir werden aktuelle Entwicklungen - wie etwa das OL3-Cesium Project, welches die dritte Dimension für OpenLayers zuänglich macht - präsentieren und auch einen Blick in die zukünftige Entwicklung wagen.</p>
+									<input type='button' class='button expand' value='Vortrag bewerten' style='font-weight: bold' onClick='toggle_visibility()''>
+									<iframe id='rateFrame' width='100%' height='250px' frameborder='0' src='http://pb.fossgis.de/feedback/FOSSGIS2014/event/741.de.html' style='overflow: auto; display: none'></iframe>
+									<a class='close-reveal-modal'>&#215;</a>
+								</div-->
+								<div id="myevent">
+
+								</div>
+								<p>Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
+							</div>
+						</dd>
+					</dl>
+ 				</div>
+ 				<script>
+ 					function showRooms () {
+		  			$("#navigationTabA").click();
+		  			$("#roomsAccordion").removeClass( "active" );
+		  			$("#panel4N").removeClass( "content active" ).addClass( "content" );
+		  			$("#roomsAccordionA").click();		  			
+		  		}
+ 				</script>
+ 				<!--synchronisiertes Einladen, funktioniert, aber wie sinnvoll ist es?-->
+				<script>
+					function tabActive1 () {
+						$("#panel1-1").removeClass("content").addClass("content active");
+						$("#panel1-1tab").addClass("active");
+						$("#panel2-1").removeClass("content").addClass("content active");
+						$("#panel2-1tab").addClass("active");
+						$("#panel3-1").removeClass("content").addClass("content active");
+						$("#panel3-1tab").addClass("active");
+						$("#panel1-2tab").removeClass("active");
+						$("#panel1-3tab").removeClass("active");
+						$("#panel1-4tab").removeClass("active");
+						$("#panel1-5tab").removeClass("active");
+						$("#panel1-6tab").removeClass("active");
+						$("#panel1-7tab").removeClass("active");
+						$("#panel2-2tab").removeClass("active");
+						$("#panel2-3tab").removeClass("active");
+						$("#panel2-4tab").removeClass("active");
+						$("#panel2-5tab").removeClass("active");
+						$("#panel2-6tab").removeClass("active");
+						$("#panel2-7tab").removeClass("active");
+						$("#panel3-2tab").removeClass("active");
+						$("#panel3-3tab").removeClass("active");
+						$("#panel3-4tab").removeClass("active");
+						$("#panel3-5tab").removeClass("active");
+						$("#panel3-6tab").removeClass("active");
+						$("#panel3-7tab").removeClass("active");
+						$("#panel1-2").removeClass("active");
+						$("#panel1-3").removeClass("active");
+						$("#panel1-4").removeClass("active");
+						$("#panel1-5").removeClass("active");
+						$("#panel1-6").removeClass("active");
+						$("#panel1-7").removeClass("active");
+						$("#panel2-2").removeClass("active");
+						$("#panel2-3").removeClass("active");
+						$("#panel2-4").removeClass("active");
+						$("#panel2-5").removeClass("active");
+						$("#panel2-6").removeClass("active");
+						$("#panel2-7").removeClass("active");
+						$("#panel3-2").removeClass("active");
+						$("#panel3-3").removeClass("active");
+						$("#panel3-4").removeClass("active");
+						$("#panel3-5").removeClass("active");
+						$("#panel3-6").removeClass("active");
+						$("#panel3-7").removeClass("active");
+					}
+				</script>
+				<script>
+					function tabActive2 () {
+						$("#panel1-2").removeClass("content").addClass("content active");
+						$("#panel1-2tab").addClass("active");
+						$("#panel2-2").removeClass("content").addClass("content active");
+						$("#panel2-2tab").addClass("active");
+						$("#panel3-2").removeClass("content").addClass("content active");
+						$("#panel3-2tab").addClass("active");
+						$("#panel1-1tab").removeClass("active");
+						$("#panel1-3tab").removeClass("active");
+						$("#panel1-4tab").removeClass("active");
+						$("#panel1-5tab").removeClass("active");
+						$("#panel1-6tab").removeClass("active");
+						$("#panel1-7tab").removeClass("active");
+						$("#panel2-1tab").removeClass("active");
+						$("#panel2-3tab").removeClass("active");
+						$("#panel2-4tab").removeClass("active");
+						$("#panel2-5tab").removeClass("active");
+						$("#panel2-6tab").removeClass("active");
+						$("#panel2-7tab").removeClass("active");
+						$("#panel3-1tab").removeClass("active");
+						$("#panel3-3tab").removeClass("active");
+						$("#panel3-4tab").removeClass("active");
+						$("#panel3-5tab").removeClass("active");
+						$("#panel3-6tab").removeClass("active");
+						$("#panel3-7tab").removeClass("active");
+						$("#panel1-1").removeClass("active");
+						$("#panel1-3").removeClass("active");
+						$("#panel1-4").removeClass("active");
+						$("#panel1-5").removeClass("active");
+						$("#panel1-6").removeClass("active");
+						$("#panel1-7").removeClass("active");
+						$("#panel2-1").removeClass("active");
+						$("#panel2-3").removeClass("active");
+						$("#panel2-4").removeClass("active");
+						$("#panel2-5").removeClass("active");
+						$("#panel2-6").removeClass("active");
+						$("#panel2-7").removeClass("active");
+						$("#panel3-1").removeClass("active");
+						$("#panel3-3").removeClass("active");
+						$("#panel3-4").removeClass("active");
+						$("#panel3-5").removeClass("active");
+						$("#panel3-6").removeClass("active");
+						$("#panel3-7").removeClass("active");
+					}
+				</script>
+				<script>
+					function tabActive3 () {
+						$("#panel1-3").removeClass("content").addClass("content active");
+						$("#panel1-3tab").addClass("active");
+						$("#panel2-3").removeClass("content").addClass("content active");
+						$("#panel2-3tab").addClass("active");
+						$("#panel3-3").removeClass("content").addClass("content active");
+						$("#panel3-3tab").addClass("active");
+						$("#panel1-1tab").removeClass("active");
+						$("#panel1-2tab").removeClass("active");
+						$("#panel1-4tab").removeClass("active");
+						$("#panel1-5tab").removeClass("active");
+						$("#panel1-6tab").removeClass("active");
+						$("#panel1-7tab").removeClass("active");
+						$("#panel2-1tab").removeClass("active");
+						$("#panel2-2tab").removeClass("active");
+						$("#panel2-4tab").removeClass("active");
+						$("#panel2-5tab").removeClass("active");
+						$("#panel2-6tab").removeClass("active");
+						$("#panel2-7tab").removeClass("active");
+						$("#panel3-1tab").removeClass("active");
+						$("#panel3-2tab").removeClass("active");
+						$("#panel3-4tab").removeClass("active");
+						$("#panel3-5tab").removeClass("active");
+						$("#panel3-6tab").removeClass("active");
+						$("#panel3-7tab").removeClass("active");
+						$("#panel1-1").removeClass("active");
+						$("#panel1-2").removeClass("active");
+						$("#panel1-4").removeClass("active");
+						$("#panel1-5").removeClass("active");
+						$("#panel1-6").removeClass("active");
+						$("#panel1-7").removeClass("active");
+						$("#panel2-1").removeClass("active");
+						$("#panel2-2").removeClass("active");
+						$("#panel2-4").removeClass("active");
+						$("#panel2-5").removeClass("active");
+						$("#panel2-6").removeClass("active");
+						$("#panel2-7").removeClass("active");
+						$("#panel3-1").removeClass("active");
+						$("#panel3-2").removeClass("active");
+						$("#panel3-4").removeClass("active");
+						$("#panel3-5").removeClass("active");
+						$("#panel3-6").removeClass("active");
+						$("#panel3-7").removeClass("active");
+
+					}
+				</script>
+				<script>
+					function tabActive4 () {
+						$("#panel1-4").removeClass("content").addClass("content active");
+						$("#panel1-4tab").addClass("active");
+						$("#panel2-4").removeClass("content").addClass("content active")
+						$("#panel2-4tab").addClass("active");
+						$("#panel3-4").removeClass("content").addClass("content active");
+						$("#panel3-4tab").addClass("active");
+						$("#panel1-1tab").removeClass("active");
+						$("#panel1-2tab").removeClass("active");
+						$("#panel1-3tab").removeClass("active");
+						$("#panel1-5tab").removeClass("active");
+						$("#panel1-6tab").removeClass("active");
+						$("#panel1-7tab").removeClass("active");
+						$("#panel2-1tab").removeClass("active");
+						$("#panel2-2tab").removeClass("active");
+						$("#panel2-3tab").removeClass("active");
+						$("#panel2-5tab").removeClass("active");
+						$("#panel2-6tab").removeClass("active");
+						$("#panel2-7tab").removeClass("active");
+						$("#panel3-1tab").removeClass("active");
+						$("#panel3-2tab").removeClass("active");
+						$("#panel3-3tab").removeClass("active");
+						$("#panel3-5tab").removeClass("active");
+						$("#panel3-6tab").removeClass("active");
+						$("#panel3-7tab").removeClass("active");
+						$("#panel1-1").removeClass("active");
+						$("#panel1-2").removeClass("active");
+						$("#panel1-3").removeClass("active");
+						$("#panel1-5").removeClass("active");
+						$("#panel1-6").removeClass("active");
+						$("#panel1-7").removeClass("active");
+						$("#panel2-1").removeClass("active");
+						$("#panel2-2").removeClass("active");
+						$("#panel2-3").removeClass("active");
+						$("#panel2-5").removeClass("active");
+						$("#panel2-6").removeClass("active");
+						$("#panel2-7").removeClass("active");
+						$("#panel3-1").removeClass("active");
+						$("#panel3-2").removeClass("active");
+						$("#panel3-3").removeClass("active");
+						$("#panel3-5").removeClass("active");
+						$("#panel3-6").removeClass("active");
+						$("#panel3-7").removeClass("active");
+					}
+				</script>
+				<script>
+					function tabActive5 () {
+						$("#panel1-5").removeClass("content").addClass("content active");
+						$("#panel1-5tab").addClass("active");
+						$("#panel2-5").removeClass("content").addClass("content active");
+						$("#panel2-5tab").addClass("active");
+						$("#panel3-5").removeClass("content").addClass("content active");
+						$("#panel3-5tab").addClass("active");
+						$("#panel1-1tab").removeClass("active");
+						$("#panel1-2tab").removeClass("active");
+						$("#panel1-3tab").removeClass("active");
+						$("#panel1-4tab").removeClass("active");
+						$("#panel1-6tab").removeClass("active");
+						$("#panel1-7tab").removeClass("active");
+						$("#panel2-1tab").removeClass("active");
+						$("#panel2-2tab").removeClass("active");
+						$("#panel2-3tab").removeClass("active");
+						$("#panel2-4tab").removeClass("active");
+						$("#panel2-6tab").removeClass("active");
+						$("#panel2-7tab").removeClass("active");
+						$("#panel3-1tab").removeClass("active");
+						$("#panel3-2tab").removeClass("active");
+						$("#panel3-3tab").removeClass("active");
+						$("#panel3-4tab").removeClass("active");
+						$("#panel3-6tab").removeClass("active");
+						$("#panel3-7tab").removeClass("active");
+						$("#panel1-1").removeClass("active");
+						$("#panel1-2").removeClass("active");
+						$("#panel1-3").removeClass("active");
+						$("#panel1-4").removeClass("active");
+						$("#panel1-6").removeClass("active");
+						$("#panel1-7").removeClass("active");
+						$("#panel2-1").removeClass("active");
+						$("#panel2-2").removeClass("active");
+						$("#panel2-3").removeClass("active");
+						$("#panel2-4").removeClass("active");
+						$("#panel2-6").removeClass("active");
+						$("#panel2-7").removeClass("active");
+						$("#panel3-1").removeClass("active");
+						$("#panel3-2").removeClass("active");
+						$("#panel3-3").removeClass("active");
+						$("#panel3-4").removeClass("active");
+						$("#panel3-6").removeClass("active");
+						$("#panel3-7").removeClass("active");
+					}
+				</script>
+				<script>
+					function tabActive6 () {
+						$("#panel1-6").removeClass("content").addClass("content active");
+						$("#panel1-6tab").addClass("active");
+						$("#panel2-6").removeClass("content").addClass("content active");
+						$("#panel2-6tab").addClass("active");
+						$("#panel3-6").removeClass("content").addClass("content active");
+						$("#panel3-6tab").addClass("active");
+						$("#panel1-1tab").removeClass("active");
+						$("#panel1-2tab").removeClass("active");
+						$("#panel1-3tab").removeClass("active");
+						$("#panel1-4tab").removeClass("active");
+						$("#panel1-5tab").removeClass("active");
+						$("#panel1-7tab").removeClass("active");
+						$("#panel2-1tab").removeClass("active");
+						$("#panel2-2tab").removeClass("active");
+						$("#panel2-3tab").removeClass("active");
+						$("#panel2-4tab").removeClass("active");
+						$("#panel2-5tab").removeClass("active");
+						$("#panel2-7tab").removeClass("active");
+						$("#panel3-1tab").removeClass("active");
+						$("#panel3-2tab").removeClass("active");
+						$("#panel3-3tab").removeClass("active");
+						$("#panel3-4tab").removeClass("active");
+						$("#panel3-5tab").removeClass("active");
+						$("#panel3-7tab").removeClass("active");
+						$("#panel1-1").removeClass("active");
+						$("#panel1-2").removeClass("active");
+						$("#panel1-3").removeClass("active");
+						$("#panel1-4").removeClass("active");
+						$("#panel1-5").removeClass("active");
+						$("#panel1-7").removeClass("active");
+						$("#panel2-1").removeClass("active");
+						$("#panel2-2").removeClass("active");
+						$("#panel2-3").removeClass("active");
+						$("#panel2-4").removeClass("active");
+						$("#panel2-5").removeClass("active");
+						$("#panel2-7").removeClass("active");
+						$("#panel3-1").removeClass("active");
+						$("#panel3-2").removeClass("active");
+						$("#panel3-3").removeClass("active");
+						$("#panel3-4").removeClass("active");
+						$("#panel3-5").removeClass("active");
+						$("#panel3-7").removeClass("active");
+					}
+				</script>
+				<script>
+					function tabActive7 () {
+						$("#panel1-7").removeClass("content").addClass("content active");
+						$("#panel1-7tab").addClass("active");
+						$("#panel2-7").removeClass("content").addClass("content active");
+						$("#panel2-7tab").addClass("active");
+						$("#panel3-7").removeClass("content").addClass("content active");
+						$("#panel3-7tab").addClass("active");
+						$("#panel1-1tab").removeClass("active");
+						$("#panel1-2tab").removeClass("active");
+						$("#panel1-3tab").removeClass("active");
+						$("#panel1-4tab").removeClass("active");
+						$("#panel1-5tab").removeClass("active");
+						$("#panel1-6tab").removeClass("active");
+						$("#panel2-1tab").removeClass("active");
+						$("#panel2-2tab").removeClass("active");
+						$("#panel2-3tab").removeClass("active");
+						$("#panel2-4tab").removeClass("active");
+						$("#panel2-5tab").removeClass("active");
+						$("#panel2-6tab").removeClass("active");
+						$("#panel3-1tab").removeClass("active");
+						$("#panel3-2tab").removeClass("active");
+						$("#panel3-3tab").removeClass("active");
+						$("#panel3-4tab").removeClass("active");
+						$("#panel3-5tab").removeClass("active");
+						$("#panel3-6tab").removeClass("active");
+						$("#panel1-1").removeClass("active");
+						$("#panel1-2").removeClass("active");
+						$("#panel1-3").removeClass("active");
+						$("#panel1-4").removeClass("active");
+						$("#panel1-5").removeClass("active");
+						$("#panel1-6").removeClass("active");
+						$("#panel2-1").removeClass("active");
+						$("#panel2-2").removeClass("active");
+						$("#panel2-3").removeClass("active");
+						$("#panel2-4").removeClass("active");
+						$("#panel2-5").removeClass("active");
+						$("#panel2-6").removeClass("active");
+						$("#panel3-1").removeClass("active");
+						$("#panel3-2").removeClass("active");
+						$("#panel3-3").removeClass("active");
+						$("#panel3-4").removeClass("active");
+						$("#panel3-5").removeClass("active");
+						$("#panel3-6").removeClass("active");
+					}
+				</script>
+
+        <div class="content" id="navigation">
+					<br/>
+					<br/>
+					<h2 class="text-center">Sie benötigen eine Internetverbindung um die Web-App der FOSSGIS 2015 in vollem Umfang nutzen zu können</h2>
+					<br/>
+					<br/>
+					<br/>
+					<dl class="accordion" data-accordion data-options="scroll_to_content: true">
+		  			<dd class="accordion-navigation">
+							<a href="#panelN1">Anreise</a>
+							<div id="panelN1" class="content">
+                <h5>Anreise mit dem Auto</h5>
+                <p class="text-justify">
+                	Die Autobahn A 43 endet direkt im Süden Münsters und die Autobahn A 1 bietet die Anschlussstellen Münster Nord und Münster Süd. Allerdings sind die verfügbaren Parkplätze am alten Schloss in Münster zur Zeit der Konferenz sehr begrenzt. Es empfiehlt sich daher auf den Bus umzusteigen (Tickets werden voraussichtlich kostenlos für die Dauer der Konferenz zur Verfügung gestellt) oder sich unter die Münsteraner zu mischen und per Rad (Leeze) zum Schloss zu fahren.
+                </p>
+                <h5>Anreise mit öffentlichen Verkehrsmitteln</h5>
+                <p class="text-justify">
+                	Folgende Haltestellen liegen in der Nähe des Schlosses:
+                </p>
+                <ul class="list">
+                	<li>"Landgericht" mit den Buslinien 11, 12, 13 und 22.</li>
+                	<li>"Hüfferstiftung" mit den Buslinien 11, 12, 13, 22 und auch noch der Buslinie 14.</li>
+                	<li>"Neutor" mit den Buslinien 1 (bzw. "Schlossplatz"), 5 und 6.</li>
+                </ul>
+                <p class="text-justify">
+                	In der Karte sind die Haltestellen der Linie 13 eingezeichnet. Diese verkehrt alle 20 Minuten zwischen den Tagungsorten. Hilfreiche Infos liefert auch der <a href="http://www.bahn.de/" target="_blank">Planer der Deutschen Bahn</a> und der <a href="http://www.netzplan-muenster.de/" target="_blank">interaktive Netzplan der Stadtwerke Münster</a>
+                </p>
+                <p class="text-justify">
+                	Am Hauptabhnhof Münster befindet sich die <a href="http://www.radstation.de/de/mieten/4_2.html" target="_blank">Fahrradverleihstation</a>.
+                </p>
+                <h5>Anreise mit dem Flugzeug</h5>
+                <p class="text-justify">
+                	Der lokale Flughafen Münster-Osnabrück (FMO) ist relativ klein, aber einige Gesellschaften bieten evtl. günstige Anschlussflüge.
+                </p>
+                <p class="text-justify">
+                	Größere/alternative Flughäfen sind:
+                </p>
+                <ul class="list">
+                  <li>Dortmund (DTM, ~1:20 Stunden mit der Bahn)</li>
+                  <li>Düsseldorf (DUS, ~2:15 Stunden mit der Bahn)</li>
+                  <li>Köln/Bonn (CGN, ~2:30 Stunden mit der Bahn)</li>
+                  <li>Hannover (HAJ, ~2.30 Stunden mit der Bahn)</li>
+                  <li>Frankfurt (M) (FRA, ~3:00 Stunden mit der Bahn)</li>
+                  <li>Niederrhein (NRN, kleiner Ryanair Flughafen, ~3:30 Stunden mit der Bahn)</li>
+                </ul>
+              </div>
+            </dd>
+		   			<dd class="accordion-navigation">
+							<a href="#panelN2">Unterkunft</a>
+							<div id="panelN2" class="content">
+								<p class="text-justify">
+									Münster Marketing hält bis zum 10.02.2015 <a href="http://germany.nethotels.com/info/muenster/events/FOSSGIS/" target="_blank">Kontingente für die FOSSGIS</a> bereit.
+								</p>
+                <p class="text-justify">
+                	Weitere Frühbucherkontingente sind unter dem Stichwort “FOSSGIS 2015” bis Ende Januar bei folgenden Hotels reserviert:
+                </p>
+                <h5><a href="http://www.hotel-am-schlosspark-muenster.de/" target="_blank">Hotel am Schlosspark</a></h5>
+                <p class="text-justify">
+                	(1 km 10 min)<br>inkl. Frühstück, Bettwäsche, Handtücher<br>Doppelzimmer: 51,50 €/Person/Nacht (in Einzelbelegung 78 €/Person/Nacht)
+                </p>
+                <h5><a href="http://www.agora-muenster.de/index.php" target="_blank">Agora - das Hotel am Aasee</a></h5>
+                <p class="text-justify">
+                	(1,2 km 15 min)<br>inkl. Frühstück, Bettwäsche, Handtücher<br>verschiedene Einzelzimmer: ab 69,00 €/Person/Nacht<br>verschiedene Doppelzimmer: ab 54,50 €/Person/Nacht (in Einzelbelegung: ab 79,00 €/Person/Nacht)
+                </p>
+                <h5><a href="http://www.djh-wl.de/de/jugendherbergen/muenster" target="_blank">Jugend Gästehaus Aasee</a></h5>
+                <p class="text-justify">
+                	(1,4 km, 17 min)<br>inkl. Frühstück, Bettwäsche, Handtücher, Badezimmer mit Dusche und WC je Zimmer:<br>Doppelzimmer: 35,70 €/Person/Nacht (in Einzelbelegung: 52,80 €/Person/Nacht)<br>Vierbettzimmer: 30,40 €/Person/Nacht
+                </p>
+              </div>
+            </dd>
+		   			<dd class="accordion-navigation">
+							<a href="#panel3N">Social Events</a>
+							<div id="panel3N" class="content">
+								<h5>Dienstag, 10. März 2015 ab 19:30 Uhr: Inoffizieller Start</h5>
+                <p class="text-justify">
+                	Gemeinsames Abendessen für alle schon anwesenden FOSSGISler in der <a href="http://pinkus.de/gaststaette/altbierkueche/" target="_blank">Gaststätte Pinkus Müller</a>
+                </p>
+                <h5>Mittwoch, 11. März 2015 von 19 bis 23 Uhr: Offizieller Social Event</h5>
+                <p class="text-justify">
+                	Geselliges Beisammensein im <a href="http://www.schlossgarten.com/rundgang/" target="_blank">Schlossgartencafe</a>. Preis: 35€
+                </p>
+                <h5>Donnerstag, 12. März 2015</h5>
+                <p class="text-justify">
+                	Anwendertreffen:<br>Von 17:30 bis 18:30 Uhr (oder später) gibt es Anwendertreffen, Sprints und BOFs. Diese können z.B. <a onClick="boardActive()">hier</a> selber organisiert werden.
+                </p>
+                <p class="text-justify">
+                	FOSSGIS e.V. Mitgliederversammlung:<br>ab 19 Uhr im Senatssaal Schloss Münster
+                </p>
+                <h5>Freitag, 13. März 2015: Sektempfang am FOSSGIS-Stand</h5>
+                <p class="text-justify">
+                	Alle Mitglieder des FOSSGIS-Vereins, Freunde und Interessierte sind herzlich eingeladen.
+                </p>
+              </div>
+            </dd>
+            <dd class="accordion-navigation" id="roomsAccordion">
+            	<a href="#panel4N" id="roomsAccordionA">Raumpl&auml;ne</a>
+            	<div id="panel4N" class="content">
+            		<h5>Tagungsräume im Schloss</h5>
+            		<ul class="clearing-thmubs small-block-grid-1" data-clearing>
+            			<li><a href="img/Schloss-klein.jpg"><img data-caption="Tagungsr&auml;ume im Schloss" src="img/Schloss-klein.jpg"></a></li>
+            		</ul>
+            		<h5>Computer-Pools im GEO1 (1.OG - Workshops)</h5>
+            		<br/>
+            		<ul class="clearing-thumbs small-block-grid-1 medium-block-grid-3" data-clearing>
+            			<li><a href="img/125Karte.jpg"><img data-caption="CIP-Pool 125" src="img/125Karte.jpg"></a></li>
+            			<li><a href="img/126Karte.jpg"><img data-caption="CIP-Pool 126" src="img/126Karte.jpg"></a></li>
+            			<li><a href="img/130Karte.jpg"><img data-caption="CIP-Pool 130" src="img/130Karte.jpg"></a></li>
+            		</ul>            		
+            	</div>
+            </dd>
+          </dl>
+        </div>
+
+        <script>
+        	function boardActive() {
+		  			$("#news").removeClass( "content active" ).addClass( "content" );
+		  			$("#veranstaltungen").removeClass( "content active" ).addClass( "content" );
+		  			$("#navigation").removeClass( "content active" ).addClass( "content" );
+		  			$("#schwarzesBrett").removeClass( "content" ).addClass( "content active" );
+		  			$("#navigationTab").removeClass( "active" );
+		  			$("#boardTab").addClass( "active" );
+		  		}
+		  	</script>
+
+				<div class="content" id="schwarzesBrett">
+					<div class="row">
+						<div class="large-12 columns">
+							<br/>
+							<br/>
+							<h2 class="text-center">Sie benötigen eine Internetverbindung um die Web-App der FOSSGIS 2015 in vollem Umfang nutzen zu können</h2>
+							<br/>
+							<br/>
+							<br/>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
 		</div>
 	</div>
 
@@ -97,10 +861,141 @@
 
   <script src="js/foundation.min.js"></script>
 
+  <script>
+  	function checkDate() {
+  		var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1; //January is 0!
+			var yyyy = today.getFullYear();
+
+			if(dd<10) {
+				dd='0'+dd
+			}
+
+			if(mm<10) {
+				mm='0'+mm
+			}
+
+			today = dd+'/'+mm+'/'+yyyy;
+
+			if (today == '11/03/2015') {
+				$('#eventsWednesday').removeClass('content').addClass('content active');
+				$('#panel1').removeClass('content').addClass('content active');
+			} if (today == '12/03/2015') {
+				$('#eventsThursday').removeClass('content').addClass('content active');
+				$('#panel2').removeClass('content').addClass('content active');
+			} if (today == '13/03/2015') {
+				$('#eventsFriday').removeClass('content').addClass('content active');
+				$('#panel3').removeClass('content').addClass('content active');
+			}
+		}
+	</script>
+
+	<script>
+		$('#panel1-1').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel1-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel1-2').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel1-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel1-3').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel1-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel1-4').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel1-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel1-5').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel1-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel1-6').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel1-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel1-7').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel1-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel2-1').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel2-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel2-2').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel2-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel2-3').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel2-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel2-4').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel2-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel2-5').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel2-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel2-6').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel2-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel2-7').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel2-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel3-1').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel3-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel3-2').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel3-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel3-3').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel3-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel3-4').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel3-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel3-5').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel3-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel3-6').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel3-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+  	$('#panel3-7').on('toggled', function (event, tab) {
+    	var containerPos = $('#panel3-1tab').parent().offset().top;
+    	$('html, body').animate({ scrollTop: containerPos }, 600);
+  	});
+	</script>
 
   <script>
   	$(document).foundation();
+  	//Erlaubt mehrere Accordions aufzuhaben. Interferiert momentan mit dem Einladen der Veranstaltungen
+    $(document).foundation({
+  		accordion: {
+    		// allow multiple accordion panels to be active at the same time
+    		multi_expand: true
+  		}
+  	});
+		$(document).foundation('accordion', {
+  		callback: function (el){
+    		var containerPos = $(el).parent().offset().top;
+    		$('html, body').animate({ scrollTop: containerPos }, 600);
+  		}
+		});
   </script>
+
+  <script type="text/javascript" src="js/menu.js"></script>
 
 </body>
 
