@@ -4138,7 +4138,7 @@ blockquote p {
     .reveal-modal, dialog {
       width: 90%;
       min-height: 50%;
-      margin-top: 10%;
+      margin-top: 3%;
       margin-left: 5%;
       margin-right: 5%; } }
   .reveal-modal .column, dialog .column, .reveal-modal .columns, dialog .columns {

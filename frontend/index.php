@@ -283,7 +283,7 @@
 
 									</div>
 							  </div>
-							  <p>Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
+							  <p class="text-justify">Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
 							</div>
 						</dd>
 		   			<dd class="accordion-navigation" id="eventsThursday">
@@ -321,7 +321,7 @@
 
 									</div>
 			  				</div>
-			  				<p>Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
+			  				<p class="text-justify">Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
 							</div>
 		  			</dd>
 						<dd class="accordion-navigation" id="eventsFriday">
@@ -359,7 +359,7 @@
 
 									</div>
 			  				</div>
-			  				<p>Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
+			  				<p class="text-justify">Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
 							</div>
 			 			</dd>
 			 		</dl>
@@ -398,7 +398,7 @@
 								<div id="myevent">
 
 								</div>
-								<p>Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
+								<p class="text-justify">Raumpl&auml;ne der Tagungsorte f&uuml;r die Vortr&auml;ge und Workshops finden Sie <a onClick="showRooms()">hier</a>.</p>
 							</div>
 						</dd>
 					</dl>
