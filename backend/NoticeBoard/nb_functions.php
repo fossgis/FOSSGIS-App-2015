@@ -97,7 +97,7 @@ function DisplayComments() {
 					
 					
 			// Add answer link
-			$html.="<div class='answer'><a href='#' onclick='ShowAnswerForm($id);'>Antworten</a></div>";
+			$html.="<div class='answer'><a href='#fndtn-schwarzesBrett' onclick='ShowAnswerForm($id);'>Antworten</a></div>";
 
 
 			// Search for answers

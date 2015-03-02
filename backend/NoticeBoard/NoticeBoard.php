@@ -92,7 +92,7 @@ line-height: 0px;
                         $('#answerform').html(data);
                         $('#form').html(data);
 						if(id!=0) {
-							$('#answerform_title').html("Antwort auf <a href='#' onclick='ScrollTo(\"comment"+id+"\")';> diese Notiz</a>:");
+							$('#answerform_title').html("Antwort auf <a href='#fndtn-schwarzesBrett' onclick='ScrollTo(\"comment"+id+"\")';> diese Notiz</a>:");
 						} else {
 							$('#answerform_title').html("Neue Notiz erstellen:");
 						}
