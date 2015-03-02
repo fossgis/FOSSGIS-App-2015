@@ -831,15 +831,15 @@
             	<a href="#panel4N" id="roomsAccordionA">Raumpl&auml;ne</a>
             	<div id="panel4N" class="content">
             		<h5>Tagungsräume im Schloss</h5>
-            		<ul class="clearing-thumbs small-block-grid-1" data-clearing>
-            			<li><a href="img/Schloss-klein.jpg"><img data-caption="Tagungsr&auml;ume im Schloss" src="img/Schloss-klein.jpg"></a></li>
+            		<ul class="small-block-grid-1">
+            			<li><img src="img/Schloss-klein.jpg"></li>
             		</ul>
             		<h5>Computer-Pools im GEO1 (1.OG - Workshops)</h5>
             		<br/>
-            		<ul class="clearing-thumbs small-block-grid-1 medium-block-grid-3" data-clearing>
-            			<li><a href="img/125Karte.jpg"><img data-caption="CIP-Pool 125" src="img/125Karte.jpg"></a></li>
-            			<li><a href="img/126Karte.jpg"><img data-caption="CIP-Pool 126" src="img/126Karte.jpg"></a></li>
-            			<li><a href="img/130Karte.jpg"><img data-caption="CIP-Pool 130" src="img/130Karte.jpg"></a></li>
+            		<ul class="small-block-grid-1 medium-block-grid-3">
+		        			<li><img src="img/125Karte.jpg"></li>
+		        			<li><img src="img/126Karte.jpg"></li>
+		        			<li><img src="img/130Karte.jpg"></li>
             		</ul>            		
             	</div>
             </dd>
