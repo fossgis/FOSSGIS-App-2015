@@ -89,7 +89,7 @@
 			
 			$startstring = implode("", $start2);
 			
-			$resulthour = (int)$start2[0] + (int)$duration2[0] - 1;
+			$resulthour = (int)$start2[0] + (int)$duration2[0];
 			$resultminutes = (int)$start2[1] + (int)$duration2[1];
 			$resultseconds = (int)$start2[2] + (int)$duration2[2];
 			
@@ -131,8 +131,8 @@
 			$resultdateend = (string)$dateend2."T";
 			
 			// endresult
-			$resultstartdt = $resultdatestart . $startstring ."Z";
-			$resultenddt = $resultdateend . $resulttime ."Z";
+			$resultstartdt = $resultdatestart . $startstring ;
+			$resultenddt = $resultdateend . $resulttime ;
 			
 		// Create iCal file part 2
 		$output.= "BEGIN:VEVENT\n";
@@ -141,8 +141,8 @@
 		$output.= "DESCRIPTION:". $row[0] . "\n";
 		$output.= "URL:". "http://ifgi.de/fossgisapp" . "\n";
 		$output.= "CLASS:PUBLIC\n";
-		$output.= "DTSTART:".$resultstartdt. "\n";
-		$output.= "DTEND:".$resultenddt. "\n";
+		$output.= "DTSTART;TZID=Europe/Berlin:".$resultstartdt. "\n";
+		$output.= "DTEND;TZID=Europe/Berlin:".$resultenddt. "\n";
 		$output.= "END:VEVENT\n";
 		}
 		$output.= "END:VCALENDAR";
