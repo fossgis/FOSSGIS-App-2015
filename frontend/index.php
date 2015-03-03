@@ -834,12 +834,12 @@
             		<ul class="small-block-grid-1">
             			<li><img src="img/Schloss-klein.jpg"></li>
             		</ul>
-            		<h5>Computer-Pools im GEO1 (1.OG - Workshops)</h5>
+            		<h5>StudLabs im GEO1 <nobr>(1.OG - Workshops)</nobr></h5>
             		<br/>
             		<ul class="small-block-grid-1 medium-block-grid-3">
-		        			<li><img src="img/125Karte.jpg"></li>
-		        			<li><img src="img/126Karte.jpg"></li>
-		        			<li><img src="img/130Karte.jpg"></li>
+		        			<li><img src="img/125Karte-neu.jpg"></li>
+		        			<li><img src="img/126Karte-neu.jpg"></li>
+		        			<li><img src="img/130Karte-neu.jpg"></li>
             		</ul>            		
             	</div>
             </dd>
