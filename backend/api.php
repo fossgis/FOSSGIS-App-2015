@@ -77,7 +77,7 @@
       ON Speech.id = SpeakerSpeech.speech_id
       LEFT OUTER JOIN Speaker
       On SpeakerSpeech.speaker_id = Speaker.id
-      GROUP BY title
+      GROUP BY title, room_id
       ORDER BY date, start";
 
     $result = mysqli_query($connection, $sql);
